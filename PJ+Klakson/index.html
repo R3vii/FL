@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otwieranie Skrzyni</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <div class="case-container">
+        <div class="case">
+            <div class="items" id="items">
+                <!-- Tutaj będą itemy -->
+            </div>
+            <div id="marker"></div> <!-- Pionowa kreska -->
+        </div>
+        <button id="openCase">Otwórz Flbox Pj+Klakson</button>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup">
+        <div id="popupContent">
+            <img id="popupItemImg" src="" alt="">
+            <div id="popupItemName"></div>
+            <button id="closePopup">Zamknij</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP do animacji -->
+    <script src="script.js"></script> <!-- Plik JavaScript -->
+</body>
+</html>

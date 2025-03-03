@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main-page-style.css">
+</head>
+<body>
+    <!-- Tło wideo -->
+    <div class="video-container">
+        <video class="background-video" autoplay muted playsinline loop>
+            <source src="background2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Główna zawartość -->
+    <div class="container">
+        <h1 class="title">FLBOX SIMULATOR</h1>
+        <div class="image-container">
+            <a href="PJ+Klakson/index.html" class="case-link">
+                <img src="FLBox_PJ.png" alt="Skrzynia PJ" class="case-image">
+            </a>
+            <a href="javascript:void(0);" class="case-link" onclick="toggleList()">
+                <img src="Swiatla.png" alt="Skrzynia Inna" class="case-image">
+            </a>
+        </div>
+
+        <!-- Ukryta lista przedmiotów -->
+        <ul id="hidden-list" class="hidden-list">
+            <li><a href="FLBox_Swiatla_1.html">FLBox Światła 1</a></li>
+            <li><a href="FLBox_Swiatla_2.html">FLBox Światła 2</a></li>
+            <li><a href="FLBox_Swiatla_3.html">FLBox Światła 3</a></li>
+            <li><a href="FLBox_Swiatla_4.html">FLBox Światła 4</a></li>
+        </ul>
+    </div>
+
+    <!-- Popup dla skrzyni -->
+    <div id="popup">
+        <img id="popupItemImg" src="" alt="Item Image">
+        <p id="popupItemName"></p>
+        <button id="closePopup">Zamknij</button>
+    </div>
+
+    <script src="main-page-script.js"></script>
+</body>
+</html>
+
