@@ -1,3 +1,7 @@
+
+
+
+
 /* Ustawienia ogólne */
 body {
     font-family: 'Poppins', sans-serif;
@@ -165,5 +169,67 @@ body {
         width: 90%;
         height: auto;
         margin-bottom: 20px;
+    }
+}
+@media (max-width: 1024px) {  /* Laptopy, tablety */
+    .container {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    
+    .image-container {
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .case-image {
+        width: 220px;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {  /* Tablety, małe laptopy */
+    .title {
+        font-size: 30px;
+    }
+    
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .case-image {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {  /* Telefony */
+    body {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .case-image {
+        width: 180px;  /* Zmniejszenie obrazków */
+    }
+
+    .case-link {
+        transform: none;
+        opacity: 1;
     }
 }
