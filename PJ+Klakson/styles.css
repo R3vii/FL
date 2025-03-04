@@ -162,6 +162,55 @@ body {
     }
 }
 
+.extra-box {
+    width: 700px; /* Szerokość kwadratu */
+    height: 500px; /* Wysokość kwadratu */
+    border-radius: 20px; /* Zaokrąglone rogi */
+    background: rgba(255, 255, 255, 0.05); /* Kolor podobny do skrzyni */
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Podobna obwódka */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Cień jak w skrzyni */
+    margin-top: 20px; /* Odstęp od skrzyni */
+}
+
+
+.extra-content {
+    display: flex;
+    flex-direction: column; /* Układ pionowy */
+    align-items: flex-start; /* Wyrównanie do lewej */
+    padding: 20px;
+    width: 100%; /* Dostosowanie do szerokości rodzica */
+}
+
+.content-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Większy odstęp między elementami */
+    width: 100%; /* Ustawienie pełnej szerokości */
+}
+
+.content-item img {
+    width: 100px; /* Powiększenie obrazów */
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 20px; /* Większy odstęp od tekstu */
+    object-fit: cover; /* Zapewnienie dobrego dopasowania */
+}
+
+.content-item p {
+    font-size: 20px; /* Większa czcionka */
+    color: white;
+    margin: 0;
+}
+
+
+
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    touch-action: none;
+}
+
 
 
 

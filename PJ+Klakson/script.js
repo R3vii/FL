@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista przedmiotów i ich szanse na wypadnięcie
     const items = [
-        { name: "PaintJob", img: "PaintJob.png", chance: 1 },
-        { name: "Klakson_Pętla", img: "Klakson_Pętla.png", chance: 9 },
-        { name: "Klakson_Muzyczny", img: "Klakson_Muzyczny.png", chance: 20 },
-        { name: "Klakson", img: "Klakson.png", chance: 70 },
+        { name: "PaintJob", img: "PaintJob.png", chance: 1.34 },
+        { name: "Klakson_Pętla", img: "Klakson_Pętla.png", chance: 3.63 },
+        { name: "Klakson_Muzyczny", img: "Klakson_Muzyczny.png", chance: 17.83 },
+        { name: "Klakson", img: "Klakson.png", chance: 77.20 },
     ];
 
     // Funkcja losująca przedmiot na podstawie szans
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let totalWidth = itemWidth * 100; // Całkowita szerokość
 
         // Losowanie końcowej pozycji w przedziale od -9600px do -9700px
-        let finalX = Math.floor(Math.random() * (13200 - 13100 + 1)) + 13100;
+        let finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
         finalX = -finalX; // Przekształcamy na wartość ujemną
 
         // Animacja przesuwania (przyspieszanie i zwalnianie)
@@ -91,6 +91,23 @@ document.addEventListener("DOMContentLoaded", function () {
             marker.style.display = "block"; // Przywrócenie markera
         }, 300);
     });
+
+    document.addEventListener("gesturestart", function (event) {
+        event.preventDefault();
+    });
+    
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && (event.key === '+' || event.key === '-' || event.key === '0')) {
+            event.preventDefault();
+        }
+    });
+    
+    document.addEventListener('wheel', function(event) {
+        if (event.ctrlKey) {
+            event.preventDefault();
+        }
+    }, { passive: false });
+    
     
     
 
