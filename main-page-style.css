@@ -1,8 +1,4 @@
 
-
-
-
-/* Ustawienia ogólne */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -14,15 +10,15 @@ body {
     align-items: center;
     flex-direction: column;
     
-    /* Ustawienie tła - przybliżenie i przesuwanie */
-    background-image: url('Background.png'); /* Zmieniasz na odpowiednią nazwę pliku obrazu */
+
+    background-image: url('Background.png'); 
     background-size: 150%;
     background-attachment: fixed;
     background-position: center center;
     animation: moveBackground 100s infinite alternate;
 }
 
-/* Animacja przesuwania tła */
+
 @keyframes moveBackground {
     0% {
         background-position: left center;
@@ -38,7 +34,7 @@ body {
     }
 }
 
-/* Główna zawartość */
+
 .container {
     text-align: center;
     z-index: 1;
@@ -58,7 +54,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* Kategoria: Kontener */
+
 .categories {
     display: flex;
     gap: 20px;
@@ -66,7 +62,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Kategoria: Pojedynczy box */
+
 .category-box {
     width: 500px;
     height: 250px;
@@ -110,7 +106,7 @@ body {
     color: #ff1e1e;
 }
 
-/* Stylizacja popupu */
+
 #popup {
     position: fixed;
     top: 50%;
@@ -155,7 +151,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
     .title {
         font-size: 36px;
@@ -171,7 +166,7 @@ body {
         margin-bottom: 20px;
     }
 }
-@media (max-width: 1024px) {  /* Laptopy, tablety */
+@media (max-width: 1024px) {
     .container {
         padding: 10px;
     }
@@ -192,7 +187,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {  /* Tablety, małe laptopy */
+@media (max-width: 768px) {
     .title {
         font-size: 30px;
     }
@@ -207,7 +202,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {  /* Telefony */
+@media (max-width: 480px) {
     body {
         padding: 10px;
     }
@@ -225,7 +220,7 @@ body {
     }
 
     .case-image {
-        width: 180px;  /* Zmniejszenie obrazków */
+        width: 180px;
     }
 
     .case-link {
