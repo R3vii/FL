@@ -62,7 +62,6 @@ body {
     object-fit: cover;
 }
 
-
 #marker {
     position: absolute;
     top: 0;
@@ -172,7 +171,6 @@ body {
     margin-top: 20px; /* Odstęp od skrzyni */
 }
 
-
 .extra-content {
     display: flex;
     flex-direction: column; /* Układ pionowy */
@@ -202,13 +200,67 @@ body {
     margin: 0;
 }
 
-
-
-
 html, body {
     overflow: hidden;
     height: 100%;
     touch-action: none;
+}
+
+/* Responsywność dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 10px;
+    }
+
+    .case {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .item {
+        width: 120px;
+        height: 120px;
+    }
+
+    .case-container {
+        padding: 0 15px;
+    }
+
+    .extra-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .extra-content {
+        padding: 10px;
+    }
+
+    .content-item p {
+        font-size: 18px;
+    }
+
+    #openCase {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        width: 100px;
+        height: 100px;
+    }
+
+    .case {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .content-item p {
+        font-size: 16px;
+    }
 }
 
 
