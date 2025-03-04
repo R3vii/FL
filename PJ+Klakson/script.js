@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closePopup = document.getElementById("closePopup");
     const marker = document.getElementById("marker");
 
-    // Lista przedmiotów i ich szanse na wypadnięcie
+
     const items = [
         { name: "PaintJob", img: "PaintJob.png", chance: 1.34 },
         { name: "Klakson_Pętla", img: "Klakson_Pętla.png", chance: 3.63 },
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Klakson", img: "Klakson.png", chance: 77.20 },
     ];
 
-    // Funkcja losująca przedmiot na podstawie szans
+
     function getRandomItem() {
         let random = Math.random() * 200;
         let cumulativeChance = 0;
@@ -23,23 +23,23 @@ document.addEventListener("DOMContentLoaded", function () {
             cumulativeChance += item.chance;
             if (random < cumulativeChance) return item;
         }
-        return items[items.length - 1]; // Zapewnienie zwrotu ostatniego przedmiotu
+        return items[items.length - 1];
     }
 
-    // Funkcja resetująca skrzynię
+
     function resetCase() {
         itemsContainer.innerHTML = "";
         gsap.set(itemsContainer, { x: 0 });
     }
 
-    // Funkcja otwierająca skrzynię
+
     function openCase() {
         openCaseButton.disabled = true;
         resetCase();
 
-        // Generowanie listy przedmiotów
+
         let generatedItems = [];
-        for (let i = 0; i < 100; i++) { // 100 elementów do animacji
+        for (let i = 0; i < 100; i++) { 
             let randomItem = getRandomItem();
             generatedItems.push(randomItem);
             let div = document.createElement("div");
@@ -48,22 +48,22 @@ document.addEventListener("DOMContentLoaded", function () {
             itemsContainer.appendChild(div);
         }
 
-        // Pobranie szerokości przedmiotu
+
         let itemWidth = document.querySelector(".item").offsetWidth + 0;
-        let totalWidth = itemWidth * 100; // Całkowita szerokość
+        let totalWidth = itemWidth * 100; 
 
-        // Losowanie końcowej pozycji w przedziale od -9600px do -9700px
+
         let finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
-        finalX = -finalX; // Przekształcamy na wartość ujemną
+        finalX = -finalX; 
 
-        // Animacja przesuwania (przyspieszanie i zwalnianie)
+
         gsap.to(itemsContainer, {
             x: finalX,
-            duration: 8,  // Zmniejsz czas, żeby animacja była szybka
-            ease: "power2.inOut",  // Przyspieszanie na początku, zwalnianie na końcu
+            duration: 8, 
+            ease: "power2.inOut",  
             onComplete: function () {
-                // Wybieramy przedmiot o indeksie 87 (86 w tablicy)
-                let winningItem = generatedItems[90]; // Indeks 86 to przedmiot 87 (liczymy od 0)
+                
+                let winningItem = generatedItems[90];
                 showPopup(winningItem);
                 openCaseButton.disabled = false;
             }
@@ -75,20 +75,20 @@ document.addEventListener("DOMContentLoaded", function () {
         popupItemName.innerText = "Wylosowałeś: " + item.name;
         popup.style.display = "flex";
         
-        // Efekt wejścia
+       
         setTimeout(() => popup.classList.add("active"), 50);
     
-        // Ukrycie markera
+       
         marker.style.display = "none";
     }
     
     closePopup.addEventListener("click", function () {
-        // Efekt wyjścia
+
         popup.classList.remove("active");
     
         setTimeout(() => {
             popup.style.display = "none";
-            marker.style.display = "block"; // Przywrócenie markera
+            marker.style.display = "block"; 
         }, 300);
     });
 
