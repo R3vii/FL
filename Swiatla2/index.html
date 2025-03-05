@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otwieranie Skrzyni</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <div class="case-container">
+        <div class="case">
+            <div class="items" id="items">
+                <!-- Tutaj będą itemy -->
+            </div>
+            <div id="marker"></div> <!-- Pionowa kreska -->
+        </div>
+        <button id="openCase">Otwórz Flbox Pj+Klakson</button>
+    </div>
+
+    <div class="extra-box">
+        <div class="extra-content">
+            <div class="content-item">
+                <img src="CzerwoneSwiatla.png" alt="Obraz 1">
+                <p>Czerwone Światła - Szansa (0,27%)</p>
+            </div>
+            <div class="content-item">
+                <img src="TrawnikoweSwiatla.png" alt="Obraz 2">
+                <p>Trawnikowe Światła - Szansa (0,27%)</p>
+            </div>
+            <div class="content-item">
+                <img src="GlebokoZolteSwiatla.png" alt="Obraz 3">
+                <p>Głęboko Żółte Światła - Szansa (1,87%)</p>
+            </div>
+            <div class="content-item">
+                <img src="FioletoweSwiatla.png" alt="Obraz 4">
+                <p>Fioletowe Światła - Szansa (1,32%)</p>
+            </div>
+            <div class="content-item">
+                <img src="CiemnoNiebieskieSwiatla.png" alt="Obraz 5">
+                <p>Ciemnoniebieskie Światła - Szansa (20,27%)</p>
+            </div>
+            <div class="content-item">
+                <img src="RóżoweŚwiatła.png" alt="Obraz 6">
+                <p>Różowe Światła - Szansa (19,73%)</p>
+            </div>
+            <div class="content-item">
+                <img src="PomaranczoweSwiatla.png" alt="Obraz 7">
+                <p>Pomarańczowe Światła - Szansa (56,27%)</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Popup -->
+    <div id="popup">
+        <div id="popupContent">
+            <img id="popupItemImg" src="" alt="">
+            <div id="popupItemName"></div>
+            <button id="closePopup">Zamknij</button>
+        </div>
+    </div>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP do animacji -->
+    <script src="script.js"></script> <!-- Plik JavaScript -->
+</body>
+</html>

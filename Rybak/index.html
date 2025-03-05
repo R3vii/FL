@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konto i Łowiska - FiveLife</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-overlay"></div> <!-- Dodany element z klasą background-overlay -->
+    <h1>Status Twojego Konta</h1>
+    <div id="saldo">Saldo: 0.00$</div>
+
+    <div class="category">
+        <button onclick="pokazLowisko('zalew')">Zalew Stacha</button>
+        <div id="zalew" class="items">
+            <div class="item" onclick="dodajDoSalda(8.00)">Tobiasz 0.01kg [S] (+8.00$)</div>
+            <div class="item" onclick="dodajDoSalda(8.00)">Szprot 0.01kg [S] (+8.00$)</div>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="pokazLowisko('staw')">Staw Mirror Park</button>
+        <div id="staw" class="items">
+            <div class="item" onclick="dodajDoSalda(9.02)">Ukleja 0.01 [S] (+9.02$)</div>
+            <div class="item" onclick="dodajDoSalda(11.27)">Ukleja 0.02 [M] (+11.27$)</div>
+            <div class="item" onclick="dodajDoSalda(40.08)">Lin 0.20 [S] (+40.08$)</div>
+            <div class="item" onclick="dodajDoSalda(90.19)">Lin 0.82 [M] (+90.19$)</div>
+            <div class="item" onclick="dodajDoSalda(180.38)">Lin 0.82 [L] (+180.38$)</div>
+            <div class="item" onclick="dodajDoSalda(200.42)">Jaź 0.46 [S] (+200.42$)</div>
+            <div class="item" onclick="dodajDoSalda(257.68)">Jaź 0.92 [M] (+257.68$)</div>
+            <div class="item" onclick="dodajDoSalda(450.94)">Jaź 1.85 [L] (+450.94$)</div>
+            <div class="item" onclick="dodajDoSalda(163.98)">Karaś 0.45 [S] (+163.98$)</div>
+            <div class="item" onclick="dodajDoSalda(200.42)">Karaś 0.90 [M] (+200.42$)</div>
+            <div class="item" onclick="dodajDoSalda(300.63)">Karaś 1.80 [L] (+300.63$)</div>
+
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="pokazLowisko('zatoka')">Zatoka Paleto</button>
+        <div id="zatoka" class="items">
+            <div class="item" onclick="dodajDoSalda(34.30)">Flądra strzałozębna 0.50 [S] (+34.30$)</div>
+            <div class="item" onclick="dodajDoSalda(49.00)">Flądra strzałozębna 1.00 [M] (+49.00$)</div>
+            <div class="item" onclick="dodajDoSalda(85.75)">Flądra strzałozębna 2.00 [L] (+85.75$)</div>
+            <div class="item" onclick="dodajDoSalda(25.73)">Karmazyn 0.50 [S] (+25.73$)</div>
+            <div class="item" onclick="dodajDoSalda(53.59)">Karmazyn 1.00 [M] (+53.59$)</div>
+            <div class="item" onclick="dodajDoSalda(100.88)">Karmazyn 2.00 [L] (+100.88$)</div>
+            <div class="item" onclick="dodajDoSalda(107.19)">Pagrus różowy 1.50 [S] (+107.19$)</div>
+            <div class="item" onclick="dodajDoSalda(252.21)">Pagrus różowy 3.00 [M] (+252.21$)</div>
+            <div class="item" onclick="dodajDoSalda(902.63)">Pagrus różowy 6.00 [L] (+902.63$)</div>
+            <div class="item" onclick="dodajDoSalda(142.92)">Halibut 1.75 [S] (+142.92$)</div>
+            <div class="item" onclick="dodajDoSalda(311.82)">Halibut 3.50 [M] (+311.82$)</div>
+            <div class="item" onclick="dodajDoSalda(2143.75)">Halibut 7.00 [L] (+2143.75$)</div>
+
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="pokazLowisko('rzeka')">Rzeka Zancudo</button>
+        <div id="rzeka" class="items">
+            <div class="item" onclick="dodajDoSalda(12.63)">Kiełb białopłetwy 0.01 [S] (+12.63$)</div>
+            <div class="item" onclick="dodajDoSalda(25.25)">Jelec 0.15 [S] (+25.25$)</div>
+            <div class="item" onclick="dodajDoSalda(60.60)">Jelec 0.35 [M] (+60.60$)</div>
+            <div class="item" onclick="dodajDoSalda(129.29)">Jelec 0.35 [L] (+129.29$)</div>
+            <div class="item" onclick="dodajDoSalda(28.31)">Płoć 1.00 [S] (+28.31$)</div>
+            <div class="item" onclick="dodajDoSalda(71.83)">Płoć 2.00 [M] (+71.83$)</div>
+            <div class="item" onclick="dodajDoSalda(143.65)">Płoć 1.50 [L] (+143.65$)</div>
+            <div class="item" onclick="dodajDoSalda(48.48)">Kleń 0.55 [S] (+48.48$)</div>
+            <div class="item" onclick="dodajDoSalda(114.08)">Kleń 1.10 [M] (+114.08$)</div>
+            <div class="item" onclick="dodajDoSalda(228.15)">Kleń 2.20 [L] (+228.15$)</div>
+            <div class="item" onclick="dodajDoSalda(230.87)">Boleń 1.40 [S] (+230.87$)</div>
+            <div class="item" onclick="dodajDoSalda(430.95)">Boleń 2.81 [M] (+430.95$)</div>
+            <div class="item" onclick="dodajDoSalda(881.49)">Boleń 5.63 [L] (+881.49$)</div>
+            <div class="item" onclick="dodajDoSalda(808.04)">Sandacz 2.69 [S] (+808.04$)</div>
+            <div class="item" onclick="dodajDoSalda(2154.75)">Sandacz 5.38 [M] (+2154.75$)</div>
+            <div class="item" onclick="dodajDoSalda(6214.02)">Sandacz 10.77 [L] (+6214.02$)</div>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="pokazLowisko('morze')">Morze Almao</button>
+        <div id="morze" class="items">
+            <div class="item" onclick="dodajDoSalda(25.89)">Węgorzyca 0.07 [S] (+25.89$)</div>
+            <div class="item" onclick="dodajDoSalda(32.37)">Węgorzyca 0.14 [M] (+32.37$)</div>
+            <div class="item" onclick="dodajDoSalda(43.15)">Węgorzyca 0.28 [L] (+43.15$)</div>
+            <div class="item" onclick="dodajDoSalda(30.82)">Certa 0.10 [S] (+30.82$)</div>
+            <div class="item" onclick="dodajDoSalda(40.46)">Certa 0.20 [M] (+40.46$)</div>
+            <div class="item" onclick="dodajDoSalda(58.85)">Certa 0.40 [L] (+58.85$)</div>
+            <div class="item" onclick="dodajDoSalda(43.15)">Kantar 0.25 [S] (+43.15$)</div>
+            <div class="item" onclick="dodajDoSalda(68.14)">Kantar 0.50 [M] (+68.14$)</div>
+            <div class="item" onclick="dodajDoSalda(161.83)">Kantar 1.00 [L] (+161.83$)</div>
+            <div class="item" onclick="dodajDoSalda(47.95)">Amarel 0.33 [S] (+47.95$)</div>
+            <div class="item" onclick="dodajDoSalda(99.59)">Amarel 0.65 [M] (+99.59$)</div>
+            <div class="item" onclick="dodajDoSalda(184.95)">Amarel 1.30 [L] (+184.95$)</div>
+
+            <div class="item" onclick="dodajDoSalda(69.98)">Srebczyk 0.50 [S] (+69.98$)</div>
+            <div class="item" onclick="dodajDoSalda(169.23)">Srebczyk 1.00 [M] (+169.23$)</div>
+            <div class="item" onclick="dodajDoSalda(368.89)">Srebczyk 2.00 [L] (+368.89$)</div>
+
+            <div class="item" onclick="dodajDoSalda(71.92)">Aloza 0.55 [S] (+71.92$)</div>
+            <div class="item" onclick="dodajDoSalda(174.95)">Aloza 1.10 [M] (+174.95$)</div>
+            <div class="item" onclick="dodajDoSalda(398.34)">Aloza 2.20 [L] (+398.34$)</div>
+
+            <div class="item" onclick="dodajDoSalda(94.15)">Łupacz 0.63 [S] (+94.15$)</div>
+            <div class="item" onclick="dodajDoSalda(297.61)">Łupacz 1.25 [M] (+297.61$)</div>
+            <div class="item" onclick="dodajDoSalda(550.90)">Łupacz 2.50 [L] (+550.90$)</div>
+
+            <div class="item" onclick="dodajDoSalda(117.69)">Zębacz Smugowy 0.80 [S] (+117.69$)</div>
+            <div class="item" onclick="dodajDoSalda(340.69)">Zębacz Smugowy 1.60 [M] (+340.69$)</div>
+            <div class="item" onclick="dodajDoSalda(829.88)">Zębacz Smugowy 3.20 [L] (+829.88$)</div>
+
+            <div class="item" onclick="dodajDoSalda(126.30)">Węgorz europejski 0.90 [S] (+126.30$)</div>
+            <div class="item" onclick="dodajDoSalda(375.25)">Węgorz europejski 1.80 [M] (+375.25$)</div>
+            <div class="item" onclick="dodajDoSalda(1035.69)">Węgorz europejski 3.60 [L] (+1035.69$)</div>
+            
+            <div class="item" onclick="dodajDoSalda(308.24)">Dorada królewska 1.25 [S] (+308.24$)</div>
+            <div class="item" onclick="dodajDoSalda(479.93)">Dorada królewska 2.50 [M] (+479.93$)</div>
+            <div class="item" onclick="dodajDoSalda(2589.24)">Dorada królewska 5.00 [L] (+2589.24$)</div>
+
+            <div class="item" onclick="dodajDoSalda(327.75)">Leszcz 1.50 [S] (+327.75$)</div>
+            <div class="item" onclick="dodajDoSalda(739.78)">Leszcz 3.00 [M] (+739.78$)</div>
+            <div class="item" onclick="dodajDoSalda(4315.39)">Leszcz 6.00 [L] (+4315.39$)</div>
+
+            <div class="item" onclick="dodajDoSalda(539.42)">Szczupak 2.50 [S] (+539.42$)</div>
+            <div class="item" onclick="dodajDoSalda(2754.51)">Szczupak 5.00 [M] (+2754.51$)</div>
+            <div class="item" onclick="dodajDoSalda(6813.78)">Szczupak 10.00 [L] (+6813.78$)</div>
+        </div>
+    </div>
+
+    <button class="reset" onclick="resetujSaldo()">Resetuj saldo</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
