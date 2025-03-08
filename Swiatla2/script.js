@@ -55,8 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let itemWidth = document.querySelector(".item").offsetWidth + 0;
         let totalWidth = itemWidth * 100; // Całkowita szerokość
 
-        // Losowanie końcowej pozycji w przedziale od -9600px do -9700px
-        let finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
+        let finalX;
+        if (window.innerWidth <= 768 && window.inderWidth > 520) {
+            finalX = Math.floor(Math.random() * (4906 - 4810 + 1)) + 4810; // Inny przedział dla mniejszych ekranów
+        } 
+        else if (window.innerWidth <= 520) {
+            finalX = Math.floor(Math.random() * (4089 - 4010 + 1)) + 4010; // Standardowy przedział
+        }
+        else {
+            finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
+        }
         finalX = -finalX; // Przekształcamy na wartość ujemną
 
         // Animacja przesuwania (przyspieszanie i zwalnianie)

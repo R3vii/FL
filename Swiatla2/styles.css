@@ -183,7 +183,7 @@ body {
 .extra-box {
     width: 700px; /* Szerokość kwadratu */
     height: 500px; /* Wysokość kwadratu */
-    border-radius: px; /* Zaokrąglone rogi */
+    border-radius: 20px; /* Zaokrąglone rogi */ /* Zaokrąglone rogi */
     background: rgba(255, 255, 255, 0.05); /* Kolor podobny do skrzyni */
     border: 3px solid rgba(255, 255, 255, 0.3); /* Podobna obwódka */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Cień jak w skrzyni */
@@ -228,7 +228,6 @@ html, body {
     touch-action: none;
 }
 
-/* Responsywność dla urządzeń mobilnych */
 @media (max-width: 768px) {
     body {
         height: auto;
@@ -236,7 +235,7 @@ html, body {
     }
 
     .case {
-        width: 100%;
+        width: 500px;
         height: auto;
         flex-direction: column;
     }
@@ -252,7 +251,7 @@ html, body {
 
     .extra-box {
         width: 100%;
-        height: auto;
+        height: 480px;
     }
 
     .extra-content {
@@ -268,20 +267,40 @@ html, body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
+
+    
     .item {
         width: 100px;
         height: 100px;
     }
 
     .case {
-        width: 100%;
+        width: 350px;
         height: auto;
         flex-direction: column;
     }
 
     .content-item p {
         font-size: 16px;
+        width: 200px; /* Powiększenie obrazów */
+    }
+
+    .extra-box {
+        width: 100%;
+        height: 460px;
+    }
+    .extra-content {
+        padding: 0px;
+    }
+
+
+    .content-item img {
+        width: 70px; /* Powiększenie obrazów */
+        height: 80px;
+        border-radius: 10px;
+        margin-right: 20px; /* Większy odstęp od tekstu */
+        object-fit: cover; /* Zapewnienie dobrego dopasowania */
     }
 }
 
