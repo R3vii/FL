@@ -42,6 +42,7 @@ body {
 }
 
 .item {
+    
     width: 150px;
     height: 150px;
     margin-right: 0; /* Usunięcie marginesu */
@@ -214,7 +215,7 @@ html, body {
     }
 
     .case {
-        width: 100%;
+        width: 500px;
         height: auto;
         flex-direction: column;
     }
@@ -230,7 +231,7 @@ html, body {
 
     .extra-box {
         width: 100%;
-        height: auto;
+        height: 480px;
     }
 
     .extra-content {
@@ -246,20 +247,36 @@ html, body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
+
+    
     .item {
         width: 100px;
         height: 100px;
     }
 
     .case {
-        width: 100%;
+        width: 350px;
         height: auto;
         flex-direction: column;
     }
 
     .content-item p {
         font-size: 16px;
+        width: 200px; /* Powiększenie obrazów */
+    }
+
+    .extra-box {
+        width: 100%;
+        height: 450px;
+    }
+
+    .content-item img {
+        width: 80px; /* Powiększenie obrazów */
+        height: 80px;
+        border-radius: 10px;
+        margin-right: 20px; /* Większy odstęp od tekstu */
+        object-fit: cover; /* Zapewnienie dobrego dopasowania */
     }
 }
 
