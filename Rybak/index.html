@@ -4,85 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Łowienie Ryb</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <h1 id="saldo">Saldo: 0.00$</h1>
+  <button id="resetBtn" onclick="resetSaldo()">Resetuj saldo</button>
 
-  <!-- Kategoria Łowisko -->
-  <div class="kategoria">
-    <h2 class="toggle" onclick="toggleRyby('lowisko')">Łowisko</h2>
-    <div id="lowisko" class="ryby">
-      <div class="ryba-container" draggable="true" id="ryba1" data-cena="10.00" ondragstart="event.dataTransfer.setData('text/plain', 'ryba1')">
-        <img src="ryby/ryba_szprot.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 1</p>
-        <p class="ryba-cena">10.00$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba2" data-cena="15.50" ondragstart="event.dataTransfer.setData('text/plain', 'ryba2')">
-        <img src="ryby/ryba_tobiasz.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 2</p>
-        <p class="ryba-cena">15.50$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba3" data-cena="7.25" ondragstart="event.dataTransfer.setData('text/plain', 'ryba3')">
-        <img src="ryba3.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 3</p>
-        <p class="ryba-cena">7.25$</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kategoria Zalew -->
-  <div class="kategoria">
-    <h2 class="toggle" onclick="toggleRyby('zalew')">Zalew</h2>
-    <div id="zalew" class="ryby">
-      <div class="ryba-container" draggable="true" id="ryba4" data-cena="12.30" ondragstart="event.dataTransfer.setData('text/plain', 'ryba4')">
-        <img src="ryba4.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 4</p>
-        <p class="ryba-cena">12.30$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba5" data-cena="8.50" ondragstart="event.dataTransfer.setData('text/plain', 'ryba5')">
-        <img src="ryba5.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 5</p>
-        <p class="ryba-cena">8.50$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba6" data-cena="10.00" ondragstart="event.dataTransfer.setData('text/plain', 'ryba6')">
-        <img src="ryba6.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 6</p>
-        <p class="ryba-cena">10.00$</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kategoria Morze -->
-  <div class="kategoria">
-    <h2 class="toggle" onclick="toggleRyby('morze')">Morze</h2>
-    <div id="morze" class="ryby">
-      <div class="ryba-container" draggable="true" id="ryba7" data-cena="20.00" ondragstart="event.dataTransfer.setData('text/plain', 'ryba7')">
-        <img src="ryba7.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 7</p>
-        <p class="ryba-cena">20.00$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba8" data-cena="18.50" ondragstart="event.dataTransfer.setData('text/plain', 'ryba8')">
-        <img src="ryba8.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 8</p>
-        <p class="ryba-cena">18.50$</p>
-      </div>
-      <div class="ryba-container" draggable="true" id="ryba9" data-cena="15.30" ondragstart="event.dataTransfer.setData('text/plain', 'ryba9')">
-        <img src="ryba9.png" class="ryba">
-        <p class="ryba-nazwa">Ryba 9</p>
-        <p class="ryba-cena">15.30$</p>
-      </div>
-    </div>
-  </div>
+  <!-- Kontener na sekcję ryb załadowaną z fish.html -->
+  <div id="fishContainer"></div>
 
   <!-- Beczka (używa GIF-a) -->
-  <div class="beczka" id="beczka" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div class="beczka" id="beczka">
     <h2>Beczka</h2>
     <p>Przeciągnij ryby tutaj</p>
     <img src="beczka.gif" alt="Beczka" class="beczka-gif">
   </div>
 
+  <!-- Lista ryb w beczce -->
+<div id="fishList" class="fish-list">
+  <h3>Ryby w beczce:</h3>
+  <ul></ul>
+</div>
+
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+

@@ -1,0 +1,185 @@
+/* ======== Globalne ustawienia ======== */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: url('backk.png') no-repeat center top / cover fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Zmiana na flex-start, żeby wszystko było na górze */
+  align-items: center;
+  overflow-x: hidden;
+  animation: moveBackground 50s infinite alternate linear;
+}
+
+/* ======== Animacja tła ======== */
+@keyframes moveBackground {
+  0% { background-position: 0% top; }
+  50% { background-position: 100% top; }
+  100% { background-position: 0% top; }
+}
+
+/* ======== Nagłówki ======== */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* ======== Styl przycisku ======== */
+button {
+  position: absolute;
+  top: 530px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+/* ======== Sekcja Salda ======== */
+#saldo {
+  position: absolute;
+  top: 410px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ======== Lista ryb ======== */
+.fish-list {
+  position: absolute;
+  top: 600px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border: 3px solid #00ff00;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.fish-list h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* ======== Beczka ======== */
+.beczka {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 20px;
+  border: 3px dashed #ffff00;
+  min-width: 200px;
+  background-color: rgb(0, 0, 0);
+}
+
+.beczka img {
+  width: 100%;
+  height: auto;
+}
+
+.beczka.highlight {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+
+.kategoria {
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #333;
+  display: inline-block;
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+  color: #fff;
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%; /* Kategorie mają pełną szerokość */
+}
+
+/* ======== Sekcja ryb ======== */
+/* ======== Sekcja ryb ======== */
+.ryby {
+  display: grid; /* Używamy gridu zamiast flexboxa */
+  grid-template-columns: repeat(6, 1fr); /* Ustalamy 6 kolumn w rzędzie */
+  gap: 10px;
+  max-height: 0; /* Początkowo sekcja jest zamknięta (brak wysokości) */
+  overflow: hidden; /* Ukrywamy zawartość, gdy sekcja jest zamknięta */
+  width: 100%; /* Zmieniamy szerokość na 100%, tak żeby sekcja miała pełną szerokość */
+  transition: max-height 0.5s ease-out, width 0.5s ease-out; /* Animacja szerokości i wysokości */
+  margin-top: 20px; /* Przesunięcie sekcji ryb w górę */
+}
+
+/* Rozwinięcie sekcji ryb po kliknięciu */
+.kategoria.active .ryby {
+  max-height: 500px; /* Maksymalna wysokość po rozwinięciu */
+  width: 100%; /* Ustawiamy szerokość na 100%, aby po rozwinięciu była pełna szerokość */
+}
+
+.kategoria:not(.active) .ryby {
+  max-height: 0;
+  width: 100%; /* Upewniamy się, że szerokość pozostaje na 100% nawet po zamknięciu */
+}
+
+.kategoria {
+  transition: all 0.5s ease-out;
+}
+
+.kategoria.active ~ .kategoria .ryby {
+  max-height: 0;
+}
+
+.kategoria.active ~ .kategoria {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ryba-container {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.ryba {
+  width: 80px;
+  cursor: grab;
+  margin-bottom: 5px;
+}
+
+.ryba-nazwa,
+.ryba-cena,
+.ryba-waga {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.ryba-cena {
+  color: inherit;
+}
+
+/* ======== Linki i przełączniki ======== */
+.toggle {
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.toggle:hover {
+  color: gray;
+}

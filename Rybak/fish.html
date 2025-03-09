@@ -1,0 +1,648 @@
+<!-- fish.html -->
+<div id="fishContent">
+  <!-- Kategoria Łowisko -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('zalewstacha')">Zalew Stacha</h2>
+    <div id="zalewstacha" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba1" data-cena="8.00" data-waga="0.01" ondragstart="event.dataTransfer.setData('text/plain','ryba1')">
+        <img src="ryby/ryba_szprot.png" class="ryba">
+        <p class="ryba-nazwa">Szprot [S]</p>
+        <p class="ryba-waga">Waga: 0.01kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba2" data-cena="8.00" data-waga="0.01" ondragstart="event.dataTransfer.setData('text/plain','ryba2')">
+        <img src="ryby/ryba_tobiasz.png" class="ryba">
+        <p class="ryba-nazwa">Tobiasz [S]</p>
+        <p class="ryba-waga">Waga: 0.01kg</p>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kategoria Zalew -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('stawmirror')">Staw Mirror</h2>
+    <div id="stawmirror" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba3" data-cena="9.02" data-waga="0.01" ondragstart="event.dataTransfer.setData('text/plain','ryba4')">
+        <img src="ryby/ryba_ukleja.png" class="ryba">
+        <p class="ryba-nazwa">Ukleja [S]</p>
+        <p class="ryba-waga">Waga: 0.01kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba4" data-cena="11.27" data-waga="0.02" ondragstart="event.dataTransfer.setData('text/plain','ryba5')">
+        <img src="ryby/ryba_ukleja.png" class="ryba">
+        <p class="ryba-nazwa">Ukleja [M]</p>
+        <p class="ryba-waga">Waga: 0.02kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba5" data-cena="40.08" data-waga="0.20" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_lin.png" class="ryba">
+        <p class="ryba-nazwa">Lin [S]</p>
+        <p class="ryba-waga">Waga: 0.20kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba6" data-cena="90.19" data-waga="0.82" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_lin.png" class="ryba">
+        <p class="ryba-nazwa">Lin [M]</p>
+        <p class="ryba-waga">Waga: 0.82kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba7" data-cena="180.38" data-waga="0.82" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_lin.png" class="ryba">
+        <p class="ryba-nazwa">Lin [L]</p>
+        <p class="ryba-waga">Waga: 0.82kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba8" data-cena="200.42" data-waga="0.46" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_jaz.png" class="ryba">
+        <p class="ryba-nazwa">Jaź [S]</p>
+        <p class="ryba-waga">Waga: 0.46kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba9" data-cena="257.68" data-waga="0.92" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_jaz.png" class="ryba">
+        <p class="ryba-nazwa">Jaź [M]</p>
+        <p class="ryba-waga">Waga: 0.92kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba10" data-cena="450.94" data-waga="1.85" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_jaz.png" class="ryba">
+        <p class="ryba-nazwa">Jaź [L]</p>
+        <p class="ryba-waga">Waga: 1.85kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba11" data-cena="163.98" data-waga="0.45" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_karas.png" class="ryba">
+        <p class="ryba-nazwa">Karaś [S]</p>
+        <p class="ryba-waga">Waga: 0.45kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba12" data-cena="200.42" data-waga="0.90" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_karas.png" class="ryba">
+        <p class="ryba-nazwa">Karaś [M]</p>
+        <p class="ryba-waga">Waga: 0.90kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba13" data-cena="300.63" data-waga="1.80" ondragstart="event.dataTransfer.setData('text/plain','ryba6')">
+        <img src="ryby/ryba_karas.png" class="ryba">
+        <p class="ryba-nazwa">Karaś [L]</p>
+        <p class="ryba-waga">Waga: 1.80kg</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kategoria Morze -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('zatokapaleto')">Zatoka Paleto</h2>
+    <div id="zatokapaleto" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba14" data-cena="34.30" data-waga="0.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_fladra_strzalozebna.png" class="ryba">
+        <p class="ryba-nazwa">Flądra Strzałozębna [S]</p>
+        <p class="ryba-waga">Waga: 0.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba15" data-cena="49.00" data-waga="1.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_fladra_strzalozebna.png" class="ryba">
+        <p class="ryba-nazwa">Flądra Strzałozębna [M]</p>
+        <p class="ryba-waga">Waga: 1.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba16" data-cena="85.75" data-waga="2.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_fladra_strzalozebna.png" class="ryba">
+        <p class="ryba-nazwa">Flądra Strzałozębna [L]</p>
+        <p class="ryba-waga">Waga: 2.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba17" data-cena="25.73" data-waga="0.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_karmazyn.png" class="ryba">
+        <p class="ryba-nazwa">Karmazyn [S]</p>
+        <p class="ryba-waga">Waga: 0.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba18" data-cena="53.59" data-waga="1.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_karmazyn.png" class="ryba">
+        <p class="ryba-nazwa">Karmazyn [M]</p>
+        <p class="ryba-waga">Waga: 1.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba19" data-cena="100.88" data-waga="2.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_karmazyn.png" class="ryba">
+        <p class="ryba-nazwa">Karmazyn [L]</p>
+        <p class="ryba-waga">Waga: 2.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba20" data-cena="107.19" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_pagrus_rozowy.png" class="ryba">
+        <p class="ryba-nazwa">Pagrus różowy [S]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba21" data-cena="252.21" data-waga="3.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_pagrus_rozowy.png" class="ryba">
+        <p class="ryba-nazwa">Pagrus różowy [M]</p>
+        <p class="ryba-waga">Waga: 3.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba22" data-cena="902.63" data-waga="6.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_pagrus_rozowy.png" class="ryba">
+        <p class="ryba-nazwa">Pagrus różowy [L]</p>
+        <p class="ryba-waga">Waga: 6.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba23" data-cena="142.92" data-waga="1.75" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_halibut.png" class="ryba">
+        <p class="ryba-nazwa">Halibut [S]</p>
+        <p class="ryba-waga">Waga: 1.75kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba24" data-cena="311.82" data-waga="3.50" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_halibut.png" class="ryba">
+        <p class="ryba-nazwa">Halibut [M]</p>
+        <p class="ryba-waga">Waga: 3.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba25" data-cena="2143.75" data-waga="7.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_halibut.png" class="ryba">
+        <p class="ryba-nazwa">Halibut [L]</p>
+        <p class="ryba-waga">Waga: 7.00kg</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kategoria Morze -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('rzekazancudo')">Rzeka Zancudo</h2>
+    <div id="rzekazancudo" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba26" data-cena="12.63" data-waga="0.01" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_kielb_bialopletwy.png" class="ryba">
+        <p class="ryba-nazwa">Kiełb białopłetwy [S]</p>
+        <p class="ryba-waga">Waga: 0.01kg</p>
+      </div>
+
+      <div class="ryba-container" draggable="true" id="ryba27" data-cena="25.25" data-waga="0.15" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_jelec.png" class="ryba">
+        <p class="ryba-nazwa">Jelec [S]</p>
+        <p class="ryba-waga">Waga: 0.15kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba28" data-cena="60.60" data-waga="0.35" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_jelec.png" class="ryba">
+        <p class="ryba-nazwa">Jelec [M]</p>
+        <p class="ryba-waga">Waga: 0.35kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba29" data-cena="129.29" data-waga="0.35" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_jelec.png" class="ryba">
+        <p class="ryba-nazwa">Jelec [L]</p>
+        <p class="ryba-waga">Waga: 0.35kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba30" data-cena="28.31" data-waga="0.29" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_ploc.png" class="ryba">
+        <p class="ryba-nazwa">Płoć [S]</p>
+        <p class="ryba-waga">Waga: 0.29kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba31" data-cena="71.83" data-waga="0.58" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_ploc.png" class="ryba">
+        <p class="ryba-nazwa">Płoć [M]</p>
+        <p class="ryba-waga">Waga: 0.58kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba32" data-cena="143.65" data-waga="1.17" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_ploc.png" class="ryba">
+        <p class="ryba-nazwa">Płoć [L]</p>
+        <p class="ryba-waga">Waga: 1.17kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba33" data-cena="48.48" data-waga="0.55" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_klen.png" class="ryba">
+        <p class="ryba-nazwa">Kleń [S]</p>
+        <p class="ryba-waga">Waga: 0.55kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba34" data-cena="114.08" data-waga="1.10" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_klen.png" class="ryba">
+        <p class="ryba-nazwa">Kleń [M]</p>
+        <p class="ryba-waga">Waga: 1.10kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba35" data-cena="228.15" data-waga="2.20" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_klen.png" class="ryba">
+        <p class="ryba-nazwa">Kleń [L]</p>
+        <p class="ryba-waga">Waga: 2.20kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba36" data-cena="230.87" data-waga="1.40" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_bolen.png" class="ryba">
+        <p class="ryba-nazwa">Boleń [S]</p>
+        <p class="ryba-waga">Waga: 1.40kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba37" data-cena="430.95" data-waga="2.81" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_bolen.png" class="ryba">
+        <p class="ryba-nazwa">Boleń [M]</p>
+        <p class="ryba-waga">Waga: 2.81kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba38" data-cena="881.49" data-waga="5.63" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_bolen.png" class="ryba">
+        <p class="ryba-nazwa">Boleń [L]</p>
+        <p class="ryba-waga">Waga: 5.63kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba39" data-cena="808.04" data-waga="2.69" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_sandacz.png" class="ryba">
+        <p class="ryba-nazwa">Sandacz [S]</p>
+        <p class="ryba-waga">Waga: 2.69kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba40" data-cena="2154.75" data-waga="5.38" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_sandacz.png" class="ryba">
+        <p class="ryba-nazwa">Sandacz [M]</p>
+        <p class="ryba-waga">Waga: 5.38kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba41" data-cena="6214.02" data-waga="10.77" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_sandacz.png" class="ryba">
+        <p class="ryba-nazwa">Sandacz [L]</p>
+        <p class="ryba-waga">Waga: 10.77kg</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Kategoria Morze -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('jezioroalmao')">Jezioro Almao</h2>
+    <div id="jezioroalmao" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba42" data-cena="25.89" data-waga="0.07" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_wegorzyca.png" class="ryba">
+        <p class="ryba-nazwa">Węgorzyca [S]</p>
+        <p class="ryba-waga">Waga: 0.07kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba43" data-cena="32.37" data-waga="0.14" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_wegorzyca.png" class="ryba">
+        <p class="ryba-nazwa">Węgorzyca [M]</p>
+        <p class="ryba-waga">Waga: 0.14kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba44" data-cena="43.15" data-waga="0.28" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_wegorzyca.png" class="ryba">
+        <p class="ryba-nazwa">Węgorzyca [L]</p>
+        <p class="ryba-waga">Waga: 0.28kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba45" data-cena="30.82" data-waga="0.10" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_certa.png" class="ryba">
+        <p class="ryba-nazwa">Certa [S]</p>
+        <p class="ryba-waga">Waga: 0.10kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba46" data-cena="40.46" data-waga="0.20" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_certa.png" class="ryba">
+        <p class="ryba-nazwa">Certa [M]</p>
+        <p class="ryba-waga">Waga: 0.20kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba47" data-cena="58.85" data-waga="0.40" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_certa.png" class="ryba">
+        <p class="ryba-nazwa">Certa [L]</p>
+        <p class="ryba-waga">Waga: 0.40kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba48" data-cena="43.15" data-waga="0.25" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_kantar.png" class="ryba">
+        <p class="ryba-nazwa">Kantar [S]</p>
+        <p class="ryba-waga">Waga: 0.25kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba49" data-cena="68.14" data-waga="0.50" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_kantar.png" class="ryba">
+        <p class="ryba-nazwa">Kantar [M]</p>
+        <p class="ryba-waga">Waga: 0.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba50" data-cena="161.83" data-waga="1.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_kantar.png" class="ryba">
+        <p class="ryba-nazwa">Kantar [L]</p>
+        <p class="ryba-waga">Waga: 1.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba51" data-cena="47.95" data-waga="0.33" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_amarel.png" class="ryba">
+        <p class="ryba-nazwa">Amarel [S]</p>
+        <p class="ryba-waga">Waga: 0.33kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba52" data-cena="99.59" data-waga="0.65" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_amarel.png" class="ryba">
+        <p class="ryba-nazwa">Amarel [M]</p>
+        <p class="ryba-waga">Waga: 0.65kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba53" data-cena="184.95" data-waga="1.30" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_amarel.png" class="ryba">
+        <p class="ryba-nazwa">Amarel [L]</p>
+        <p class="ryba-waga">Waga: 1.30kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba54" data-cena="69.98" data-waga="0.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_srebrzyk.png" class="ryba">
+        <p class="ryba-nazwa">Srebczyk [S]</p>
+        <p class="ryba-waga">Waga: 0.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba55" data-cena="169.23" data-waga="1.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_srebrzyk.png" class="ryba">
+        <p class="ryba-nazwa">Srebczyk [M]</p>
+        <p class="ryba-waga">Waga: 1.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba56" data-cena="368.89" data-waga="2.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_srebrzyk.png" class="ryba">
+        <p class="ryba-nazwa">Srebczyk [L]</p>
+        <p class="ryba-waga">Waga: 2.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba57" data-cena="71.92" data-waga="0.55" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_aloza.png" class="ryba">
+        <p class="ryba-nazwa">Aloza [S]</p>
+        <p class="ryba-waga">Waga: 0.55kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba58" data-cena="174.95" data-waga="1.10" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_aloza.png" class="ryba">
+        <p class="ryba-nazwa">Aloza [M]</p>
+        <p class="ryba-waga">Waga: 1.10kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba59" data-cena="398.34" data-waga="2.20" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_aloza.png" class="ryba">
+        <p class="ryba-nazwa">Aloza [L]</p>
+        <p class="ryba-waga">Waga: 2.20kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba60" data-cena="94.15" data-waga="0.63" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_lupacz.png" class="ryba">
+        <p class="ryba-nazwa">Łupacz [S]</p>
+        <p class="ryba-waga">Waga: 0.63kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba61" data-cena="297,61" data-waga="1.25" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_lupacz.png" class="ryba">
+        <p class="ryba-nazwa">Łupacz [M]</p>
+        <p class="ryba-waga">Waga: 1.25kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba62" data-cena="550.90" data-waga="2.50" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_lupacz.png" class="ryba">
+        <p class="ryba-nazwa">Łupacz [L]</p>
+        <p class="ryba-waga">Waga: 2.50kg</p>
+      </div>
+
+
+
+      <div class="ryba-container" draggable="true" id="ryba63" data-cena="117.69" data-waga="0.80" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_zebacz_smugowy.png" class="ryba">
+        <p class="ryba-nazwa">Zębacz Smugowy [S]</p>
+        <p class="ryba-waga">Waga: 0.80kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba64" data-cena="340.69" data-waga="1.60" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_zebacz_smugowy.png" class="ryba">
+        <p class="ryba-nazwa">Zębacz Smugowy [M]</p>
+        <p class="ryba-waga">Waga: 1.60kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba65" data-cena="829.88" data-waga="3.20" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_zebacz_smugowy.png" class="ryba">
+        <p class="ryba-nazwa">Zębacz Smugowy [L]</p>
+        <p class="ryba-waga">Waga: 3.20kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba66" data-cena="126.30" data-waga="0.90" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_wegorz_europejski.png" class="ryba">
+        <p class="ryba-nazwa">Węgorz europejski [S]</p>
+        <p class="ryba-waga">Waga: 0.90kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba67" data-cena="375.25" data-waga="1.80" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_wegorz_europejski.png" class="ryba">
+        <p class="ryba-nazwa">Węgorz europejski [M]</p>
+        <p class="ryba-waga">Waga: 1.80kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba68" data-cena="1035.69" data-waga="3.60" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_wegorz_europejski.png" class="ryba">
+        <p class="ryba-nazwa">Węgorz europejski [L]</p>
+        <p class="ryba-waga">Waga: 3.60kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba69" data-cena="308.24" data-waga="1.25" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_dorada_krolewska.png" class="ryba">
+        <p class="ryba-nazwa">Dorada królewska [S]</p>
+        <p class="ryba-waga">Waga: 1.25kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba70" data-cena="479.93" data-waga="2.50" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_dorada_krolewska.png" class="ryba">
+        <p class="ryba-nazwa">Dorada królewska [M]</p>
+        <p class="ryba-waga">Waga: 2.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba71" data-cena="2589.24" data-waga="5.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_dorada_krolewska.png" class="ryba">
+        <p class="ryba-nazwa">Dorada królewska [L]</p>
+        <p class="ryba-waga">Waga: 5.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba72" data-cena="327.75" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_leszcz.png" class="ryba">
+        <p class="ryba-nazwa">Leszcz [S]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba73" data-cena="739.78" data-waga="3.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_leszcz.png" class="ryba">
+        <p class="ryba-nazwa">Leszcz [M]</p>
+        <p class="ryba-waga">Waga: 3.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba74" data-cena="4315.39" data-waga="6.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_leszcz.png" class="ryba">
+        <p class="ryba-nazwa">Leszcz [L]</p>
+        <p class="ryba-waga">Waga: 6.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba75" data-cena="539.42" data-waga="2.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_szczupak.png" class="ryba">
+        <p class="ryba-nazwa">Szczupak [S]</p>
+        <p class="ryba-waga">Waga: 2.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba76" data-cena="2754.51" data-waga="5.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_szczupak.png" class="ryba">
+        <p class="ryba-nazwa">Szczupak [M]</p>
+        <p class="ryba-waga">Waga: 5.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba77" data-cena="6813.78" data-waga="10.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_szczupak.png" class="ryba">
+        <p class="ryba-nazwa">Szczupak [L]</p>
+        <p class="ryba-waga">Waga: 10.00kg</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Kategoria Morze -->
+  <div class="kategoria">
+    <h2 class="toggle" onclick="toggleRyby('oceanspokojny')">Ocean Spokojny</h2>
+    <div id="oceanspokojny" class="ryby">
+      <div class="ryba-container" draggable="true" id="ryba78" data-cena="43.62" data-waga="0.10" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_trewal.png" class="ryba">
+        <p class="ryba-nazwa">Trewal [S]</p>
+        <p class="ryba-waga">Waga: 0.10kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba79" data-cena="54.52" data-waga="0.20" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_trewal.png" class="ryba">
+        <p class="ryba-nazwa">Trewal [M]</p>
+        <p class="ryba-waga">Waga: 0.20kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba80" data-cena="72.70" data-waga="0.40" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_trewal.png" class="ryba">
+        <p class="ryba-nazwa">Trewal [L]</p>
+        <p class="ryba-waga">Waga: 0.40kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba81" data-cena="49.65" data-waga="0.14" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_barwena.png" class="ryba">
+        <p class="ryba-nazwa">Barwena [S]</p>
+        <p class="ryba-waga">Waga: 0.14kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba82" data-cena="64.14" data-waga="0.28" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_barwena.png" class="ryba">
+        <p class="ryba-nazwa">Barwena [M]</p>
+        <p class="ryba-waga">Waga: 0.28kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba83" data-cena="90.87" data-waga="0.55" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_barwena.png" class="ryba">
+        <p class="ryba-nazwa">Barwena [L]</p>
+        <p class="ryba-waga">Waga: 0.55kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba84" data-cena="57.39" data-waga="0.23" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_belona_pospolita.png" class="ryba">
+        <p class="ryba-nazwa">Belona pospolita [S]</p>
+        <p class="ryba-waga">Waga: 0.23kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba85" data-cena="77.89" data-waga="0.45" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_belona_pospolita.png" class="ryba">
+        <p class="ryba-nazwa">Belona pospolita [M]</p>
+        <p class="ryba-waga">Waga: 0.45kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba86" data-cena="121.16" data-waga="0.90" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_belona_pospolita.png" class="ryba">
+        <p class="ryba-nazwa">Belona pospolita [L]</p>
+        <p class="ryba-waga">Waga: 0.90kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba87" data-cena="59.75" data-waga="0.25" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_sargus.png" class="ryba">
+        <p class="ryba-nazwa">Sargus [S]</p>
+        <p class="ryba-waga">Waga: 0.25kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba88" data-cena="82.30" data-waga="0.50" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_sargus.png" class="ryba">
+        <p class="ryba-nazwa">Sargus [M]</p>
+        <p class="ryba-waga">Waga: 0.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba89" data-cena="132.17" data-waga="1.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_sargus.png" class="ryba">
+        <p class="ryba-nazwa">Sargus [L]</p>
+        <p class="ryba-waga">Waga: 1.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba90" data-cena="69.23" data-waga="0.38" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_miruna.png" class="ryba">
+        <p class="ryba-nazwa">Miruna [S]</p>
+        <p class="ryba-waga">Waga: 0.38kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba91" data-cena="101.44" data-waga="0.75" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_miruna.png" class="ryba">
+        <p class="ryba-nazwa">Miruna [M]</p>
+        <p class="ryba-waga">Waga: 0.75kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba92" data-cena="189.64" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_miruna.png" class="ryba">
+        <p class="ryba-nazwa">Miruna [L]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba93" data-cena="70.35" data-waga="0.38" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_mintaj.png" class="ryba">
+        <p class="ryba-nazwa">Mintaj [S]</p>
+        <p class="ryba-waga">Waga: 0.38kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba94" data-cena="105.10" data-waga="0.75" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_mintaj.png" class="ryba">
+        <p class="ryba-nazwa">Mintaj [M]</p>
+        <p class="ryba-waga">Waga: 0.75kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba95" data-cena="207.70" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_mintaj.png" class="ryba">
+        <p class="ryba-nazwa">Mintaj [L]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba96" data-cena="83.88" data-waga="0.48" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_makrela.png" class="ryba">
+        <p class="ryba-nazwa">Makrela [S]</p>
+        <p class="ryba-waga">Waga: 0.48kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba97" data-cena="136.30" data-waga="0.95" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_makrela.png" class="ryba">
+        <p class="ryba-nazwa">Makrela [M]</p>
+        <p class="ryba-waga">Waga: 0.95kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba98" data-cena="290.78" data-waga="1.90" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_makrela.png" class="ryba">
+        <p class="ryba-nazwa">Makrela [L]</p>
+        <p class="ryba-waga">Waga: 1.90kg</p>
+      </div>
+
+
+
+      <div class="ryba-container" draggable="true" id="ryba99" data-cena="94.82" data-waga="0.55" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_dorsz_atlantycki.png" class="ryba">
+        <p class="ryba-nazwa">Dorsz atlantycki [S]</p>
+        <p class="ryba-waga">Waga: 0.55kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba100" data-cena="167.76" data-waga="1.10" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_dorsz_atlantycki.png" class="ryba">
+        <p class="ryba-nazwa">Dorsz atlantycki [M]</p>
+        <p class="ryba-waga">Waga: 1.10kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba101" data-cena="335.52" data-waga="2.20" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_dorsz_atlantycki.png" class="ryba">
+        <p class="ryba-nazwa">Dorsz atlantycki [L]</p>
+        <p class="ryba-waga">Waga: 2.20kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba102" data-cena="109.04" data-waga="0.75" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_pstrag_teczowy.png" class="ryba">
+        <p class="ryba-nazwa">Pstrąg tęczowy [S]</p>
+        <p class="ryba-waga">Waga: 0.75kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba103" data-cena="218.09" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_pstrag_teczowy.png" class="ryba">
+        <p class="ryba-nazwa">Pstrąg tęczowy [M]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba104" data-cena="495.65" data-waga="3.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_pstrag_teczowy.png" class="ryba">
+        <p class="ryba-nazwa">Pstrąg tęczowy [L]</p>
+        <p class="ryba-waga">Waga: 3.00kg</p>
+      </div>
+
+
+      <div class="ryba-container" draggable="true" id="ryba105" data-cena="242.32" data-waga="1.50" ondragstart="event.dataTransfer.setData('text/plain','ryba7')">
+        <img src="ryby/ryba_fladra.png" class="ryba">
+        <p class="ryba-nazwa">Flądra [S]</p>
+        <p class="ryba-waga">Waga: 1.50kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba106" data-cena="573.91" data-waga="3.00" ondragstart="event.dataTransfer.setData('text/plain','ryba8')">
+        <img src="ryby/ryba_fladra.png" class="ryba">
+        <p class="ryba-nazwa">Flądra [M]</p>
+        <p class="ryba-waga">Waga: 3.00kg</p>
+      </div>
+      <div class="ryba-container" draggable="true" id="ryba107" data-cena="1453.90" data-waga="6.00" ondragstart="event.dataTransfer.setData('text/plain','ryba9')">
+        <img src="ryby/ryba_fladra.png" class="ryba">
+        <p class="ryba-nazwa">Flądra [L]</p>
+        <p class="ryba-waga">Waga: 6.00kg</p>
+      </div>
+
+    </div>
+  </div>
+</div>
