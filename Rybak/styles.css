@@ -32,7 +32,7 @@ button {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 10px 20px;
-  border: 3px solid #ffd700;
+  border: 3px solid #666d7d;
   border-radius: 10px;
   font-size: 30px;
   font-weight: bold;
@@ -53,7 +53,7 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 10px 20px;
-  border: 3px solid #ffd700;
+  border: 3px solid #666d7d;
   border-radius: 10px;
   font-size: 40px;
   font-weight: bold;
@@ -67,7 +67,7 @@ button:hover {
   right: 10px;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 20px;
-  border: 3px solid #00ff00;
+  border: 3px solid #48505b;
   border-radius: 10px;
   font-size: 16px;
   color: white;
@@ -84,7 +84,7 @@ button:hover {
   top: 10px;
   right: 10px;
   padding: 20px;
-  border: 3px dashed #ffff00;
+  border: 3px dashed #666d7d;
   min-width: 200px;
   background-color: rgb(0, 0, 0);
 }
@@ -95,22 +95,27 @@ button:hover {
 }
 
 .beczka.highlight {
-  background-color: rgba(255, 255, 0, 0.5);
+  background-color: #ffff0080;
 }
 
 .kategoria {
-  margin: 20px;
-  padding: 20px;
+  margin: 15px;
+  padding: 15px;
   border: 2px solid #333;
   display: inline-block;
   background-color: rgb(0, 0, 0);
   cursor: pointer;
   color: #fff;
-  border: 3px solid #ffd700;
+  border: 3px solid #666d7d;
   border-radius: 10px;
   font-weight: bold;
   text-align: center;
-  width: 100%; /* Kategorie mają pełną szerokość */
+  width: 90%;
+
+
+  max-height: 900px; /* Określamy maksymalną wysokość kontenera */
+  overflow-y: auto;  /* Włącza przewijanie w pionie, gdy zawartość przekroczy wysokość */
+  padding: 10px;     /* Dodatkowe odstępy wewnętrzne */
 }
 
 /* ======== Sekcja ryb ======== */
@@ -151,9 +156,11 @@ button:hover {
 
 .ryba-container {
   text-align: center;
-  padding: 10px;
+  padding: 0px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
+  height: 100%;
+  width: 90%;
 }
 
 .ryba {
@@ -178,6 +185,194 @@ button:hover {
   cursor: pointer;
   color: inherit;
   transition: color 0.3s;
+}
+
+.toggle:hover {
+  color: gray;
+}
+
+
+@media (max-width: 1024px) {
+  body {
+    height: auto;
+    padding: 5px;
+    align-items: flex-start;
+  }
+
+  .ryby {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny */
+    justify-content: center; /* Centrowanie w poziomie */
+    gap: 10px; /* Odstępy między rybami */
+    place-items: center; /* Centrowanie ryb w siatce */
+  }
+
+  .beczka {
+    width: 50px;
+    height: 220px;
+  }
+
+  .beczka img {
+    width: 80%;
+    height: auto;
+    margin-top: -5px;
+    margin-left: 20px;
+  }
+
+  .beczka h2 {
+    font-size: 25px; /* Zmniejsza nagłówek "Beczka" */
+    text-align: center;
+    margin-top: -10px;
+  }
+  
+  .beczka p {
+    font-size: 14px; /* Zmniejsza tekst "Przeciągnij ryby tutaj" */
+    text-align: center;
+    margin-top: -20px;
+  }
+
+
+  .ryba-container {
+    width: 100px; /* Jeszcze mniejsza szerokość */
+    height: 120px;
+    padding: 1px; /* Zmniejszone odstępy */
+  }
+
+  .ryba {
+    width: 50px; /* Mniejszy rozmiar ryb */
+  }
+
+  .ryba-nazwa,
+  .ryba-cena,
+  .ryba-waga {
+    font-size: 10px; /* Jeszcze mniejszy rozmiar czcionki */
+  }
+
+  #saldo {
+    font-size: 25px; /* Jeszcze mniejsze saldo */
+    padding: 5px 10px;
+    margin-top: -120px;
+  }
+
+  button {
+    font-size: 20px; /* Zmniejszony przycisk */
+    padding: 6px 12px;
+    margin-top: -180px;
+  }
+
+  .fish-list {
+    font-size: 12px; /* Mniejsza czcionka dla listy ryb */
+    padding: 8px;
+    margin-top: -200px;
+  }
+}
+
+
+
+@media (max-width: 570px) {
+
+  
+  body {
+    height: auto;
+    padding: 5px;
+    align-items: flex-start;
+  }
+
+  .ryby {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny */
+    justify-content: center; /* Centrowanie w poziomie */
+    gap: 10px; /* Odstępy między rybami */
+    place-items: center; /* Centrowanie ryb w siatce */
+  }
+
+  .beczka {
+    width: 60px;
+    height: 146px;
+    min-width: 100px;
+  }
+
+  .beczka img {
+    width: 90%;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 6px;
+  }
+
+  .beczka h2 {
+    font-size: 15px; /* Zmniejsza nagłówek "Beczka" */
+    text-align: center;
+    margin-top: -10px;
+  }
+  
+  .beczka p {
+    font-size: 10px; /* Zmniejsza tekst "Przeciągnij ryby tutaj" */
+    text-align: center;
+    margin-top: -10px;
+  }
+
+
+  
+  #saldo {
+    font-size: 15px; /* Jeszcze mniejsze saldo */
+    padding: 5px 10px;
+    margin-top: -402px;
+    margin-right: 148px;
+  }
+
+  button {
+    font-size: 13px; /* Zmniejszony przycisk */
+    padding: 6px 12px;
+    margin-top: -482px;
+    margin-right: 150px;
+  }
+  .kategoria {
+    margin: -5px;
+    padding: 4px;
+    border: 2px solid #333;
+    display: inline-block;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    color: #fff;
+    border: 3px solid #666d7d;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 5px;
+    width: 100%;
+    margin-top: -7px;
+    position: relative;
+    top: 256px; /* Przesuwa element 20px w dół */
+
+
+    max-height: 500px; /* Określamy maksymalną wysokość kontenera */
+    overflow-y: auto;  /* Włącza przewijanie w pionie, gdy zawartość przekroczy wysokość */
+    padding: 10px;     /* Dodatkowe odstępy wewnętrzne */
+    
+    
+  }
+
+  .ryba-container {
+    width: 48px; /* Jeszcze mniejsza szerokość */
+    height: 93px;
+    padding: 0px; /* Zmniejszone odstępy */
+  }
+
+  .ryba {
+    width: 50px; /* Mniejszy rozmiar ryb */
+  }
+
+  .ryba-nazwa,
+  .ryba-cena,
+  .ryba-waga {
+    font-size: 6.5px; /* Jeszcze mniejszy rozmiar czcionki */
+  }
+  .fish-list {
+    font-size: 7px; /* Mniejsza czcionka dla listy ryb */
+    padding: 2px;
+    margin-top: -517px;
+    margin-right: 150px;
+  }
 }
 
 .toggle:hover {
