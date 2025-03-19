@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poszukiwanie Mumii FiveLife</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Poszukiwanie Mumii 2024 dobiegło końca!</h2>
+        <p>Wielkie dzięki wszystkim, którzy dołożyli swą cegiełkę...</p>
+        <p><strong>Do zobaczenia wkrótce! :b</strong></p>
+    </div>
+</div>
+
+<div id="coordinates">Współrzędne: <span id="coordsDisplay">brak</span></div>
+<div id="counter">Znalezione Mumie: <span id="markedCount">0</span> / <span id="totalCount">0</span></div>
+<div id="map"></div>
+
+<div class="footer-info">
+    Twórca: <strong>R3vii</strong><br>
+    Ostatnia modyfikacja: <span id="lastModified">11.11.2024 18:14</span>
+</div>
+
+<div id="changelog-container">
+    <button onclick="toggleChangelog()">Changelog</button>
+    <div id="changelog">
+        <pre id="changelogContent">Ładowanie changelog...</pre>
+    </div>
+</div>
+
+<div id="custom-button" class="box-button" onclick="customButtonClick()">
+    <div class="button"><span>Zaloguj</span></div>
+</div>
+
+<!-- Formularz logowania w modal -->
+<div id="form-container" class="hidden">
+    <div class="wrapper">
+        <div class="card-switch">
+            <label class="switch">
+                <input type="checkbox" class="toggle">
+                <div class="flip-card__inner">
+                    <div class="flip-card__front">
+                        <div class="title">Zaloguj</div>
+                        <form id="login-form" class="flip-card__form" onsubmit="login(event)">
+                            <input class="flip-card__input" name="nick" id="username" placeholder="Nick" type="text">
+                            <input class="flip-card__input" name="password" id="password" placeholder="Password" type="password">
+                            <button class="flip-card__btn" type="submit">Letsa goo</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>
+<div id="stations">
+    
+</div>
+<!-- Status logowania -->
+<div id="login-status" class="login-status">Niezalogowano</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="markersData.json"></script>
+<script src="script.js"></script>
+</body>
+</html>

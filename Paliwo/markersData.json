@@ -1,0 +1,20 @@
+[
+  {
+    "id": "stacja_1",
+    "lat": 2106.74,
+    "lng": 3169.58,
+    "title": "Stacja Shell",
+    "fuelPrice": "6.29 PLN",
+    "dieselPrice": "6.45 PLN",
+    "addedBy": "User123"
+  },
+  {
+    "id": "stacja_2",
+    "lat": 2165.49,
+    "lng": 3641.83,
+    "title": "Orlen",
+    "fuelPrice": "7.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin"
+  }
+]
