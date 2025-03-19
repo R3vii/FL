@@ -1,16 +1,16 @@
-/* Globalne ustawienia */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* BODY */
 body {
     font-family: 'Poppins', sans-serif;
     color: white;
     background-image: url('Background.png');
-    background-size: cover; /* Tło będzie skalowane, by wypełnić cały ekran */
-    background-position: top center; /* Tło przyklejone do góry */
+    background-size: cover;
+    background-position: top center;
     background-attachment: fixed;
     height: 100vh;
     display: flex;
@@ -21,15 +21,14 @@ body {
     animation: moveBackground 50s infinite alternate linear;
 }
 
-/* Animacja tła */
+/* ANIMACJA TŁA */
 @keyframes moveBackground {
     0% { background-position: 0% top; }
     50% { background-position: 100% top; }
     100% { background-position: 0% top; }
 }
 
-
-/* Kontener główny */
+/* KONTENER */
 .container {
     text-align: center;
     position: relative;
@@ -38,20 +37,36 @@ body {
     width: 100%;
 }
 
-/* Tytuł */
-.title {
-    font-size: 42px;
+.luminance {
+    background: 50% 100% / 50% 50% no-repeat radial-gradient(ellipse at bottom, #ff4d4d, transparent, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 56px; /* dopasowane do REVDEV.TOP */
     font-weight: 600;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #ff4d4d, #ff1e1e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
-    margin-bottom: 30px;
     letter-spacing: 2px;
+    margin-bottom: 30px;
+    animation: reveal 3s ease-in-out forwards 200ms, glow 2.5s linear infinite 2s;
 }
 
-/* Kategoria */
+@keyframes reveal {
+    80% {
+        letter-spacing: 8px;
+    }
+    100% {
+        background-size: 300% 300%;
+    }
+}
+
+@keyframes glow {
+    40% {
+        text-shadow: 0 0 20px #ff1e1e; /* powiększyłem do 20px żeby był podobny do title */
+    }
+}
+
+
+/* KATEGORIE */
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -74,7 +89,6 @@ body {
     box-shadow: 0 10px 25px rgba(255, 77, 77, 0.7);
 }
 
-/* Teksty w kategoriach */
 .category-title {
     font-size: 22px;
     font-weight: 600;
@@ -93,7 +107,7 @@ body {
     font-weight: 600;
 }
 
-/* Popup */
+/* POPUP */
 #popup {
     position: fixed;
     top: 50%;
@@ -123,7 +137,7 @@ body {
     cursor: pointer;
 }
 
-/* Suwak do kontroli wielkości tła */
+/* SUWAK */
 .background-control {
     position: fixed;
     bottom: 20px;
@@ -132,26 +146,24 @@ body {
     z-index: 1500;
 }
 
-/* MEDIA QUERIES */
+/* RESPONSYWNOŚĆ */
 @media (max-width: 1024px) {
-    .title { font-size: 36px; }
+    .luminance { font-size: 60px; }
     .categories { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
     .category-box { max-width: 400px; }
 }
 
 @media (max-width: 768px) {
-    body { background-size: auto; }
-    .title { font-size: 30px; }
+    .luminance { font-size: 50px; }
     .categories { grid-template-columns: 1fr; }
     .category-box { width: 90%; }
 }
 
 @media (max-width: 480px) {
     body { background-size: cover; background-position: center; }
-    .title { font-size: 24px; }
+    .luminance { font-size: 40px; }
     .category-box { width: 100%; padding: 15px; }
     .category-title { font-size: 18px; }
     .category-description { font-size: 12px; }
     .category-link { font-size: 14px; }
 }
-

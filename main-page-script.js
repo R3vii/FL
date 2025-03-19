@@ -1,3 +1,4 @@
+
 // Funkcja do przełączania widoczności listy
 function toggleList() {
     const list = document.getElementById('hidden-list');
