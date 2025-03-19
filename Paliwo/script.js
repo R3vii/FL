@@ -133,15 +133,25 @@ function login(event) {
         return;
     }
 
-    // Validate user credentials (hardcoded example)
-    if (username === "admin" && password === "admin123") {
-        localStorage.setItem('loggedUser', username);
-        updateLoginStatus();
-        alert("Successfully logged in!");
-        closeModal(); // Close login modal after successful login
-    } else {
-        alert("Invalid username or password!");
-    }
+    // Fetch users from data.json
+    fetch('data.json')
+        .then(response => response.json())
+        .then(users => {
+            const user = users.find(u => u.nick === username && u.password === password);
+            
+            if (user) {
+                localStorage.setItem('loggedUser', username);
+                updateLoginStatus();
+                alert("Successfully logged in!");
+                closeModal(); // Close login modal after successful login
+            } else {
+                alert("Invalid username or password!");
+            }
+        })
+        .catch(error => {
+            console.error('Error loading users:', error);
+            alert("There was an error loading the login data.");
+        });
 }
 
 // Update the fuel price data
