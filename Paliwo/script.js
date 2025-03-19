@@ -39,15 +39,19 @@ function fetchMarkers() {
         .then(response => response.json())
         .then(data => {
             console.log('Fetched markers data:', data);  // Log fetched data
-            markersData = data; // Update markers data
-            if (Array.isArray(markersData)) {
+            if (Array.isArray(data)) {
+                markersData = data; // Update markers data
                 renderMarkers();
             } else {
-                console.error('Expected an array but got:', markersData);
+                console.error('Expected an array but got:', data);
             }
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            alert('Wystąpił błąd podczas pobierania danych z serwera.');
+        });
 }
+
 
 // Render the markers on the map
 function renderMarkers() {
