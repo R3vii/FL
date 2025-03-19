@@ -15,7 +15,8 @@ app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies
 
 // Full path to markersData.json
-const markersDataPath = path.join(__dirname, 'Paliwo', 'markersData.json');
+const markersDataPath = path.join(__dirname, 'markersData.json');
+
 
 // Endpoint to get markers data
 app.get('/api/markers', (req, res) => {
