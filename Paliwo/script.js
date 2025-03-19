@@ -168,3 +168,16 @@ function updatePrice(id) {
     .catch(error => console.error("Error:", error));
 }
 
+
+function toggleForm() {
+    var formContainer = document.getElementById("form-container");
+    if (formContainer.style.display === "none" || formContainer.classList.contains("hidden")) {
+        formContainer.style.display = "block";
+        formContainer.classList.remove("hidden");
+    } else {
+        formContainer.style.display = "none";
+        formContainer.classList.add("hidden");
+    }
+}
+
+
