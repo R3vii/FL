@@ -46,7 +46,17 @@ app.post('/api/update-price', (req, res) => {
         });
     });
 });
+const path = require('path');
+console.log('Current working directory:', __dirname);
+console.log('File path:', path.join(__dirname, 'markersData.json'));
 
+fs.access(path.join(__dirname, 'markersData.json'), fs.constants.F_OK, (err) => {
+    if (err) {
+        console.error('File does not exist:', err);
+    } else {
+        console.log('File exists!');
+    }
+});
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
