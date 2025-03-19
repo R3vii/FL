@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000; // Use process.env.PORT for Render or default to 3000
 
@@ -13,10 +14,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies
 
+// Full path to markersData.json
+const markersDataPath = path.join(__dirname, 'Paliwo', 'markersData.json');
+
 // Endpoint to get markers data
 app.get('/api/markers', (req, res) => {
-    fs.readFile('markersData.json', 'utf8', (err, data) => {
+    fs.readFile(markersDataPath, 'utf8', (err, data) => {
         if (err) {
+            console.error('Error reading file:', err);
             return res.status(500).json({ error: 'Error reading file' });
         }
         res.json(JSON.parse(data));
@@ -27,8 +32,10 @@ app.get('/api/markers', (req, res) => {
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
-    fs.readFile('./Paliwo/markersData.json', 'utf8', (err, data) => {
-        if (err) return res.status(500).json({ error: 'Error reading file' });
+    fs.readFile(markersDataPath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error reading file' });
+        }
 
         let markers = JSON.parse(data);
         let marker = markers.find(m => m.id === id);
@@ -40,24 +47,27 @@ app.post('/api/update-price', (req, res) => {
         marker.dieselPrice = dieselPrice;
         marker.addedBy = user;
 
-        fs.writeFile('markersData.json', JSON.stringify(markers, null, 2), err => {
+        fs.writeFile(markersDataPath, JSON.stringify(markers, null, 2), err => {
             if (err) return res.status(500).json({ error: 'Error saving file' });
             res.json({ message: 'Prices updated!' });
         });
     });
 });
-const path = require('path');
-console.log('Current working directory:', __dirname);
-console.log('File path:', path.join(__dirname, 'markersData.json'));
 
-fs.access(path.join(__dirname, 'markersData.json'), fs.constants.F_OK, (err) => {
+// Log the working directory and check file existence
+console.log('Current working directory:', __dirname);
+console.log('File path:', markersDataPath);
+
+fs.access(markersDataPath, fs.constants.F_OK, (err) => {
     if (err) {
         console.error('File does not exist:', err);
     } else {
         console.log('File exists!');
     }
 });
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
