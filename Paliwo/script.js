@@ -197,3 +197,24 @@ function toggleForm() {
         formContainer.classList.add("hidden");
     }
 }
+
+
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// Ustawienie CORS (zezwala na dostęp z każdego źródła, ale możesz ograniczyć do GitHub Pages)
+app.use(cors());
+
+// Inny sposób: tylko z GitHub Pages
+// app.use(cors({
+//   origin: 'https://twoja-strona.github.io'
+// }));
+
+app.get('/endpoint', (req, res) => {
+  res.json({ message: 'Dane z API' });
+});
+
+app.listen(3000, () => {
+  console.log('Serwer działa na http://localhost:3000');
+});
