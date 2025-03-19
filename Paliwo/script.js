@@ -31,14 +31,20 @@ var imageLayer = L.imageOverlay(imageUrl, bounds).addTo(map);
 map.fitBounds(bounds);
 
 var markers = {}; // Object to store markers
+var markersData = []; // Initialize the markersData variable
 
 // Fetching the markers data
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
         .then(response => response.json())
         .then(data => {
+            console.log('Fetched markers data:', data);  // Log fetched data
             markersData = data; // Update markers data
-            renderMarkers();
+            if (Array.isArray(markersData)) {
+                renderMarkers();
+            } else {
+                console.error('Expected an array but got:', markersData);
+            }
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -68,7 +74,7 @@ function renderMarkers() {
 function updatePopupContent(marker, markerData) {
     const isLogged = isLoggedIn(); // Check if the user is logged in
 
-    let popupContent = `
+    let popupContent = ` 
         <b>Station Name:</b> ${markerData.title}<br>
         <b>Fuel Price:</b> ${markerData.fuelPrice}<br>
         <b>Diesel Price:</b> ${markerData.dieselPrice}<br>
@@ -157,3 +163,4 @@ function updatePrice(id) {
     })
     .catch(error => console.error("Error:", error));
 }
+
