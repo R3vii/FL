@@ -168,7 +168,9 @@ function updatePrice(id) {
     .catch(error => console.error("Error:", error));
 }
 
-
+function customButtonClick() {
+    toggleForm();
+}
 function toggleForm() {
     var formContainer = document.getElementById("form-container");
     if (formContainer.style.display === "none" || formContainer.classList.contains("hidden")) {
