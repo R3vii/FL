@@ -27,7 +27,7 @@ app.get('/api/markers', (req, res) => {
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
-    fs.readFile('markersData.json', 'utf8', (err, data) => {
+    fs.readFile('./Paliwo/markersData.json', 'utf8', (err, data) => {
         if (err) return res.status(500).json({ error: 'Error reading file' });
 
         let markers = JSON.parse(data);
