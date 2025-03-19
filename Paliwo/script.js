@@ -36,7 +36,7 @@ var markers = {}; // Obiekt przechowujący markery
 
 // 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
-    fetch('http://localhost:3000/api/markers')
+    fetch('https://fl-ygc6.onrender.com')
         .then(response => response.json())
         .then(data => {
             markersData = data; // Aktualizacja danych
