@@ -17,6 +17,10 @@ app.use(express.json()); // Parse JSON bodies
 // Full path to markersData.json
 const markersDataPath = path.join(__dirname, 'markersData.json');
 
+// ✅ Endpoint dla głównej ścieżki "/"
+app.get("/", (req, res) => {
+    res.send("Backend działa! 🚀");
+});
 
 // Endpoint to get markers data
 app.get('/api/markers', (req, res) => {
@@ -71,4 +75,3 @@ fs.access(markersDataPath, fs.constants.F_OK, (err) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
