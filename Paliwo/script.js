@@ -102,15 +102,16 @@ var markers = {}; // Obiekt przechowujący markery
 // 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
-        .then(response => response.json())
-        .then(data => {
-            markersData = data; // Aktualizacja danych
-            console.log("Dane załadowane:", markersData); // Debugowanie
-            renderMarkers();
-            renderStationsList();
-            renderStationsTable(); // Renderuj tabelkę po załadowaniu danych
-        })
-        .catch(error => console.error('Błąd pobierania danych:', error));
+    .then(response => response.json())
+    .then(data => {
+        markersData = data;
+        console.log("Dane załadowane:", markersData); // Debugowanie
+        renderMarkers();
+        renderStationsList();
+        renderStationsTable(); // Renderuj tabelkę po załadowaniu danych
+    })
+    .catch(error => console.error('Błąd pobierania danych:', error));
+
 }
 
 // 🔹 Funkcja rysująca markery na mapie
@@ -319,19 +320,11 @@ function closeStationsModal() {
 
 function renderStationsTable(filteredData = markersData) {
     console.log("Dane do renderowania tabelki:", filteredData); // Debugowanie
-
     const tableBody = document.querySelector("#stations-table tbody");
-
-    if (!tableBody) {
-        console.error("Element #stations-table tbody nie został znaleziony!");
-        return;
-    }
-
     tableBody.innerHTML = ""; // Resetujemy zawartość tabeli
 
     filteredData.forEach(marker => {
         const row = document.createElement("tr");
-
         row.innerHTML = `
             <td>${marker.title}</td>
             <td>${marker.fuelPrice}</td>
@@ -339,10 +332,10 @@ function renderStationsTable(filteredData = markersData) {
             <td>${marker.addedBy}</td>
             <td>${marker.lastUpdated ? new Date(marker.lastUpdated).toLocaleString() : "Brak danych"}</td>
         `;
-
         tableBody.appendChild(row);
     });
 }
+
 
 // Funkcja do filtrowania stacji na podstawie wybranego kryterium
 function filterStations() {
