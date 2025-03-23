@@ -133,11 +133,9 @@ function renderMarkers() {
     // renderStationsList(); // Usunięte, ponieważ formularze są tylko w popupie
 }
 
-// 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
     const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
-    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -145,13 +143,26 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
-    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
+    // Tutaj dodajemy datę ostatniej aktualizacji
     if (markerData.lastUpdated) {
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
+
+    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji
+    if (isLogged) {
+        popupContent += `
+            <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
+            <input type="text" id="diesel-${markerData.id}" value="${markerData.dieselPrice}" />
+            <button onclick="updatePrice('${markerData.id}')">Zapisz</button>
+        `;
+    }
+
+    marker.bindPopup(popupContent);
+}
+
 
 
     // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
