@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3000;  // Możesz ustawić port w zmiennych środowiskowych
+const port = process.env.PORT || 10000;  // Możesz ustawić port w zmiennych środowiskowych
 
 // Dozwolone domeny - dodaj adres swojego publicznego serwera
 const allowedOrigins = [
