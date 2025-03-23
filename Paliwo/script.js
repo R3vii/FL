@@ -135,11 +135,10 @@ function renderMarkers() {
     // renderStationsList(); // Usunięte, ponieważ formularze są tylko w popupie
 }
 
-// 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
+    console.log("Marker Data:", markerData); // Debugowanie danych markera
     const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
-    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -147,25 +146,14 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
-    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
     if (markerData.lastUpdated) {
+        console.log("Last Updated:", markerData.lastUpdated); // Debugowanie daty ostatniej aktualizacji
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
 
-
-    // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
-map.on('click', function(event) {
-    var lat = event.latlng.lat.toFixed(5);
-    var lng = event.latlng.lng.toFixed(5);
-
-    document.getElementById("coordsDisplay").textContent = `${lat}, ${lng}`;
-});
-
-
-    // Jeśli użytkownik jest zalogowany, pokazujemy możliwość edytowania
     if (isLogged) {
         popupContent += `
             <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
@@ -225,15 +213,18 @@ function updatePrice(id) {
     .then(response => response.json())
     .then(data => {
         showNotification(data.message);
+        
+        // Aktualizuj markersData z odpowiedzi z backendu
+        const updatedMarker = markersData.find(marker => marker.id === id);
+        if (updatedMarker) {
+            updatedMarker.fuelPrice = fuelPrice;
+            updatedMarker.dieselPrice = dieselPrice;
+            updatedMarker.lastUpdated = new Date().toISOString(); // Dodaj aktualną datę
+        }
+
         fetchMarkers(); // Refresh the markers after update
     })
     .catch(error => console.error("Błąd:", error));
-}
-
-
-// 🔹 Sprawdzanie, czy użytkownik jest zalogowany
-function isLoggedIn() {
-    return localStorage.getItem("loggedUser") !== null;
 }
 
 
