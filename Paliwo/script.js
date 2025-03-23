@@ -11,7 +11,7 @@ window.onload = function() {
     }, 1000); // Czekamy chwilę, żeby inne procesy na stronie miały czas się załadować
 };
 
-
+let markersData = []; // Deklaracja globalnej zmiennej markersData
 
 document.addEventListener('DOMContentLoaded', function() {
     updateLoginStatus();
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         loginForm.addEventListener("submit", login);
     }
+    document.getElementById("toggle-stations-button").addEventListener("click", toggleStationsTable);
 });
 
 
@@ -72,7 +73,6 @@ function login(event) {
 
 
 
-
 // 🔹 Funkcja otwierająca modal
 function openModal() {
     document.getElementById("modal").style.display = "block";
@@ -99,19 +99,17 @@ map.fitBounds(bounds);
 
 var markers = {}; // Obiekt przechowujący markery
 
-// 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
     .then(response => response.json())
     .then(data => {
-        markersData = data;
+        markersData = data; // Przypisanie danych do globalnej zmiennej
         console.log("Dane załadowane:", markersData); // Debugowanie
         renderMarkers();
         renderStationsList();
         renderStationsTable(); // Renderuj tabelkę po załadowaniu danych
     })
     .catch(error => console.error('Błąd pobierania danych:', error));
-
 }
 
 // 🔹 Funkcja rysująca markery na mapie
@@ -319,12 +317,18 @@ function closeStationsModal() {
 
 
 function renderStationsTable(filteredData = markersData) {
-    console.log("Dane do renderowania tabelki:", filteredData); // Debugowanie
     const tableBody = document.querySelector("#stations-table tbody");
+    if (!tableBody) {
+        console.error("Element #stations-table tbody nie został znaleziony!");
+        return;
+    }
+
     tableBody.innerHTML = ""; // Resetujemy zawartość tabeli
 
     filteredData.forEach(marker => {
         const row = document.createElement("tr");
+        row.id = `station-${marker.id}`; // Dodajemy identyfikator do wiersza
+
         row.innerHTML = `
             <td>${marker.title}</td>
             <td>${marker.fuelPrice}</td>
@@ -332,12 +336,17 @@ function renderStationsTable(filteredData = markersData) {
             <td>${marker.addedBy}</td>
             <td>${marker.lastUpdated ? new Date(marker.lastUpdated).toLocaleString() : "Brak danych"}</td>
         `;
+
+        // Dodajemy obsługę kliknięcia na nazwę stacji
+        row.querySelector("td").addEventListener("click", () => {
+            focusOnStation(marker);
+        });
+
         tableBody.appendChild(row);
     });
 }
 
 
-// Funkcja do filtrowania stacji na podstawie wybranego kryterium
 function filterStations() {
     const selectedOption = document.querySelector("#filter-select").value;
 
@@ -361,7 +370,7 @@ function filterStations() {
             sortedData.sort((a, b) => {
                 const dateA = a.lastUpdated ? new Date(a.lastUpdated) : null;
                 const dateB = b.lastUpdated ? new Date(b.lastUpdated) : null;
-                
+
                 // Jeśli daty są nieprawidłowe (np. 'Invalid Date'), traktujemy je jako bardzo stare daty
                 if (isNaN(dateA)) {
                     console.warn(`Błąd daty dla stacji: ${a.title}`);
@@ -399,7 +408,6 @@ function filterStations() {
 
     renderStationsTable(sortedData); // Renderowanie posortowanej tabeli
 }
-
 
 function renderStationsTable(filteredData = markersData) {
     const tableBody = document.querySelector("#stations-table tbody");
