@@ -1,6 +1,6 @@
 [
     { "nick": "admin", "password": "admin123" },
     { "nick": "user1", "password": "user1pass" },
-    { "nick": "szymon_grotek223", "password": "test123"}
+    { "nick": "szymon_grotek223", "password": "test123"},
     { "nick": "R3vii", "password": "**********"}
 ]
