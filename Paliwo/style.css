@@ -1,5 +1,18 @@
-body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #384951 !important; /* Ustawiono niebieskie tło z priorytetem */
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+  background-color: transparent !important; /* Zapobiega nadpisywaniu koloru przez LeafletJS */
+}
+
 #map { width: 100%; height: 100vh; }
+
 
 #button-container, #coordinates, #counter, .footer-info, #changelog-container {
     position: absolute; background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px; z-index: 1000;
@@ -314,6 +327,12 @@ body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
   cursor: pointer;
 } 
 
+#custom-button-2 {
+  position: absolute;
+  top: 70px; /* Możesz zmienić pozycję, jeśli chcesz, by przycisk był w innym miejscu */
+  right: 10px;
+  z-index: 1000;
+}
 
 
 
@@ -327,4 +346,1019 @@ body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
     border-radius: 5px;
     font-size: 14px;
     z-index: 1000;
+}
+
+
+
+
+
+/* Animacja wysuwania popupu */
+.popup-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(-100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}
+
+
+
+
+
+#stations-table-container {
+  display: none;
+  position: absolute; /* Zmieniamy z fixed na absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border: 5px double var(--main-color);
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 1001; /* Upewniamy się, że jest nad mapą */
+  max-height: 70vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 650px;
+  text-align: center;
+}
+
+/* Zapobieganie przesunięciu mapy */
+#map {
+  position: relative;
+  z-index: 0;
+}
+
+
+/* Tabela */
+#stations-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 10px; /* Dystans między wierszami – efekt "przegródek" */
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Nagłówki tabeli */
+#stations-table th {
+  background-color: var(--main-color);
+  color: #000000;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Wiersze tabeli */
+#stations-table tbody tr {
+  background: #ffffff;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+#stations-table tbody tr:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+/* Komórki tabeli */
+#stations-table td {
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
+/* Pierwsza kolumna – dla lepszej widoczności */
+#stations-table tbody tr td:first-child {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* Stylizacja przycisków */
+#toggle-stations-button {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+  border-radius: 6px;
+  border: 3px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 12px 24px;
+}
+
+#toggle-stations-button:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+
+
+#rozwiniecietabeli {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.boxes {
+  cursor: pointer;
+  border: 4px solid black;
+  background-color: gray;
+  padding-bottom: 10px;
+  transition: 0.1s ease-in-out;
+  user-select: none;
+}
+
+.guzik {
+  background-color: #dddddd;
+  border: 4px solid #fff;
+  padding: 3px 8px;
+}
+
+.guzik span {
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.boxes:active {
+  padding: 0;
+  margin-bottom: 10px;
+  transform: translateY(10px);
+}
+
+
+
+
+
+
+#notification-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notification {
+  background-color: #003102;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 16px;
+  position: relative;
+  min-width: 300px;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.notification.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #384951 !important; /* Ustawiono niebieskie tło z priorytetem */
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+  background-color: transparent !important; /* Zapobiega nadpisywaniu koloru przez LeafletJS */
+}
+
+#map { width: 100%; height: 100vh; }
+
+
+#button-container, #coordinates, #counter, .footer-info, #changelog-container {
+    position: absolute; background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px; z-index: 1000;
+}
+#button-container { top: 10px; left: 50px; }
+#coordinates { top: 50px; left: 50px; }
+#counter { top: 100px; left: 10px; }
+.footer-info { bottom: 10px; right: 10px; font-size: 0.8em; text-align: right; }
+#changelog-container { top: 10px; right: 10px; }
+
+#changelog {
+    display: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    max-width: 500px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 12px rgba(239, 0, 0, 0.1);
+    font-size: 14px;
+    color: #000000;
+}
+
+#custom-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+.box-button {
+    cursor: pointer;
+    border: 4px solid black;
+    background-color: gray;
+    padding-bottom: 10px;
+    transition: 0.1s ease-in-out;
+    user-select: none;
+  }
+  
+  .button {
+    background-color: #dddddd;
+    border: 4px solid #fff;
+    padding: 3px 8px;
+  }
+  
+  .button span {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+  }
+  
+  .box-button:active {
+    padding: 0;
+    margin-bottom: 10px;
+    transform: translateY(10px);
+  }
+
+  
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.modal h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+.hidden {
+    display: none;
+}
+
+#form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper {
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+}
+/* switch card */
+.switch {
+  transform: translateY(-200px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 50px;
+  height: 20px;
+}
+
+.card-side::before {
+  position: absolute;
+  content: 'Log in';
+  left: -70px;
+  top: 0;
+  width: 100px;
+  text-decoration: underline;
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.card-side::after {
+  position: absolute;
+  content: 'Sign up';
+  left: 70px;
+  top: 0;
+  width: 100px;
+  text-decoration: none;
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-colorcolor);
+  transition: 0.3s;
+}
+
+.slider:before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  left: -2px;
+  bottom: 2px;
+  background-color: var(--bg-color);
+  box-shadow: 0 3px 0 var(--main-color);
+  transition: 0.3s;
+}
+
+.toggle:checked ~ .card-side:before {
+  text-decoration: none;
+}
+
+.toggle:checked ~ .card-side:after {
+  text-decoration: underline;
+}
+
+/* card */ 
+
+.flip-card__inner {
+  width: 300px;
+  height: 350px;
+  position: relative;
+  background-color: transparent;
+  perspective: 1000px;
+    /* width: 100%;
+    height: 100%; */
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.toggle:checked ~ .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.toggle:checked ~ .flip-card__front {
+  box-shadow: none;
+}
+
+.flip-card__front, .flip-card__back {
+  padding: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: lightgrey;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+}
+
+.flip-card__back {
+  width: 100%;
+  transform: rotateY(180deg);
+}
+
+.flip-card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--main-color);
+}
+
+.flip-card__input {
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+.flip-card__input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+.flip-card__input:focus {
+  border: 2px solid var(--input-focus);
+}
+
+.flip-card__btn:active, .button-confirm:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+.flip-card__btn {
+  margin: 20px 0 20px 0;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+} 
+
+#custom-button-2 {
+  position: absolute;
+  top: 70px; /* Możesz zmienić pozycję, jeśli chcesz, by przycisk był w innym miejscu */
+  right: 10px;
+  z-index: 1000;
+}
+
+
+
+#login-status {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+
+
+
+
+/* Animacja wysuwania popupu */
+.popup-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(-100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}
+
+
+
+
+
+#stations-table-container {
+  display: none;
+  position: absolute; /* Zmieniamy z fixed na absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border: 5px double var(--main-color);
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 1001; /* Upewniamy się, że jest nad mapą */
+  max-height: 70vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 650px;
+  text-align: center;
+}
+
+/* Zapobieganie przesunięciu mapy */
+#map {
+  position: relative;
+  z-index: 0;
+}
+
+
+/* Tabela */
+#stations-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 10px; /* Dystans między wierszami – efekt "przegródek" */
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Nagłówki tabeli */
+#stations-table th {
+  background-color: var(--main-color);
+  color: #000000;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 15px;
+  text-transform: uppercase;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Wiersze tabeli */
+#stations-table tbody tr {
+  background: #ffffff;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+#stations-table tbody tr:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+/* Komórki tabeli */
+#stations-table td {
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
+/* Pierwsza kolumna – dla lepszej widoczności */
+#stations-table tbody tr td:first-child {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* Stylizacja przycisków */
+#toggle-stations-button {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+  border-radius: 6px;
+  border: 3px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 12px 24px;
+}
+
+#toggle-stations-button:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+
+
+#rozwiniecietabeli {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.boxes {
+  cursor: pointer;
+  border: 4px solid black;
+  background-color: gray;
+  padding-bottom: 10px;
+  transition: 0.1s ease-in-out;
+  user-select: none;
+}
+
+.guzik {
+  background-color: #dddddd;
+  border: 4px solid #fff;
+  padding: 3px 8px;
+}
+
+.guzik span {
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.boxes:active {
+  padding: 0;
+  margin-bottom: 10px;
+  transform: translateY(10px);
+}
+
+
+
+
+
+
+#notification-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notification {
+  background-color: #003102;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 16px;
+  position: relative;
+  min-width: 300px;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.notification.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+
+@media (max-width: 768px) {
+
+  #custom-button {
+    position: absolute;
+    top: 20px; /* Zmniejszenie odległości od góry */
+    right: 10px; /* Przesunięcie bardziej w prawo */
+    z-index: 1000;
+}
+
+.box-button {
+  cursor: pointer;
+  border: 2px solid black; /* Cieńsza ramka */
+  background-color: gray;
+  padding-bottom: 5px; /* Mniejszy padding */
+  transition: 0.1s ease-in-out;
+  user-select: none;
+}
+
+.button {
+  background-color: #dddddd;
+  border: 2px solid #fff; /* Cieńsza ramka */
+  padding: 2px 5px; /* Mniejszy padding */
+}
+
+.button span {
+  font-size: 1em; /* Mniejsza czcionka */
+  letter-spacing: 0.5px; /* Mniejsze odstępy */
+}
+
+.box-button:active {
+  padding: 0;
+  margin-bottom: 5px; /* Mniejszy efekt wciśnięcia */
+  transform: translateY(5px); /* Mniejsze przesunięcie */
+}
+
+
+
+
+
+
+
+
+
+  #rozwiniecietabeli {
+    position: absolute;
+    top: 20px; /* Zmniejszenie odległości od góry */
+    right: 115px; /* Przesunięcie bardziej w prawo */
+    z-index: 1000;
+  }
+  
+  .boxes {
+    cursor: pointer;
+    border: 2px solid black; /* Cieńsza ramka */
+    background-color: gray;
+    padding-bottom: 5px; /* Mniejszy padding */
+    transition: 0.1s ease-in-out;
+    user-select: none;
+  }
+  
+  .guzik {
+    background-color: #dddddd;
+    border: 2px solid #fff; /* Cieńsza ramka */
+    padding: 2px 5px; /* Mniejszy padding */
+  }
+  
+  .guzik span {
+    font-size: 1em; /* Mniejsza czcionka */
+    letter-spacing: 0.5px; /* Mniejsze odstępy */
+  }
+  
+  .boxes:active {
+    padding: 0;
+    margin-bottom: 5px; /* Mniejszy efekt wciśnięcia */
+    transform: translateY(5px); /* Mniejsze przesunięcie */
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /* Tabela */
+#stations-table {
+  width: 80%; /* Zmniejszona szerokość */
+  border-collapse: separate;
+  border-spacing: 0px 5px; /* Mniejszy dystans między wierszami */
+  background-color: var(--bg-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Nagłówki tabeli */
+#stations-table th {
+  background-color: var(--main-color);
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px; /* Mniejsza czcionka */
+  padding: 10px; /* Mniejszy padding */
+  text-transform: uppercase;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Wiersze tabeli */
+#stations-table tbody tr {
+  background: #ffffff;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 6px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#stations-table tbody tr:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02); /* Mniejsze powiększenie w hoverze */
+  cursor: pointer;
+}
+
+/* Komórki tabeli */
+#stations-table td {
+  padding: 10px; /* Mniejszy padding */
+  text-align: center;
+  font-size: 14px; /* Mniejsza czcionka */
+  font-weight: 500;
+  color: #000000;
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+/* Pierwsza kolumna – dla lepszej widoczności */
+#stations-table tbody tr td:first-child {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* Stylizacja przycisków */
+#toggle-stations-button {
+  position: absolute;
+  top: 50px; /* Przesunięcie przycisku */
+  right: 10px;
+  z-index: 1000;
+  border-radius: 4px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 3px 3px var(--main-color);
+  font-size: 14px; /* Mniejsza czcionka */
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 8px 16px; /* Mniejszy padding */
+}
+
+#toggle-stations-button:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(2px, 2px);
+}
+
+}
+
+
+@media (max-width: 400px) {
+
+  /* Tabela */
+#stations-table {
+  width: 60%; /* Jeszcze mniejsza szerokość */
+  border-collapse: separate;
+  border-spacing: 0px 3px; /* Mniejszy dystans między wierszami */
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Nagłówki tabeli */
+#stations-table th {
+  background-color: var(--main-color);
+  color: #000000;
+  font-weight: 600;
+  font-size: 12px; /* Jeszcze mniejsza czcionka */
+  padding: 6px; /* Mniejszy padding */
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Wiersze tabeli */
+#stations-table tbody tr {
+  background: #ffffff;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#stations-table tbody tr:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.01); /* Jeszcze mniejsze powiększenie w hoverze */
+  cursor: pointer;
+}
+
+/* Komórki tabeli */
+#stations-table td {
+  padding: 6px; /* Jeszcze mniejszy padding */
+  text-align: center;
+  font-size: 12px; /* Jeszcze mniejsza czcionka */
+  font-weight: 400;
+  color: #000000;
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+/* Pierwsza kolumna – dla lepszej widoczności */
+#stations-table tbody tr td:first-child {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* Stylizacja przycisków */
+#toggle-stations-button {
+  position: absolute;
+  top: 40px; /* Przesunięcie przycisku */
+  right: 10px;
+  z-index: 1000;
+  border-radius: 3px;
+  border: 1px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 2px 2px var(--main-color);
+  font-size: 12px; /* Jeszcze mniejsza czcionka */
+  font-weight: 500;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 6px 12px; /* Jeszcze mniejszy padding */
+}
+
+#toggle-stations-button:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(1px, 1px);
+}
+
 }
