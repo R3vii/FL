@@ -1,66 +1,77 @@
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
+const path = require('path');
 const app = express();
-const port = process.env.PORT || 10000;  // Możesz ustawić port w zmiennych środowiskowych
-
-// Dozwolone domeny - dodaj adres swojego publicznego serwera
-const allowedOrigins = [
-    "https://revdev.top"     // Twoja publiczna domena
-];
+const port = process.env.PORT || 3000; // Use process.env.PORT for Render or default to 3000
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: "https://revdev.top",  // Allow requests from your site
     methods: "GET, POST",
     allowedHeaders: "Content-Type"
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json()); // Parse JSON bodies
 
-// Endpoint do pobierania danych markerów
+// Full path to markersData.json
+const markersDataPath = path.join(__dirname, 'markersData.json');
+
+// ✅ Endpoint dla głównej ścieżki "/"
+app.get("/", (req, res) => {
+    res.send("Backend działa! 🚀");
+});
+
+// Endpoint to get markers data
 app.get('/api/markers', (req, res) => {
-    fs.readFile('markersData.json', 'utf8', (err, data) => {
-        if (err) return res.status(500).json({ error: 'Error reading file' });
+    fs.readFile(markersDataPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).json({ error: 'Error reading file' });
+        }
         res.json(JSON.parse(data));
     });
 });
 
-// Endpoint do aktualizacji cen paliw
+// Endpoint to update fuel prices
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
-    fs.readFile('markersData.json', 'utf8', (err, data) => {
-        if (err) return res.status(500).json({ error: 'Error reading file' });
+    fs.readFile(markersDataPath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error reading file' });
+        }
 
         let markers = JSON.parse(data);
         let marker = markers.find(m => m.id === id);
 
         if (!marker) return res.status(404).json({ error: 'Station not found' });
 
-        // Aktualizacja cen
+        // Update station prices
         marker.fuelPrice = fuelPrice;
         marker.dieselPrice = dieselPrice;
         marker.addedBy = user;
-        
-        // Dodanie daty ostatniej aktualizacji
-        marker.lastUpdated = new Date().toISOString();
 
-        // Zapisz zaktualizowane dane
-        fs.writeFile('markersData.json', JSON.stringify(markers, null, 2), err => {
+        fs.writeFile(markersDataPath, JSON.stringify(markers, null, 2), err => {
             if (err) return res.status(500).json({ error: 'Error saving file' });
-            res.json({ message: 'Prices updated!', lastUpdated: marker.lastUpdated });
+            res.json({ message: 'Prices updated!' });
         });
     });
 });
 
-// Startowanie serwera
+// Log the working directory and check file existence
+console.log('Current working directory:', __dirname);
+console.log('File path:', markersDataPath);
+
+fs.access(markersDataPath, fs.constants.F_OK, (err) => {
+    if (err) {
+        console.error('File does not exist:', err);
+    } else {
+        console.log('File exists!');
+    }
+});
+
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
