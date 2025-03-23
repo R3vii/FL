@@ -1,20 +1,272 @@
 [
   {
     "id": "stacja_1",
-    "lat": 2106.74,
-    "lng": 3169.58,
-    "title": "Stacja Shell",
-    "fuelPrice": "6.29 PLN",
-    "dieselPrice": "6.45 PLN",
-    "addedBy": "User123"
+    "lat": 2450.5,
+    "lng": 4531,
+    "title": "Stacja Mirror",
+    "fuelPrice": "1.50 PLN",
+    "dieselPrice": "6.60 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-22T03:21:45.283Z"
   },
   {
     "id": "stacja_2",
-    "lat": 2165.49,
-    "lng": 3641.83,
-    "title": "Orlen",
-    "fuelPrice": "7.15 PLN",
+    "lat": 1991.62,
+    "lng": 4292.87,
+    "title": "Stacja Tuner",
+    "fuelPrice": "15.15 PLN",
     "dieselPrice": "3.19 PLN",
-    "addedBy": "admin"
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_3",
+    "lat": 1747.25,
+    "lng": 4548.63,
+    "title": "Stacja Magazyn",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_4",
+    "lat": 1510.5,
+    "lng": 3708.62,
+    "title": "Stacja Holowniki",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_5",
+    "lat": 1644.37,
+    "lng": 3867,
+    "title": "Stacja Davis",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_6",
+    "lat": 1839.75,
+    "lng": 3929,
+    "title": "Stacja Autostrada",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_7",
+    "lat": 1701.5,
+    "lng": 3544.25,
+    "title": "Stacja Śmieciarki",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_8",
+    "lat": 1872.06,
+    "lng": 3410.06,
+    "title": "Stacja (Tania giełda)",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_9",
+    "lat": 2053.31,
+    "lng": 3279.62,
+    "title": "Stacja Fotograf",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_10",
+    "lat": 2485.5,
+    "lng": 2810.25,
+    "title": "Stacja Konwojent",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_11",
+    "lat": 2458.25,
+    "lng": 2378.25,
+    "title": "Stacja Pacific Bluffs",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_12",
+    "lat": 3195.25,
+    "lng": 2572.5,
+    "title": "Stacja Richman",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_13",
+    "lat": 2844.63,
+    "lng": 4162.32,
+    "title": "Stacja Vinewood",
+    "fuelPrice": "14.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-23T01:10:13.043Z"
+  },
+  {
+    "id": "stacja_14",
+    "lat": 4200.37,
+    "lng": 2077.12,
+    "title": "Stacja Zancudo",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_15",
+    "lat": 4493.62,
+    "lng": 3787.62,
+    "title": "Stacja Pustynia Grand Senora",
+    "fuelPrice": "8.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-21T16:57:16.965Z"
+  },
+  {
+    "id": "stacja_16",
+    "lat": 4407.75,
+    "lng": 3909.87,
+    "title": "Stacja Mirek",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_17",
+    "lat": 4415.12,
+    "lng": 4549.25,
+    "title": "Stacja Hamownia",
+    "fuelPrice": "45.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-23T01:19:10.597Z"
+  },
+  {
+    "id": "stacja_18",
+    "lat": 4371.5,
+    "lng": 5423.5,
+    "title": "Stacja Dino",
+    "fuelPrice": "2.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-21T16:50:54.760Z"
+  },
+  {
+    "id": "stacja_19",
+    "lat": 4854.87,
+    "lng": 4925.62,
+    "title": "Stacja Lotnisko pod Sandy",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_20",
+    "lat": 5147.25,
+    "lng": 5071.75,
+    "title": "Stacja Sandy",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_21",
+    "lat": 5906,
+    "lng": 4863.75,
+    "title": "Stacja Grapeseed",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_22",
+    "lat": 6883.4,
+    "lng": 4873.31,
+    "title": "Stacja Śmieciarz",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-21T23:06:39.974Z"
+  },
+  {
+    "id": "stacja_23",
+    "lat": 2905.75,
+    "lng": 5450,
+    "title": "Stacja Komis Autostrada",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_24",
+    "lat": 4813.25,
+    "lng": 5516.75,
+    "title": "Stacja Zajazd na autostradzie",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_25",
+    "lat": 4813.25,
+    "lng": 5516.75,
+    "title": "Stacja Zajazd na autostradzie",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_26",
+    "lat": 7005.18,
+    "lng": 3872.81,
+    "title": "Stacja Mechanik Paleto",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "0:15 | 21.03.2025r"
+  },
+  {
+    "id": "stacja_27",
+    "lat": 6882.62,
+    "lng": 3692.75,
+    "title": "Stacja Urząd Paleto",
+    "fuelPrice": "15.15 PLN",
+    "dieselPrice": "3.19 PLN",
+    "addedBy": "admin",
+    "lastUpdated": "2025-03-21T23:06:47.329Z"
   }
 ]
