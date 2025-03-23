@@ -137,8 +137,9 @@ function renderMarkers() {
 
 // 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
-    const isLogged = isLoggedIn();
+    const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
+    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -146,24 +147,13 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
-    // 🔹 Sprawdź, czy lastUpdated istnieje i wyświetl datę
+    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
     if (markerData.lastUpdated) {
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
-
-    if (isLogged) {
-        popupContent += `
-            <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
-            <input type="text" id="diesel-${markerData.id}" value="${markerData.dieselPrice}" />
-            <button onclick="updatePrice('${markerData.id}')">Zapisz</button>
-        `;
-    }
-
-    marker.bindPopup(popupContent);
-}
 
 
     // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
@@ -225,26 +215,17 @@ function updatePrice(id) {
 
     const fuelPrice = document.getElementById(`fuel-${id}`).value;
     const dieselPrice = document.getElementById(`diesel-${id}`).value;
-    const user = localStorage.getItem('loggedUser');
+    const user = localStorage.getItem('loggedUser'); // Get the logged-in user from localStorage
 
     fetch('https://fl-ygc6.onrender.com/api/update-price', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, fuelPrice, dieselPrice, user })
+        body: JSON.stringify({ id, fuelPrice, dieselPrice, user }) // Sending user info to backend
     })
     .then(response => response.json())
     .then(data => {
         showNotification(data.message);
-
-        // 🔹 Aktualizuj markersData z odpowiedzi z backendu
-        const updatedMarker = markersData.find(marker => marker.id === id);
-        if (updatedMarker) {
-            updatedMarker.fuelPrice = fuelPrice;
-            updatedMarker.dieselPrice = dieselPrice;
-            updatedMarker.lastUpdated = data.lastUpdated; // Użyj daty z backendu
-        }
-
-        fetchMarkers(); // Odśwież markery
+        fetchMarkers(); // Refresh the markers after update
     })
     .catch(error => console.error("Błąd:", error));
 }
