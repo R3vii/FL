@@ -105,8 +105,10 @@ function fetchMarkers() {
         .then(response => response.json())
         .then(data => {
             markersData = data; // Aktualizacja danych
+            console.log("Dane załadowane:", markersData); // Debugowanie
             renderMarkers();
-            renderStationsList(); // Renderuj stacje
+            renderStationsList();
+            renderStationsTable(); // Renderuj tabelkę po załadowaniu danych
         })
         .catch(error => console.error('Błąd pobierania danych:', error));
 }
@@ -315,9 +317,16 @@ function closeStationsModal() {
 
 
 
-// Funkcja renderująca stacje w tabeli
 function renderStationsTable(filteredData = markersData) {
+    console.log("Dane do renderowania tabelki:", filteredData); // Debugowanie
+
     const tableBody = document.querySelector("#stations-table tbody");
+
+    if (!tableBody) {
+        console.error("Element #stations-table tbody nie został znaleziony!");
+        return;
+    }
+
     tableBody.innerHTML = ""; // Resetujemy zawartość tabeli
 
     filteredData.forEach(marker => {
