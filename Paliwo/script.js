@@ -135,10 +135,11 @@ function renderMarkers() {
     // renderStationsList(); // Usunięte, ponieważ formularze są tylko w popupie
 }
 
+// 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
-    console.log("Marker Data:", markerData); // Debugowanie danych markera
     const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
+    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -146,14 +147,25 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
+    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
     if (markerData.lastUpdated) {
-        console.log("Last Updated:", markerData.lastUpdated); // Debugowanie daty ostatniej aktualizacji
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
 
+
+    // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
+map.on('click', function(event) {
+    var lat = event.latlng.lat.toFixed(5);
+    var lng = event.latlng.lng.toFixed(5);
+
+    document.getElementById("coordsDisplay").textContent = `${lat}, ${lng}`;
+});
+
+
+    // Jeśli użytkownik jest zalogowany, pokazujemy możliwość edytowania
     if (isLogged) {
         popupContent += `
             <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
@@ -165,25 +177,29 @@ function updatePopupContent(marker, markerData) {
     marker.bindPopup(popupContent);
 }
 
+// 🔹 Funkcja renderująca stacje bez formularzy edycji
 function renderStationsList() {
     var container = document.getElementById("stations");
 
-    if (!container) {
+    if (container === null) {
         console.error("Element #stations nie został znaleziony!");
-        console.log("Aktualny stan DOM:", document.body.innerHTML); // Wyświetl aktualny stan DOM
-        return;
+        return; // Jeśli element nie istnieje, zakończ funkcję
     }
 
     container.innerHTML = ""; // Resetujemy zawartość kontenera
 
+    // Renderujemy tylko nazwy stacji i ceny, bez formularzy edycji
     markersData.forEach(marker => {
         const div = document.createElement("div");
+
+        // Zawsze pokazujemy nazwę stacji i ceny
         div.innerHTML = `
             <h3>${marker.title}</h3>
             <p>Benzyna: ${marker.fuelPrice}</p>
             <p>Diesel: ${marker.dieselPrice}</p>
             <hr>
         `;
+
         container.appendChild(div);
     });
 }
@@ -209,18 +225,15 @@ function updatePrice(id) {
     .then(response => response.json())
     .then(data => {
         showNotification(data.message);
-        
-        // Aktualizuj markersData z odpowiedzi z backendu
-        const updatedMarker = markersData.find(marker => marker.id === id);
-        if (updatedMarker) {
-            updatedMarker.fuelPrice = fuelPrice;
-            updatedMarker.dieselPrice = dieselPrice;
-            updatedMarker.lastUpdated = new Date().toISOString(); // Dodaj aktualną datę
-        }
-
         fetchMarkers(); // Refresh the markers after update
     })
     .catch(error => console.error("Błąd:", error));
+}
+
+
+// 🔹 Sprawdzanie, czy użytkownik jest zalogowany
+function isLoggedIn() {
+    return localStorage.getItem("loggedUser") !== null;
 }
 
 
@@ -537,4 +550,3 @@ function hideForm() {
         formContainer.style.display = "none"; // Ukrywanie formularza
     }
 }
-
