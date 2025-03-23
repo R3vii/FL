@@ -6,8 +6,6 @@ const port = process.env.PORT || 3000;  // Możesz ustawić port w zmiennych śr
 
 // Dozwolone domeny - dodaj adres swojego publicznego serwera
 const allowedOrigins = [
-    "http://127.0.0.1:5500",  // Lokalny rozwój
-    "http://localhost:3000",  // Lokalny serwer
     "https://revdev.top",     // Twoja publiczna domena
 ];
 
