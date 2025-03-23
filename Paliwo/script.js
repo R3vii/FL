@@ -4,12 +4,11 @@ window.onload = function() {
     fetchMarkers(); // Pobiera dane i rysuje stacje
 
     // Ustawiamy filtr na "cena paliwa malejąco" i wyświetlamy tabelę
-    setTimeout(() => {
-        document.querySelector("#filter-select").value = 'fuelPriceDesc'; // Ustawiamy filtr na cena paliwa malejąco
-        filterStations(); // Wywołujemy funkcję filtrującą stacje
-        toggleStationsTable(); // Pokazujemy tabelę
-    }, 1000); // Czekamy chwilę, żeby inne procesy na stronie miały czas się załadować
+    document.querySelector("#filter-select").value = 'fuelPriceDesc'; // Ustawiamy filtr na cena paliwa malejąco
+    filterStations(); // Wywołujemy funkcję filtrującą stacje
+    toggleStationsTable(); // Pokazujemy tabelę
 };
+
 
 
 
@@ -99,14 +98,13 @@ map.fitBounds(bounds);
 
 var markers = {}; // Obiekt przechowujący markery
 
-// 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
         .then(response => response.json())
         .then(data => {
             markersData = data; // Aktualizacja danych
-            renderMarkers();
-            renderStationsList(); // Renderuj stacje
+            renderStationsTable(markersData); // Renderuj tabelę natychmiast po pobraniu danych
+            renderMarkers(); // Renderuj markery na mapie
         })
         .catch(error => console.error('Błąd pobierania danych:', error));
 }
