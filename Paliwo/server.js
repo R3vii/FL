@@ -33,7 +33,6 @@ app.get('/api/markers', (req, res) => {
     });
 });
 
-// Endpoint to update fuel prices
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
@@ -47,14 +46,18 @@ app.post('/api/update-price', (req, res) => {
 
         if (!marker) return res.status(404).json({ error: 'Station not found' });
 
-        // Update station prices
+        // Update station prices and lastUpdated
         marker.fuelPrice = fuelPrice;
         marker.dieselPrice = dieselPrice;
         marker.addedBy = user;
+        marker.lastUpdated = new Date().toISOString(); // 🔹 Dodaj aktualną datę i godzinę
 
         fs.writeFile(markersDataPath, JSON.stringify(markers, null, 2), err => {
             if (err) return res.status(500).json({ error: 'Error saving file' });
-            res.json({ message: 'Prices updated!' });
+            res.json({ 
+                message: 'Prices updated!',
+                lastUpdated: marker.lastUpdated // 🔹 Zwróć datę ostatniej aktualizacji
+            });
         });
     });
 });
