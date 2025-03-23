@@ -17,6 +17,14 @@ app.use(express.json()); // Parse JSON bodies
 // Full path to markersData.json
 const markersDataPath = path.join(__dirname, 'markersData.json');
 
+// Folder do przechowywania backupów
+const backupsDir = path.join(__dirname, 'backups');
+
+// Upewnij się, że folder backups istnieje
+if (!fs.existsSync(backupsDir)) {
+    fs.mkdirSync(backupsDir);
+}
+
 // ✅ Endpoint dla głównej ścieżki "/"
 app.get("/", (req, res) => {
     res.send("Backend działa! 🚀");
@@ -33,6 +41,7 @@ app.get('/api/markers', (req, res) => {
     });
 });
 
+// Endpoint to update prices
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
@@ -52,13 +61,59 @@ app.post('/api/update-price', (req, res) => {
         marker.addedBy = user;
         marker.lastUpdated = new Date().toISOString(); // 🔹 Dodaj aktualną datę i godzinę
 
+        // Zapisz aktualne dane do pliku markersData.json
         fs.writeFile(markersDataPath, JSON.stringify(markers, null, 2), err => {
             if (err) return res.status(500).json({ error: 'Error saving file' });
+
+            // Utwórz backup
+            createBackup(markers);
+
             res.json({ 
                 message: 'Prices updated!',
                 lastUpdated: marker.lastUpdated // 🔹 Zwróć datę ostatniej aktualizacji
             });
         });
+    });
+});
+
+// Funkcja do tworzenia backupu
+function createBackup(data) {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const backupPath = path.join(backupsDir, `backup-${timestamp}.json`);
+
+    fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
+    console.log(`Backup zapisany do: ${backupPath}`);
+}
+
+// Endpoint do pobierania listy backupów
+app.get('/api/backups', (req, res) => {
+    fs.readdir(backupsDir, (err, files) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error reading backups directory' });
+        }
+        res.json(files);
+    });
+});
+
+// Endpoint do przywracania backupu
+app.post('/api/restore-backup', (req, res) => {
+    const { backupFile } = req.body;
+    const backupPath = path.join(backupsDir, backupFile);
+
+    if (!fs.existsSync(backupPath)) {
+        return res.status(404).json({ error: 'Backup file not found' });
+    }
+
+    // Odczytaj dane z backupu
+    const backupData = fs.readFileSync(backupPath, 'utf8');
+
+    // Zapisz dane z backupu do markersData.json
+    fs.writeFile(markersDataPath, backupData, err => {
+        if (err) {
+            return res.status(500).json({ error: 'Error restoring backup' });
+        }
+
+        res.json({ message: 'Backup restored successfully!' });
     });
 });
 
