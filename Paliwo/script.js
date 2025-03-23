@@ -2,16 +2,14 @@ window.onload = function() {
     openModal();
     fetchMarkers(); // Pobiera dane i rysuje stacje
     // Upewnij się, że DOM jest gotowy przed próbą manipulacji
-    document.addEventListener("DOMContentLoaded", function() {
         renderMarkers();  // Dopiero teraz próbujemy renderować markery
-    });
 };
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
     updateLoginStatus();
-
+    renderStationsList(); // Renderuj stacje
     // Podpinamy obsługę formularza logowania
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
