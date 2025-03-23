@@ -136,6 +136,7 @@ function renderMarkers() {
 function updatePopupContent(marker, markerData) {
     const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
+    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -143,7 +144,7 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
-    // Tutaj dodajemy datę ostatniej aktualizacji
+    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
     if (markerData.lastUpdated) {
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
@@ -151,7 +152,17 @@ function updatePopupContent(marker, markerData) {
         `;
     }
 
-    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji
+
+    // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
+map.on('click', function(event) {
+    var lat = event.latlng.lat.toFixed(5);
+    var lng = event.latlng.lng.toFixed(5);
+
+    document.getElementById("coordsDisplay").textContent = `${lat}, ${lng}`;
+});
+
+
+    // Jeśli użytkownik jest zalogowany, pokazujemy możliwość edytowania
     if (isLogged) {
         popupContent += `
             <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
@@ -162,6 +173,7 @@ function updatePopupContent(marker, markerData) {
 
     marker.bindPopup(popupContent);
 }
+
 
 
 
