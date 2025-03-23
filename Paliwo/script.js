@@ -4,11 +4,12 @@ window.onload = function() {
     fetchMarkers(); // Pobiera dane i rysuje stacje
 
     // Ustawiamy filtr na "cena paliwa malejąco" i wyświetlamy tabelę
-    document.querySelector("#filter-select").value = 'fuelPriceDesc'; // Ustawiamy filtr na cena paliwa malejąco
-    filterStations(); // Wywołujemy funkcję filtrującą stacje
-    toggleStationsTable(); // Pokazujemy tabelę
+    setTimeout(() => {
+        document.querySelector("#filter-select").value = 'fuelPriceDesc'; // Ustawiamy filtr na cena paliwa malejąco
+        filterStations(); // Wywołujemy funkcję filtrującą stacje
+        toggleStationsTable(); // Pokazujemy tabelę
+    }, 1000); // Czekamy chwilę, żeby inne procesy na stronie miały czas się załadować
 };
-
 
 
 
@@ -98,13 +99,14 @@ map.fitBounds(bounds);
 
 var markers = {}; // Obiekt przechowujący markery
 
+// 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
         .then(response => response.json())
         .then(data => {
             markersData = data; // Aktualizacja danych
-            renderStationsTable(markersData); // Renderuj tabelę natychmiast po pobraniu danych
-            renderMarkers(); // Renderuj markery na mapie
+            renderMarkers();
+            renderStationsList(); // Renderuj stacje
         })
         .catch(error => console.error('Błąd pobierania danych:', error));
 }
@@ -133,6 +135,7 @@ function renderMarkers() {
     // renderStationsList(); // Usunięte, ponieważ formularze są tylko w popupie
 }
 
+// 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
     const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
@@ -151,30 +154,6 @@ function updatePopupContent(marker, markerData) {
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
-
-
-    // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
-map.on('click', function(event) {
-    var lat = event.latlng.lat.toFixed(5);
-    var lng = event.latlng.lng.toFixed(5);
-
-    document.getElementById("coordsDisplay").textContent = `${lat}, ${lng}`;
-});
-
-
-    // Jeśli użytkownik jest zalogowany, pokazujemy możliwość edytowania
-    if (isLogged) {
-        popupContent += `
-            <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
-            <input type="text" id="diesel-${markerData.id}" value="${markerData.dieselPrice}" />
-            <button onclick="updatePrice('${markerData.id}')">Zapisz</button>
-        `;
-    }
-
-    marker.bindPopup(popupContent);
-}
-
-
 
 
     // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
@@ -571,5 +550,4 @@ function hideForm() {
         formContainer.style.display = "none"; // Ukrywanie formularza
     }
 }
-
 
