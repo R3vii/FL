@@ -8,6 +8,67 @@ window.onload = function() {
 };
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLoginStatus();
+
+    // Podpinamy obsługę formularza logowania
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", login);
+    }
+});
+
+
+
+
+function login(event) {
+    event.preventDefault();
+    
+    // Pobieramy i czyszczymy wpisane dane
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (username === "" || password === "") {
+        showNotification("Proszę wpisać zarówno nazwę użytkownika, jak i hasło!","error");
+        return;
+    }
+
+    // Pobieramy dane użytkowników z pliku data.json
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Błąd przy ładowaniu pliku z danymi");
+            }
+            return response.json();
+        })
+        .then(users => {
+            // Szukamy użytkownika, którego nick i hasło odpowiadają wpisanym danym
+            const user = users.find(u => u.nick === username && u.password === password);
+            
+            if (user) {
+                // Dane są poprawne – logujemy użytkownika
+                localStorage.setItem('loggedUser', username);
+                updateLoginStatus();
+                showNotification("Pomyślnie zalogowano!");
+                closeModal(); // Zamykamy modal po udanym logowaniu
+                setTimeout(() => {
+                    location.reload(); // ✅ Odświeżenie strony po zalogowaniu
+                }, 1500);
+            } else {
+                // Dane nie są poprawne – nie zapisujemy w localStorage
+                showNotification("Nieprawidłowa nazwa użytkownika lub hasło!","error");
+            }
+        })
+        .catch(error => {
+            console.error('Błąd podczas ładowania danych użytkowników:', error);
+            showNotification("Wystąpił błąd podczas ładowania danych logowania.","error");
+        });
+}
+
+
+
+
 // 🔹 Funkcja otwierająca modal
 function openModal() {
     document.getElementById("modal").style.display = "block";
@@ -193,33 +254,6 @@ function updateLoginStatus() {
         statusEl.innerText = "Niezalogowano";
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    updateLoginStatus();
-
-    // Obsługa logowania
-    const loginForm = document.getElementById("login-form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // ⛔ Zapobiega przeładowaniu strony
-
-            const username = document.getElementById("username").value.trim();
-            if (username === "") {
-                showNotification("Proszę wpisać nazwę użytkownika!", "error");
-                return;
-            }
-
-            localStorage.setItem("loggedUser", username);
-            updateLoginStatus();
-            showNotification("Zalogowano pomyślnie!", "success");
-
-            setTimeout(() => {
-                location.reload(); // ✅ Odświeżenie strony po zalogowaniu
-            }, 1500);
-        });
-    }
-});
 
 
 
