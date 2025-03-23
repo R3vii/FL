@@ -20,9 +20,10 @@ const markersDataPath = path.join(__dirname, 'markersData.json');
 // Folder do przechowywania backupów
 const backupsDir = path.join(__dirname, 'backups');
 
-// Upewnij się, że folder backups istnieje
+// Sprawdź, czy folder backups istnieje, a jeśli nie, to go utwórz
 if (!fs.existsSync(backupsDir)) {
     fs.mkdirSync(backupsDir);
+    console.log('Folder backups został utworzony.');
 }
 
 // ✅ Endpoint dla głównej ścieżki "/"
@@ -41,7 +42,6 @@ app.get('/api/markers', (req, res) => {
     });
 });
 
-// Endpoint to update prices
 app.post('/api/update-price', (req, res) => {
     const { id, fuelPrice, dieselPrice, user } = req.body;
 
