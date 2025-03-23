@@ -102,6 +102,7 @@ function fetchMarkers() {
         .then(data => {
             markersData = data; // Aktualizacja danych
             renderMarkers();
+            renderStationsList(); // Renderuj stacje
         })
         .catch(error => console.error('Błąd pobierania danych:', error));
 }
