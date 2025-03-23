@@ -1,22 +1,24 @@
 window.onload = function() {
     openModal();
-    fetchMarkers(); // Fetch data and draw the stations
+    fetchMarkers(); // Pobiera dane i rysuje stacje
+    // Upewnij się, że DOM jest gotowy przed próbą manipulacji
     document.addEventListener("DOMContentLoaded", function() {
-        renderMarkers();  // Render markers once DOM is ready
+        renderMarkers();  // Dopiero teraz próbujemy renderować markery
     });
 };
 
-// Open modal
+
+// 🔹 Funkcja otwierająca modal
 function openModal() {
     document.getElementById("modal").style.display = "block";
 }
 
-// Close modal
+// 🔹 Funkcja zamykająca modal
 function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
 
-// Initialize the map (using Leaflet)
+// 🔹 Ustawienie mapy Leaflet
 var bounds = [[0, 0], [8192, 8192]]; 
 var map = L.map('map', {
     crs: L.CRS.Simple,
@@ -30,30 +32,20 @@ var imageUrl = 'Mapa.png';
 var imageLayer = L.imageOverlay(imageUrl, bounds).addTo(map);
 map.fitBounds(bounds);
 
-var markers = {}; // Object to store markers
-var markersData = []; // Initialize the markersData variable
+var markers = {}; // Obiekt przechowujący markery
 
-// Fetching the markers data
+// 🔹 Pobieranie danych stacji z backendu
 function fetchMarkers() {
     fetch('https://fl-ygc6.onrender.com/api/markers')
         .then(response => response.json())
         .then(data => {
-            console.log('Fetched markers data:', data);  // Log fetched data
-            if (Array.isArray(data)) {
-                markersData = data; // Update markers data
-                renderMarkers();
-            } else {
-                console.error('Expected an array but got:', data);
-            }
+            markersData = data; // Aktualizacja danych
+            renderMarkers();
         })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            alert('Wystąpił błąd podczas pobierania danych z serwera.');
-        });
+        .catch(error => console.error('Błąd pobierania danych:', error));
 }
 
-
-// Render the markers on the map
+// 🔹 Funkcja rysująca markery na mapie
 function renderMarkers() {
     Object.values(markers).forEach(marker => map.removeLayer(marker));
     markers = {};
@@ -72,115 +64,176 @@ function renderMarkers() {
         updatePopupContent(marker, markerData);
         markers[markerData.id] = marker;
     });
+
+    // Teraz nie renderujemy formularzy edycji na stronie, bo mają być tylko w popupie.
+    // renderStationsList(); // Usunięte, ponieważ formularze są tylko w popupie
 }
 
-// Update popup content (price, name, etc.)
+// 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
-    const isLogged = isLoggedIn(); // Check if the user is logged in
+    const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
 
-    let popupContent = ` 
-        <b>Station Name:</b> ${markerData.title}<br>
-        <b>Fuel Price:</b> ${markerData.fuelPrice}<br>
-        <b>Diesel Price:</b> ${markerData.dieselPrice}<br>
-        <b>Added By:</b> ${markerData.addedBy}<br>
+    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
+    let popupContent = `
+        <b>Nazwa Stacji:</b> ${markerData.title}<br>
+        <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
+        <b>Cena Diesla:</b> ${markerData.dieselPrice}<br>
+        <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
+    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
+    if (markerData.lastUpdated) {
+        const lastUpdatedTime = new Date(markerData.lastUpdated);
+        popupContent += `
+            <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
+        `;
+    }
+
+
+    // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
+map.on('click', function(event) {
+    var lat = event.latlng.lat.toFixed(5);
+    var lng = event.latlng.lng.toFixed(5);
+
+    document.getElementById("coordsDisplay").textContent = `${lat}, ${lng}`;
+});
+
+
+    // Jeśli użytkownik jest zalogowany, pokazujemy możliwość edytowania
     if (isLogged) {
         popupContent += `
             <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
             <input type="text" id="diesel-${markerData.id}" value="${markerData.dieselPrice}" />
-            <button onclick="updatePrice('${markerData.id}')">Save</button>
+            <button onclick="updatePrice('${markerData.id}')">Zapisz</button>
         `;
     }
 
     marker.bindPopup(popupContent);
 }
 
-// Check if the user is logged in
-function isLoggedIn() {
-    return localStorage.getItem('loggedUser') !== null;
-}
+// 🔹 Funkcja renderująca stacje bez formularzy edycji
+function renderStationsList() {
+    var container = document.getElementById("stations");
 
-// Update login status and display user information
-function updateLoginStatus() {
-    const statusEl = document.getElementById('login-status');
-    const loggedUser = localStorage.getItem('loggedUser');
-
-    if (loggedUser) {
-        statusEl.innerHTML = `Logged in as: ${loggedUser} <button id="logout-btn">Logout</button>`;
-        document.getElementById('logout-btn').addEventListener('click', function() {
-            localStorage.removeItem('loggedUser');
-            updateLoginStatus();
-            alert("Successfully logged out!");
-        });
-    } else {
-        statusEl.innerText = "Not logged in";
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    updateLoginStatus();
-});
-
-// Handle login form submission
-function login(event) {
-    event.preventDefault();
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    if (username === "" || password === "") {
-        alert("Please enter both username and password");
-        return;
+    if (container === null) {
+        console.error("Element #stations nie został znaleziony!");
+        return; // Jeśli element nie istnieje, zakończ funkcję
     }
 
-    // Fetch users from data.json
-    fetch('data.json')
-        .then(response => response.json())
-        .then(users => {
-            const user = users.find(u => u.nick === username && u.password === password);
-            
-            if (user) {
-                localStorage.setItem('loggedUser', username);
-                updateLoginStatus();
-                alert("Successfully logged in!");
-                closeModal(); // Close login modal after successful login
-            } else {
-                alert("Invalid username or password!");
-            }
-        })
-        .catch(error => {
-            console.error('Error loading users:', error);
-            alert("There was an error loading the login data.");
-        });
+    container.innerHTML = ""; // Resetujemy zawartość kontenera
+
+    // Renderujemy tylko nazwy stacji i ceny, bez formularzy edycji
+    markersData.forEach(marker => {
+        const div = document.createElement("div");
+
+        // Zawsze pokazujemy nazwę stacji i ceny
+        div.innerHTML = `
+            <h3>${marker.title}</h3>
+            <p>Benzyna: ${marker.fuelPrice}</p>
+            <p>Diesel: ${marker.dieselPrice}</p>
+            <hr>
+        `;
+
+        container.appendChild(div);
+    });
 }
 
-// Update the fuel price data
+
+
+
 function updatePrice(id) {
     if (!isLoggedIn()) {
-        alert("You must be logged in to edit prices!");
+        showNotification("Ojojoj, chyba nie jesteś zalogowany, by edytować ceny");
         return;
     }
 
     const fuelPrice = document.getElementById(`fuel-${id}`).value;
     const dieselPrice = document.getElementById(`diesel-${id}`).value;
-    const user = localStorage.getItem('loggedUser');
+    const user = localStorage.getItem('loggedUser'); // Get the logged-in user from localStorage
 
     fetch('https://fl-ygc6.onrender.com/api/update-price', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, fuelPrice, dieselPrice, user })
+        body: JSON.stringify({ id, fuelPrice, dieselPrice, user }) // Sending user info to backend
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);
-        fetchMarkers(); // Refresh the markers list
+        showNotification(data.message);
+        fetchMarkers(); // Refresh the markers after update
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => console.error("Błąd:", error));
 }
+
+
+// 🔹 Sprawdzanie, czy użytkownik jest zalogowany
+function isLoggedIn() {
+    return localStorage.getItem("loggedUser") !== null;
+}
+
+
+
+// Obsługa wylogowania
+function updateLoginStatus() {
+    const statusEl = document.getElementById("login-status");
+    const loggedUser = localStorage.getItem("loggedUser");
+
+    if (loggedUser) {
+        statusEl.innerHTML = `Zalogowano jako: ${loggedUser} <button id="logout-btn">Wyloguj</button>`;
+        document.getElementById("logout-btn").addEventListener("click", function () {
+            localStorage.removeItem("loggedUser");
+            showNotification("Wylogowano pomyślnie!", "success");
+
+            setTimeout(() => {
+                location.reload(); // ✅ Odświeżenie strony po wylogowaniu
+            }, 1500);
+        });
+
+        hideForm(); // Ukrywanie formularza po zalogowaniu
+    } else {
+        statusEl.innerText = "Niezalogowano";
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    updateLoginStatus();
+
+    // Obsługa logowania
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // ⛔ Zapobiega przeładowaniu strony
+
+            const username = document.getElementById("username").value.trim();
+            if (username === "") {
+                showNotification("Proszę wpisać nazwę użytkownika!", "error");
+                return;
+            }
+
+            localStorage.setItem("loggedUser", username);
+            updateLoginStatus();
+            showNotification("Zalogowano pomyślnie!", "success");
+
+            setTimeout(() => {
+                location.reload(); // ✅ Odświeżenie strony po zalogowaniu
+            }, 1500);
+        });
+    }
+});
+
+
+
+function toggleChangelog() {
+    var changelog = document.getElementById("changelog");
+    changelog.style.display = changelog.style.display === "none" ? "block" : "none";
+}
+
 
 function customButtonClick() {
     toggleForm();
 }
+
+
 function toggleForm() {
     var formContainer = document.getElementById("form-container");
     if (formContainer.style.display === "none" || formContainer.classList.contains("hidden")) {
@@ -189,6 +242,221 @@ function toggleForm() {
     } else {
         formContainer.style.display = "none";
         formContainer.classList.add("hidden");
+    }
+}
+
+
+
+
+
+
+document.getElementById("showStationsBtn").addEventListener("click", function() {
+    renderStationsList();
+    openStationsModal();
+});
+
+// Funkcja otwierająca modal
+function openStationsModal() {
+    document.getElementById("stations-modal").style.display = "block";
+}
+
+// Funkcja zamykająca modal
+function closeStationsModal() {
+    document.getElementById("stations-modal").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Funkcja renderująca stacje w tabeli
+function renderStationsTable(filteredData = markersData) {
+    const tableBody = document.querySelector("#stations-table tbody");
+    tableBody.innerHTML = ""; // Resetujemy zawartość tabeli
+
+    filteredData.forEach(marker => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${marker.title}</td>
+            <td>${marker.fuelPrice}</td>
+            <td>${marker.dieselPrice}</td>
+            <td>${marker.addedBy}</td>
+            <td>${marker.lastUpdated ? new Date(marker.lastUpdated).toLocaleString() : "Brak danych"}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+// Funkcja do filtrowania stacji na podstawie wybranego kryterium
+function filterStations() {
+    const selectedOption = document.querySelector("#filter-select").value;
+
+    let sortedData = [...markersData]; // Tworzymy kopię danych, aby nie modyfikować oryginalnych
+
+    // Sortowanie danych na podstawie wybranego kryterium
+    switch (selectedOption) {
+        case 'fuelPriceAsc':
+            sortedData.sort((a, b) => parseFloat(a.fuelPrice) - parseFloat(b.fuelPrice));
+            break;
+        case 'fuelPriceDesc':
+            sortedData.sort((a, b) => parseFloat(b.fuelPrice) - parseFloat(a.fuelPrice));
+            break;
+        case 'dieselPriceAsc':
+            sortedData.sort((a, b) => parseFloat(a.dieselPrice) - parseFloat(b.dieselPrice));
+            break;
+        case 'dieselPriceDesc':
+            sortedData.sort((a, b) => parseFloat(b.dieselPrice) - parseFloat(a.dieselPrice));
+            break;
+        case 'lastUpdatedAsc':
+            sortedData.sort((a, b) => {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated) : null;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated) : null;
+                
+                // Jeśli daty są nieprawidłowe (np. 'Invalid Date'), traktujemy je jako bardzo stare daty
+                if (isNaN(dateA)) {
+                    console.warn(`Błąd daty dla stacji: ${a.title}`);
+                    return -1;  // Umieszczamy stację na początku listy, jeśli data jest błędna
+                }
+                if (isNaN(dateB)) {
+                    console.warn(`Błąd daty dla stacji: ${b.title}`);
+                    return 1;  // Umieszczamy stację na końcu listy, jeśli data jest błędna
+                }
+
+                return dateA - dateB; // Sortowanie rosnąco
+            });
+            break;
+        case 'lastUpdatedDesc':
+            sortedData.sort((a, b) => {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated) : null;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated) : null;
+
+                // Jeśli daty są nieprawidłowe (np. 'Invalid Date'), traktujemy je jako bardzo stare daty
+                if (isNaN(dateA)) {
+                    console.warn(`Błąd daty dla stacji: ${a.title}`);
+                    return -1;  // Umieszczamy stację na początku listy, jeśli data jest błędna
+                }
+                if (isNaN(dateB)) {
+                    console.warn(`Błąd daty dla stacji: ${b.title}`);
+                    return 1;  // Umieszczamy stację na końcu listy, jeśli data jest błędna
+                }
+
+                return dateB - dateA; // Sortowanie malejąco
+            });
+            break;
+        default:
+            sortedData = markersData; // W przypadku braku wybranej opcji, dane pozostają nieposortowane
+    }
+
+    renderStationsTable(sortedData); // Renderowanie posortowanej tabeli
+}
+
+// Wywołanie funkcji w momencie, gdy dane są dostępne
+function fetchMarkers() {
+    fetch('http://localhost:3000/api/markers')
+        .then(response => response.json())
+        .then(data => {
+            markersData = data; // Aktualizacja danych
+            renderMarkers();
+            renderStationsTable(); // Renderowanie tabeli po pobraniu danych
+        })
+        .catch(error => console.error('Błąd pobierania danych:', error));
+}
+
+
+function renderStationsTable(filteredData = markersData) {
+    const tableBody = document.querySelector("#stations-table tbody");
+    tableBody.innerHTML = ""; // Resetujemy zawartość tabeli
+
+    filteredData.forEach(marker => {
+        const row = document.createElement("tr");
+        row.id = `station-${marker.id}`; // Dodajemy identyfikator do wiersza
+
+        row.innerHTML = `
+            <td>${marker.title}</td>
+            <td>${marker.fuelPrice}</td>
+            <td>${marker.dieselPrice}</td>
+            <td>${marker.addedBy}</td>
+            <td>${marker.lastUpdated ? new Date(marker.lastUpdated).toLocaleString() : "Brak danych"}</td>
+        `;
+
+        // Dodajemy obsługę kliknięcia na nazwę stacji
+        row.querySelector("td").addEventListener("click", () => {
+            focusOnStation(marker);
+        });
+
+        tableBody.appendChild(row);
+    });
+}
+
+function focusOnStation(marker) {
+    const markerLatLng = L.latLng(marker.lat, marker.lng);
+    map.setView(markerLatLng, 1); // Ustawiamy zoom na 5, możesz dostosować wartość zoomu
+    markers[marker.id].openPopup(); // Otwieramy popup dla danego markera
+}
+// Dodanie obsługi kliknięcia na przycisk
+document.getElementById("toggle-stations-button").addEventListener("click", toggleStationsList);
+
+
+function tabelkaPokazana() {
+    toggleStationsTable();
+}
+
+
+function toggleStationsTable() {
+    var tableContainer = document.getElementById("stations-table-container");
+    if (tableContainer.style.display === "none" || tableContainer.classList.contains("hidden")) {
+        tableContainer.style.display = "block";
+        tableContainer.classList.remove("hidden");
+    } else {
+        tableContainer.style.display = "none";
+        tableContainer.classList.add("hidden");
+    }
+}
+
+
+
+function showNotification(message, type = "success", duration = 3000) {
+    const container = document.getElementById("notification-container");
+
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <span>${message}</span>
+        <button class="close-btn">&times;</button>
+    `;
+
+    container.appendChild(notification);
+
+    // Obsługa zamykania powiadomienia
+    notification.querySelector(".close-btn").addEventListener("click", () => {
+        notification.classList.add("fade-out");
+        setTimeout(() => notification.remove(), 500);
+    });
+
+    // Automatyczne zamknięcie po czasie
+    setTimeout(() => {
+        notification.classList.add("fade-out");
+        setTimeout(() => notification.remove(), 500);
+    }, duration);
+}
+
+
+
+
+
+function hideForm() {
+    var formContainer = document.getElementById("form-container");
+    if (formContainer) {
+        formContainer.style.display = "none"; // Ukrywanie formularza
     }
 }
 
