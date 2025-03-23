@@ -359,18 +359,6 @@ function filterStations() {
     renderStationsTable(sortedData); // Renderowanie posortowanej tabeli
 }
 
-// Wywołanie funkcji w momencie, gdy dane są dostępne
-function fetchMarkers() {
-    fetch('http://localhost:3000/api/markers')
-        .then(response => response.json())
-        .then(data => {
-            markersData = data; // Aktualizacja danych
-            renderMarkers();
-            renderStationsTable(); // Renderowanie tabeli po pobraniu danych
-        })
-        .catch(error => console.error('Błąd pobierania danych:', error));
-}
-
 
 function renderStationsTable(filteredData = markersData) {
     const tableBody = document.querySelector("#stations-table tbody");
