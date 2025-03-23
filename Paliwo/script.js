@@ -165,29 +165,25 @@ function updatePopupContent(marker, markerData) {
     marker.bindPopup(popupContent);
 }
 
-// 🔹 Funkcja renderująca stacje bez formularzy edycji
 function renderStationsList() {
     var container = document.getElementById("stations");
 
-    if (container === null) {
+    if (!container) {
         console.error("Element #stations nie został znaleziony!");
-        return; // Jeśli element nie istnieje, zakończ funkcję
+        console.log("Aktualny stan DOM:", document.body.innerHTML); // Wyświetl aktualny stan DOM
+        return;
     }
 
     container.innerHTML = ""; // Resetujemy zawartość kontenera
 
-    // Renderujemy tylko nazwy stacji i ceny, bez formularzy edycji
     markersData.forEach(marker => {
         const div = document.createElement("div");
-
-        // Zawsze pokazujemy nazwę stacji i ceny
         div.innerHTML = `
             <h3>${marker.title}</h3>
             <p>Benzyna: ${marker.fuelPrice}</p>
             <p>Diesel: ${marker.dieselPrice}</p>
             <hr>
         `;
-
         container.appendChild(div);
     });
 }
