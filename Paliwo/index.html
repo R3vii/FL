@@ -9,31 +9,59 @@
 </head>
 <body>
 
-
+<!-- Modal informacyjny -->
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close-button" onclick="closeModal()">&times;</span>
-        <h2>Blablabla</h2>
-        <p>Może tutaj coś wstawie to lepiej to zachować</p>
-        <p><strong>UUUUUUUUU</strong></p>
+        <h2>Mapa z cenami paliw!</h2>
+        <p>Mapa przedstawia poszczególne stacje benzynowe które są dostępne w FiveLife. Są pokazane ich ceny, data oraz osoba która dokonała zmiany. Właśnie tak, każda osoba może zmieniać ceny i przyczynić się tym samym do tego projektu. Jednak by uniknąć trollowania ze zmianami cen, konto do edycji można otrzymać kontaktując się ze mną na dc: <strong>.r_e_v_i.</strong></p>
+        <p><strong>Możecie również podsyłać jakieś propozycje zmian :b</strong></p>
     </div>
 </div>
 
+
+
+<!-- Wyświetlanie współrzędnych -->
 <div id="coordinates">Współrzędne: <span id="coordsDisplay">brak</span></div>
-<div id="counter">Dane: <span id="markedCount">0</span> / <span id="totalCount">0</span></div>
+
+<!-- Modal z listą stacji -->
+<div id="stations-table-container">
+    <h3>Lista Stacji</h3>
+    <select id="filter-select" onchange="filterStations()">
+        <option value="fuelPriceAsc">Cena Paliwa (rosnąco)</option>
+        <option value="fuelPriceDesc">Cena Paliwa (malejąco)</option>
+        <option value="dieselPriceAsc">Cena Diesla (rosnąco)</option>
+        <option value="dieselPriceDesc">Cena Diesla (malejąco)</option>
+        <option value="lastUpdatedAsc">Ostatnia aktualizacja (najstarsze)</option>
+        <option value="lastUpdatedDesc">Ostatnia aktualizacja (najnowsze)</option>
+    </select>
+
+    <table id="stations-table">
+    <thead>
+        <tr>
+            <th>Nazwa Stacji</th>
+            <th>Cena Paliwa</th>
+            <th>Cena Diesla</th>
+            <th>Dodane przez</th>
+            <th>Ostatnia Aktualizacja</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dane tabeli będą wstawiane dynamicznie -->
+    </tbody>
+</table>
+</div>
+
+<!-- Mapa -->
 <div id="map"></div>
 
-<div class="footer-info">
-    Twórca: <strong>R3vii</strong><br>
-    Ostatnia modyfikacja: <span id="lastModified">19.03.2025 23:39</span>
+<!-- Przycisk do pokazywania/ukrywania listy stacji -->
+<div id="rozwiniecietabeli" class="boxes" onclick="tabelkaPokazana()">
+    <div class="guzik"><span>Pokaż/Ukryj Listę Stacji</span></div>
 </div>
+<div id="notification-container"></div>
 
-<div id="changelog-container">
-    <button onclick="toggleChangelog()">Changelog</button>
-    <div id="changelog">
-        <pre id="changelogContent">Ładowanie changelog...</pre>
-    </div>
-</div>
+
 
 <div id="custom-button" class="box-button" onclick="customButtonClick()">
     <div class="button"><span>Zaloguj</span></div>
@@ -53,16 +81,13 @@
                             <input class="flip-card__input" name="password" id="password" placeholder="Password" type="password">
                             <button class="flip-card__btn" type="submit">Letsa goo</button>
                         </form>
-                        
                     </div>
                 </div>
             </label>
         </div>
     </div>
 </div>
-<div id="stations">
-    
-</div>
+
 <!-- Status logowania -->
 <div id="login-status" class="login-status">Niezalogowano</div>
 
@@ -70,5 +95,7 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="markersData.json"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
+
