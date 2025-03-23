@@ -137,9 +137,8 @@ function renderMarkers() {
 
 // 🔹 Funkcja aktualizująca popup
 function updatePopupContent(marker, markerData) {
-    const isLogged = isLoggedIn(); // Sprawdzamy, czy użytkownik jest zalogowany
+    const isLogged = isLoggedIn();
 
-    // Jeśli użytkownik jest zalogowany, dodajemy możliwość edycji w popupie
     let popupContent = `
         <b>Nazwa Stacji:</b> ${markerData.title}<br>
         <b>Cena Paliwa:</b> ${markerData.fuelPrice}<br>
@@ -147,13 +146,24 @@ function updatePopupContent(marker, markerData) {
         <b>Dodane przez:</b> ${markerData.addedBy}<br>
     `;
 
-    // Dodajemy godzinę ostatniej aktualizacji, jeśli istnieje
+    // 🔹 Sprawdź, czy lastUpdated istnieje i wyświetl datę
     if (markerData.lastUpdated) {
         const lastUpdatedTime = new Date(markerData.lastUpdated);
         popupContent += `
             <b>Ostatnia aktualizacja:</b> ${lastUpdatedTime.toLocaleString()}<br>
         `;
     }
+
+    if (isLogged) {
+        popupContent += `
+            <br><input type="text" id="fuel-${markerData.id}" value="${markerData.fuelPrice}" />
+            <input type="text" id="diesel-${markerData.id}" value="${markerData.dieselPrice}" />
+            <button onclick="updatePrice('${markerData.id}')">Zapisz</button>
+        `;
+    }
+
+    marker.bindPopup(popupContent);
+}
 
 
     // 🔹 Wyświetlanie współrzędnych po kliknięciu w mapę
@@ -215,17 +225,26 @@ function updatePrice(id) {
 
     const fuelPrice = document.getElementById(`fuel-${id}`).value;
     const dieselPrice = document.getElementById(`diesel-${id}`).value;
-    const user = localStorage.getItem('loggedUser'); // Get the logged-in user from localStorage
+    const user = localStorage.getItem('loggedUser');
 
     fetch('https://fl-ygc6.onrender.com/api/update-price', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, fuelPrice, dieselPrice, user }) // Sending user info to backend
+        body: JSON.stringify({ id, fuelPrice, dieselPrice, user })
     })
     .then(response => response.json())
     .then(data => {
         showNotification(data.message);
-        fetchMarkers(); // Refresh the markers after update
+
+        // 🔹 Aktualizuj markersData z odpowiedzi z backendu
+        const updatedMarker = markersData.find(marker => marker.id === id);
+        if (updatedMarker) {
+            updatedMarker.fuelPrice = fuelPrice;
+            updatedMarker.dieselPrice = dieselPrice;
+            updatedMarker.lastUpdated = data.lastUpdated; // Użyj daty z backendu
+        }
+
+        fetchMarkers(); // Odśwież markery
     })
     .catch(error => console.error("Błąd:", error));
 }
