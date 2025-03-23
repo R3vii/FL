@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;  // Możesz ustawić port w zmiennych śr
 
 // Dozwolone domeny - dodaj adres swojego publicznego serwera
 const allowedOrigins = [
-    "https://revdev.top",     // Twoja publiczna domena
+    "https://revdev.top"     // Twoja publiczna domena
 ];
 
 const corsOptions = {
