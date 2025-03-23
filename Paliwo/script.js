@@ -1,8 +1,14 @@
 window.onload = function() {
+    // Otwieramy modal, pobieramy dane i rysujemy markery
     openModal();
     fetchMarkers(); // Pobiera dane i rysuje stacje
-    // Upewnij się, że DOM jest gotowy przed próbą manipulacji
-        renderMarkers();  // Dopiero teraz próbujemy renderować markery
+
+    // Ustawiamy filtr na "cena paliwa malejąco" i wyświetlamy tabelę
+    setTimeout(() => {
+        document.querySelector("#filter-select").value = 'fuelPriceDesc'; // Ustawiamy filtr na cena paliwa malejąco
+        filterStations(); // Wywołujemy funkcję filtrującą stacje
+        toggleStationsTable(); // Pokazujemy tabelę
+    }, 1000); // Czekamy chwilę, żeby inne procesy na stronie miały czas się załadować
 };
 
 
@@ -432,6 +438,7 @@ function tabelkaPokazana() {
 }
 
 
+// Funkcja przełączająca widoczność tabeli
 function toggleStationsTable() {
     var tableContainer = document.getElementById("stations-table-container");
     if (tableContainer.style.display === "none" || tableContainer.classList.contains("hidden")) {
@@ -441,6 +448,69 @@ function toggleStationsTable() {
         tableContainer.style.display = "none";
         tableContainer.classList.add("hidden");
     }
+}
+
+// Funkcja filtrująca stacje na podstawie wybranego kryterium
+function filterStations() {
+    const selectedOption = document.querySelector("#filter-select").value;
+
+    let sortedData = [...markersData]; // Tworzymy kopię danych, aby nie modyfikować oryginalnych
+
+    // Sortowanie danych na podstawie wybranego kryterium
+    switch (selectedOption) {
+        case 'fuelPriceAsc':
+            sortedData.sort((a, b) => parseFloat(a.fuelPrice) - parseFloat(b.fuelPrice));
+            break;
+        case 'fuelPriceDesc':
+            sortedData.sort((a, b) => parseFloat(b.fuelPrice) - parseFloat(a.fuelPrice));
+            break;
+        case 'dieselPriceAsc':
+            sortedData.sort((a, b) => parseFloat(a.dieselPrice) - parseFloat(b.dieselPrice));
+            break;
+        case 'dieselPriceDesc':
+            sortedData.sort((a, b) => parseFloat(b.dieselPrice) - parseFloat(a.dieselPrice));
+            break;
+        case 'lastUpdatedAsc':
+            sortedData.sort((a, b) => {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated) : null;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated) : null;
+
+                // Jeśli daty są nieprawidłowe (np. 'Invalid Date'), traktujemy je jako bardzo stare daty
+                if (isNaN(dateA)) {
+                    console.warn(`Błąd daty dla stacji: ${a.title}`);
+                    return -1;  // Umieszczamy stację na początku listy, jeśli data jest błędna
+                }
+                if (isNaN(dateB)) {
+                    console.warn(`Błąd daty dla stacji: ${b.title}`);
+                    return 1;  // Umieszczamy stację na końcu listy, jeśli data jest błędna
+                }
+
+                return dateA - dateB; // Sortowanie rosnąco
+            });
+            break;
+        case 'lastUpdatedDesc':
+            sortedData.sort((a, b) => {
+                const dateA = a.lastUpdated ? new Date(a.lastUpdated) : null;
+                const dateB = b.lastUpdated ? new Date(b.lastUpdated) : null;
+
+                // Jeśli daty są nieprawidłowe (np. 'Invalid Date'), traktujemy je jako bardzo stare daty
+                if (isNaN(dateA)) {
+                    console.warn(`Błąd daty dla stacji: ${a.title}`);
+                    return -1;  // Umieszczamy stację na początku listy, jeśli data jest błędna
+                }
+                if (isNaN(dateB)) {
+                    console.warn(`Błąd daty dla stacji: ${b.title}`);
+                    return 1;  // Umieszczamy stację na końcu listy, jeśli data jest błędna
+                }
+
+                return dateB - dateA; // Sortowanie malejąco
+            });
+            break;
+        default:
+            sortedData = markersData; // W przypadku braku wybranej opcji, dane pozostają nieposortowane
+    }
+
+    renderStationsTable(sortedData); // Renderowanie posortowanej tabeli
 }
 
 
