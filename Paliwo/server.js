@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000; // Use process.env.PORT for Render or def
 
 const corsOptions = {
     origin: "https://revdev.top",  // Allow requests from your site
-    methods: "GET, POST",
+    methods: "GET, POST, DELETE",
     allowedHeaders: "Content-Type"
 };
 
@@ -93,6 +93,33 @@ app.get('/api/backups', (req, res) => {
         }
         res.json(files);
     });
+});
+
+// Endpoint do pobierania konkretnego backupu
+app.get('/api/backups/:filename', (req, res) => {
+    const filename = req.params.filename;
+    const backupPath = path.join(backupsDir, filename);
+
+    if (!fs.existsSync(backupPath)) {
+        return res.status(404).json({ error: 'Backup file not found' });
+    }
+
+    // Wyślij plik do pobrania
+    res.download(backupPath);
+});
+
+// Endpoint do usuwania backupu
+app.delete('/api/backups/:filename', (req, res) => {
+    const filename = req.params.filename;
+    const backupPath = path.join(backupsDir, filename);
+
+    if (!fs.existsSync(backupPath)) {
+        return res.status(404).json({ error: 'Backup file not found' });
+    }
+
+    // Usuń plik
+    fs.unlinkSync(backupPath);
+    res.json({ message: 'Backup deleted successfully!' });
 });
 
 // Endpoint do przywracania backupu
