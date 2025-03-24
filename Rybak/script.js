@@ -119,6 +119,84 @@ function drop(e) {
   }
 }
 
+// Zapobiegamy przeciąganiu samej beczki
+const beczka = document.getElementById("beczka");
+beczka.setAttribute('draggable', 'false');
+beczka.addEventListener("dragover", allowDrop);
+beczka.addEventListener("dragleave", function () {
+  this.classList.remove("highlight");
+});
+beczka.addEventListener("drop", drop);
+
+let currentDragged = null;
+let touchOffsetX = 0;
+let touchOffsetY = 0;
+
+function handleTouchStart(e) {
+  currentDragged = e.currentTarget;
+  const touch = e.touches[0];
+
+  // Pobierz pozycję elementu względem widoku
+  const rect = currentDragged.getBoundingClientRect();
+
+  // Oblicz przesunięcie palca względem lewego górnego rogu elementu
+  touchOffsetX = touch.clientX - rect.left;
+  touchOffsetY = touch.clientY - rect.top;
+
+  // Ustaw pozycję absolutną i podnieś element na wierzch
+  currentDragged.style.position = "absolute";
+  currentDragged.style.zIndex = "1000";
+}
+
+function handleTouchMove(e) {
+  if (!currentDragged) return;
+  e.preventDefault();
+
+  const touch = e.touches[0];
+
+  // Oblicz nową pozycję elementu
+  const x = touch.clientX - touchOffsetX;
+  const y = touch.clientY - touchOffsetY;
+
+  // Ustaw nową pozycję
+  currentDragged.style.left = `${x}px`;
+  currentDragged.style.top = `${y}px`;
+}
+
+function handleTouchEnd(e) {
+  if (!currentDragged) return;
+
+  const beczka = document.getElementById("beczka");
+  const beczkaRect = beczka.getBoundingClientRect();
+  const rybaRect = currentDragged.getBoundingClientRect();
+
+  // Sprawdź, czy element został upuszczony na beczkę
+  if (
+    rybaRect.left < beczkaRect.right &&
+    rybaRect.right > beczkaRect.left &&
+    rybaRect.top < beczkaRect.bottom &&
+    rybaRect.bottom > beczkaRect.top
+  ) {
+    const cena = parseFloat(currentDragged.getAttribute("data-cena"));
+    if (!isNaN(cena)) {
+      dodajDoSalda(cena);
+    }
+    beczka.classList.add("highlight");
+    setTimeout(() => beczka.classList.remove("highlight"), 300);
+    addFishToList(currentDragged);
+  }
+
+  // Przywróć domyślne style
+  currentDragged.style.position = "";
+  currentDragged.style.left = "";
+  currentDragged.style.top = "";
+  currentDragged.style.zIndex = "";
+  currentDragged = null;
+}
+
+
+
+
 
 // Modyfikacja funkcji setupDragAndTouch
 function setupDragAndTouch() {
@@ -172,85 +250,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
-
-
-
-// Zapobiegamy przeciąganiu samej beczki
-const beczka = document.getElementById("beczka");
-beczka.setAttribute('draggable', 'false');
-beczka.addEventListener("dragover", allowDrop);
-beczka.addEventListener("dragleave", function () {
-  this.classList.remove("highlight");
-});
-beczka.addEventListener("drop", drop);
-
-// Obsługa dotyku (mobile)
-let currentDragged = null;
-let touchOffsetX = 0;
-let touchOffsetY = 0;
-
-function handleTouchStart(e) {
-  currentDragged = e.currentTarget;
-  const touch = e.touches[0];
-  const rect = currentDragged.getBoundingClientRect();
-  touchOffsetX = touch.clientX - rect.left;
-  touchOffsetY = touch.clientY - rect.top;
-  currentDragged.style.position = "absolute";
-  currentDragged.style.zIndex = "1000";
-}
-
-function handleTouchMove(e) {
-  if (!currentDragged) return;
-  e.preventDefault();
-  const touch = e.touches[0];
-  const x = touch.clientX - touchOffsetX;
-  const y = touch.clientY - touchOffsetY;
-  currentDragged.style.left = `${x}px`;
-  currentDragged.style.top = `${y}px`;
-}
-
-function handleTouchEnd(e) {
-  if (!currentDragged) return;
-  const beczka = document.getElementById("beczka");
-  const beczkaRect = beczka.getBoundingClientRect();
-  const rybaRect = currentDragged.getBoundingClientRect();
-  
-  if (
-    rybaRect.left < beczkaRect.right &&
-    rybaRect.right > beczkaRect.left &&
-    rybaRect.top < beczkaRect.bottom &&
-    rybaRect.bottom > beczkaRect.top
-  ) {
-    const cena = parseFloat(currentDragged.getAttribute("data-cena"));
-    if (!isNaN(cena)) {
-      dodajDoSalda(cena);
-    }
-    beczka.classList.add("highlight");
-    setTimeout(() => beczka.classList.remove("highlight"), 300);
-    // Dodaj rybę do listy
-    addFishToList(currentDragged);
-  }
-  currentDragged.style.position = "";
-  currentDragged.style.left = "";
-  currentDragged.style.top = "";
-  currentDragged.style.zIndex = "";
-  currentDragged = null;
-}
-
-// Funkcja, która dodaje eventy do ryb (zarówno dla dotyku jak i drag & drop)
-function setupDragAndTouch() {
-  document.querySelectorAll(".ryba-container").forEach(ryba => {
-    // Obsługa dotyku
-    ryba.addEventListener("touchstart", handleTouchStart, false);
-    ryba.addEventListener("touchmove", handleTouchMove, false);
-    ryba.addEventListener("touchend", handleTouchEnd, false);
-    // Obsługa drag & drop (desktop)
-    ryba.addEventListener("dragstart", function (e) {
-      e.dataTransfer.setData("text/plain", this.id);
-    });
-  });
-}
 // Funkcja do rozwijania/zamykania kategorii ryb (tylko jedna kategoria w tym samym czasie)
 function toggleRyby(kategoriaId) {
   const allRybyContainers = document.querySelectorAll('.ryby');
@@ -323,75 +322,60 @@ function saveCategoryState(kategoriaId, isActive) {
 // Funkcja do rozwijania/zamykania kategorii (tylko jedna kategoria w tym samym czasie)
 function toggleRyby(kategoriaId) {
   const allRybyContainers = document.querySelectorAll('.ryby');
-  const allCategoryContainers = document.querySelectorAll('.kategoria');  // Całe kontenery kategorii
-  const allCategoryButtons = document.querySelectorAll('.toggle');  // Wszyscy przyciski kategorii
+  const allCategoryContainers = document.querySelectorAll('.kategoria');
+  const allCategoryButtons = document.querySelectorAll('.toggle');
 
-  // Zamknięcie wszystkich rozwiniętych kategorii i ukrycie wszystkich innych kontenerów
   allRybyContainers.forEach(container => {
     if (container.id !== kategoriaId) {
-      container.style.maxHeight = null; // Zwijamy inne sekcje
-      container.style.width = '0'; // Zmniejszamy szerokość innych sekcji
+      container.style.maxHeight = null;
+      container.style.width = '0';
     }
   });
 
-  // Ukrywamy wszystkie inne kategorie
   allCategoryContainers.forEach(container => {
     if (container.querySelector('.ryby').id !== kategoriaId) {
-      container.style.display = 'none';  // Ukrywamy inne kategorie
+      container.style.display = 'none';
     }
   });
 
-  // Pobieramy kontener ryb tej kategorii
   const kategoriaContainer = document.getElementById(kategoriaId);
-  
-  // Sprawdzamy stan rozwinięcia tej kategorii w localStorage
   let categoryState = JSON.parse(localStorage.getItem('categoryState')) || {};
-  const isActive = categoryState[kategoriaId] || false; // Czy ta kategoria jest aktywna?
+  const isActive = categoryState[kategoriaId] || false;
 
-  // Jeśli ta kategoria nie jest otwarta, to ją otwieramy
   if (isActive) {
-    kategoriaContainer.style.maxHeight = null; // Zwijamy sekcję
-    kategoriaContainer.style.width = '0'; // Zmniejszamy szerokość
-    // Przywracamy widoczność wszystkich przycisków kategorii
+    kategoriaContainer.style.maxHeight = null;
+    kategoriaContainer.style.width = '0';
     allCategoryButtons.forEach(button => {
-      button.style.display = 'block';  // Przywracamy widoczność przycisków
+      button.style.display = 'block';
     });
-    // Pokazujemy wszystkie ukryte kategorie
     allCategoryContainers.forEach(container => {
-      container.style.display = 'block'; // Przywracamy widoczność wszystkich kontenerów
+      container.style.display = 'block';
     });
-
-    // Zapisujemy stan jako zamknięty
     saveCategoryState(kategoriaId, false);
   } else {
-    kategoriaContainer.style.maxHeight = kategoriaContainer.scrollHeight + "px"; // Ustalamy wysokość na wysokość zawartości
-    kategoriaContainer.style.width = '100%'; // Zwiększamy szerokość do 100%
-    // Ukrywamy wszystkie przyciski kategorii, oprócz tego, który został kliknięty
+    kategoriaContainer.style.maxHeight = kategoriaContainer.scrollHeight + "px";
+    kategoriaContainer.style.width = '100%';
     allCategoryButtons.forEach(button => {
       if (button.getAttribute('onclick') !== `toggleRyby('${kategoriaId}')`) {
-        button.style.display = 'none';  // Ukrywamy inne przyciski
+        button.style.display = 'none';
       }
     });
-
-    // Zapisujemy stan jako otwarty
     saveCategoryState(kategoriaId, true);
   }
 }
 
 // Ładowanie zawartości ryb po załadowaniu strony
 document.addEventListener("DOMContentLoaded", () => {
-  loadFishContent();  // Ładowanie zawartości ryb z fish.html
-  updateFishList();   // Wczytanie listy ryb z localStorage
-  
-  // Czekamy chwilę, aby upewnić się, że wszystkie elementy są załadowane
+  loadFishContent();
+  updateFishList();
+
   setTimeout(() => {
-    // Sprawdzamy stany kategorii z localStorage i rozwijamy/zwijamy odpowiednie kategorie
     let categoryState = JSON.parse(localStorage.getItem('categoryState')) || {};
     document.querySelectorAll('.kategoria').forEach(kategoria => {
       const kategoriaId = kategoria.querySelector('.ryby').id;
       if (categoryState[kategoriaId]) {
-        toggleRyby(kategoriaId);  // Rozwijamy kategorię, jeśli jest zapisana jako otwarta
+        toggleRyby(kategoriaId);
       }
     });
-  }, 500); // Opóźnienie 500ms, możesz dostosować do własnych potrzeb
+  }, 500);
 });
