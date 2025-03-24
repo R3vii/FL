@@ -119,6 +119,63 @@ function drop(e) {
   }
 }
 
+
+// Modyfikacja funkcji setupDragAndTouch
+function setupDragAndTouch() {
+  document.querySelectorAll(".ryba-container").forEach(ryba => {
+    // Obsługa dotyku - teraz tylko kliknięcie
+    ryba.addEventListener("click", handleFishClick);
+    
+    // Zachowujemy drag & drop dla desktopów
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      ryba.addEventListener("dragstart", function(e) {
+        e.dataTransfer.setData("text/plain", this.id);
+      });
+    }
+  });
+}
+
+
+// Funkcja obsługująca kliknięcie ryby
+function handleFishClick(e) {
+  const rybaElement = e.currentTarget;
+  const cena = parseFloat(rybaElement.getAttribute("data-cena"));
+  
+  if (!isNaN(cena)) {
+    dodajDoSalda(cena);
+    addFishToList(rybaElement);
+    
+    // Animacja "wrzucenia do beczki"
+    rybaElement.classList.add("fish-throw");
+    setTimeout(() => {
+      rybaElement.classList.remove("fish-throw");
+    }, 500);
+  }
+}
+
+// Dodaj odpowiednie style CSS
+const style = document.createElement('style');
+style.textContent = `
+  @media (max-width: 767px) {
+    .ryba-container {
+      cursor: pointer;
+    }
+    .fish-throw {
+      animation: throwAnimation 0.5s forwards;
+    }
+    @keyframes throwAnimation {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(0.5) translateY(100px); opacity: 0; }
+    }
+  }
+`;
+document.head.appendChild(style);
+
+
+
+
+
 // Zapobiegamy przeciąganiu samej beczki
 const beczka = document.getElementById("beczka");
 beczka.setAttribute('draggable', 'false');
