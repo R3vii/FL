@@ -9,13 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lista przedmiotów i ich szanse na wypadnięcie
     const items = [
-        { name: "Trawnikowe Światła", img: "TrawnikoweSwiatla.png", chance: 1.34 },
-        { name: "Czerwone Światła", img: "CzerwoneSwiatla.png", chance: 3.63 },
-        { name: "Głęboko Żółte Światła", img: "GlebokoZolteSwiatla.png", chance: 17.83 },
-        { name: "Fioletowe Światła", img: "FioletoweSwiatla.png", chance: 77.20 },
-        { name: "Ciemnoniebieskie Światła", img: "CiemnoNiebieskieSwiatla.png", chance: 17.83 },
-        { name: "Różowe Światła", img: "FioletoweSwiatla.png", chance: 77.20 },
-        { name: "Głęboko Żółte Światła", img: "GlebokoZolteSwiatla.png", chance: 17.83 },
+        { name: "Niebieskie Światła", img: "Niebieskie.png", chance: 2 },
+        { name: "Zielone Światła", img: "Zielone.png", chance: 4.5 },
+        { name: "Różowe Światła", img: "RóżoweSwiatla.png", chance: 4.5 },
+        { name: "Białe Światła", img: "BialeSwiatla.png", chance: 15.33 },
+        { name: "Żółte Światła", img: "ZolteSwiatla.png", chance: 73.67 },
     ];
 
     // Funkcja losująca przedmiot na podstawie szans
@@ -55,8 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let itemWidth = document.querySelector(".item").offsetWidth + 0;
         let totalWidth = itemWidth * 100; // Całkowita szerokość
 
-        // Losowanie końcowej pozycji w przedziale od -9600px do -9700px
-        let finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
+        let finalX;
+        if (window.innerWidth <= 768 && window.inderWidth > 520) {
+            finalX = Math.floor(Math.random() * (4906 - 4810 + 1)) + 4810; // Inny przedział dla mniejszych ekranów
+        } 
+        else if (window.innerWidth <= 520) {
+            finalX = Math.floor(Math.random() * (4089 - 4010 + 1)) + 4010; // Standardowy przedział
+        }
+        else {
+            finalX = Math.floor(Math.random() * (13260 - 13135 + 1)) + 13135;
+        }
         finalX = -finalX; // Przekształcamy na wartość ujemną
 
         // Animacja przesuwania (przyspieszanie i zwalnianie)
@@ -116,3 +122,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     openCaseButton.addEventListener("click", openCase);
 });
+
