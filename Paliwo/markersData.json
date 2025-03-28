@@ -4,20 +4,20 @@
     "lat": 2450.5,
     "lng": 4531,
     "title": "Stacja Mirror",
-    "fuelPrice": "8.29 $",
-    "dieselPrice": "2.57 $",
-    "addedBy": "ADIBIX",
-    "lastUpdated": "2025-03-23T22:48:06.073Z"
+    "fuelPrice": "4.58 $",
+    "dieselPrice": "3.54 $",
+    "addedBy": "R3vii",
+    "lastUpdated": "2025-03-26T23:25:13.944Z"
   },
   {
     "id": "stacja_2",
     "lat": 1991.62,
     "lng": 4292.87,
     "title": "Stacja Tuner",
-    "fuelPrice": "4.00 $",
-    "dieselPrice": "2.57 $",
-    "addedBy": "ADIBIX",
-    "lastUpdated": "2025-03-23T22:48:26.253Z"
+    "fuelPrice": "5.22 $",
+    "dieselPrice": "4.01 $",
+    "addedBy": "R3vii",
+    "lastUpdated": "2025-03-27T19:48:51.952Z"
   },
   {
     "id": "stacja_3",
@@ -114,10 +114,10 @@
     "lat": 3195.25,
     "lng": 2572.5,
     "title": "Stacja Richman",
-    "fuelPrice": "7.89 $",
-    "dieselPrice": "4.74 $",
-    "addedBy": "ADIBIX",
-    "lastUpdated": "2025-03-23T22:55:24.302Z"
+    "fuelPrice": "4.64 $",
+    "dieselPrice": "3.94 $",
+    "addedBy": "R3vii",
+    "lastUpdated": "2025-03-27T22:44:47.467Z"
   },
   {
     "id": "stacja_13",
@@ -144,20 +144,20 @@
     "lat": 4493.62,
     "lng": 3787.62,
     "title": "Stacja Pustynia Grand Senora",
-    "fuelPrice": "4.23 $",
-    "dieselPrice": "4.64 $",
+    "fuelPrice": "5.05 $",
+    "dieselPrice": "4.98 $",
     "addedBy": "R3vii",
-    "lastUpdated": "2025-03-23T23:19:31.653Z"
+    "lastUpdated": "2025-03-27T23:02:04.658Z"
   },
   {
     "id": "stacja_16",
     "lat": 4407.75,
     "lng": 3909.87,
     "title": "Stacja Mirek",
-    "fuelPrice": "7.48 $",
-    "dieselPrice": "4.28 $",
+    "fuelPrice": "4.23 $",
+    "dieselPrice": "5.01 $",
     "addedBy": "R3vii",
-    "lastUpdated": "2025-03-23T23:18:15.672Z"
+    "lastUpdated": "2025-03-27T23:01:31.182Z"
   },
   {
     "id": "stacja_17",
