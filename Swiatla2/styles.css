@@ -17,10 +17,8 @@ body {
 
 .case {
     position: relative;
-    width: 90%; /* Ustalamy szerokość na 90% szerokości ekranu */
-    max-width: 750px; /* Maksymalna szerokość 750px */
-    height: auto; /* Wysokość dopasowuje się do zawartości */
-    aspect-ratio: 5 / 1; /* Zachowanie proporcji 5:1 */
+    width: 750px;
+    height: 150px;
     overflow: hidden;
     border-radius: 12px;
     border: 3px solid rgba(255, 255, 255, 0.3);
@@ -29,10 +27,9 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
     white-space: nowrap;
     backdrop-filter: blur(10px);
-    padding: 10px; /* Dodajemy padding, aby zawartość nie była zbyt blisko krawędzi */
-    margin: 20px 0; /* Dajemy trochę odstępu od innych elementów */
 }
 
 /* Responsywność */
@@ -163,7 +160,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('Background.png') no-repeat center center;
+    background: url('background2.png') no-repeat center center;
     background-size: cover;
     filter: blur(3px); /* Duże rozmycie */
     opacity: 0.1; /* Przyciemnienie */
@@ -303,6 +300,7 @@ html, body {
         object-fit: cover; /* Zapewnienie dobrego dopasowania */
     }
 }
+
 
 
 
