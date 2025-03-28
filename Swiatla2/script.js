@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Głęboko Żółte Światła", img: "GlebokoZolteSwiatla.png", chance: 1.87 },
         { name: "Fioletowe Światła", img: "FioletoweSwiatla.png", chance: 1.32 },
         { name: "Ciemnoniebieskie Światła", img: "CiemnoNiebieskieSwiatla.png", chance: 20.27 },
-        { name: "Różowe Światła", img: "RóżoweŚwiatła.png", chance: 19.73 },
+        { name: "Głęboko Różowe Światła", img: "RóżoweŚwiatła.png", chance: 19.73 },
         { name: "Pomarańczowe Światła", img: "PomaranczoweSwiatla.png", chance: 56.27 },
     ];
 
