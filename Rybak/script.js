@@ -1,3 +1,5 @@
+let tutorialPopup = null; // Śledzimy czy popup jest już otwarty
+
 // Pobieranie salda z localStorage lub ustawienie na 0
 let saldo = parseFloat(localStorage.getItem('saldo')) || 0;
 document.getElementById('saldo').innerText = `Saldo: ${saldo.toFixed(2)}$`;
@@ -5,9 +7,11 @@ document.getElementById('saldo').innerText = `Saldo: ${saldo.toFixed(2)}$`;
 // Globalny obiekt do przechowywania liczby ryb w beczce
 let fishCounter = {};
 
-// Funkcja aktualizująca wyświetlane saldo
+// Modyfikacja funkcji dodajDoSalda, aby obsługiwała również odejmowanie
 function dodajDoSalda(kwota) {
   saldo += kwota;
+  // Zabezpieczenie przed ujemnym saldem
+  saldo = Math.max(saldo, 0);
   localStorage.setItem('saldo', saldo);
   document.getElementById('saldo').innerText = `Saldo: ${saldo.toFixed(2)}$`;
 }
@@ -378,4 +382,176 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, 500);
+});
+
+// Funkcja aktualizująca listę ryb w beczce
+function updateFishList() {
+  // Wczytujemy dane z localStorage
+  const storedFishCounter = localStorage.getItem('fishCounter');
+  
+  if (storedFishCounter) {
+    fishCounter = JSON.parse(storedFishCounter);
+  }
+
+  const fishListDiv = document.getElementById('fishList');
+  const ul = fishListDiv.querySelector('ul');
+  ul.innerHTML = ''; // Czyścimy bieżącą listę
+
+  for (let fishName in fishCounter) {
+    const li = document.createElement('li');
+    
+    // Tworzymy kontener dla nazwy ryby i przycisku usuwania
+    const fishItemContainer = document.createElement('div');
+    fishItemContainer.style.display = 'flex';
+    fishItemContainer.style.justifyContent = 'space-between';
+    fishItemContainer.style.alignItems = 'center';
+    fishItemContainer.style.marginBottom = '5px';
+    
+    // Dodajemy nazwę ryby
+    const fishNameSpan = document.createElement('span');
+    fishNameSpan.innerText = `${fishName}: ${fishCounter[fishName]}`;
+    
+    // Dodajemy przycisk usuwania
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '<img src="xx.png" alt="Usuń" style="width:20px; height:20px;">';
+    deleteBtn.style.background = 'none';
+    deleteBtn.style.border = 'none';
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.style.padding = '0';
+    deleteBtn.title = 'Usuń jedną rybę';
+    
+    // Dodajemy event listener do przycisku usuwania
+    deleteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      removeFishFromList(fishName);
+    });
+    
+    // Łączymy elementy
+    fishItemContainer.appendChild(fishNameSpan);
+    fishItemContainer.appendChild(deleteBtn);
+    li.appendChild(fishItemContainer);
+    ul.appendChild(li);
+  }
+}
+
+// Funkcja usuwająca jedną rybę z listy i odejmująca odpowiednią kwotę od salda
+function removeFishFromList(fishName) {
+  if (fishCounter[fishName]) {
+    // Znajdź odpowiednią rybę w DOM, aby pobrać jej cenę
+    const allFishElements = document.querySelectorAll('.ryba-container');
+    let fishPrice = 0;
+    
+    // Szukamy elementu ryby o pasującej nazwie
+    allFishElements.forEach(fishElement => {
+      const currentFishName = fishElement.querySelector('.ryba-nazwa').innerText;
+      if (currentFishName === fishName) {
+        fishPrice = parseFloat(fishElement.getAttribute('data-cena'));
+      }
+    });
+
+    // Zmniejsz liczbę ryb
+    fishCounter[fishName]--;
+    
+    // Odejmij odpowiednią kwotę od salda
+    if (fishPrice > 0) {
+      dodajDoSalda(-fishPrice); // Używamy ujemnej wartości, aby odjąć od salda
+    }
+    
+    // Jeśli liczba ryb tego typu spadnie do 0, usuwamy wpis
+    if (fishCounter[fishName] <= 0) {
+      delete fishCounter[fishName];
+    }
+    
+    // Zapisujemy zmodyfikowaną listę ryb do localStorage
+    localStorage.setItem('fishCounter', JSON.stringify(fishCounter));
+    
+    // Aktualizujemy wyświetlaną listę ryb
+    updateFishList();
+  }
+}
+
+
+
+
+
+// T U T O R I A L
+function showTutorial() {
+  if (tutorialPopup) return;
+  
+  const overlay = document.createElement('div');
+  overlay.className = 'tutorial-overlay';
+  document.body.appendChild(overlay);
+  
+  const popup = document.createElement('div');
+  popup.className = 'tutorial-popup';
+  popup.innerHTML = `
+    <button class="close-tutorial" onclick="closeTutorial()">×</button>
+    <h2>Kalkulator Rybaka</h2>
+    
+    <h3>Czym jest kalkulator rybaka?</h3>
+    <p>Kalkulator rybaka służy do podsumowania ile zarobi się z danego połowu. Jeśli interesuje nas przyszły zysk z ryb które złowiliśmy, dodajemy je do złapanych a kalkulator podlicza ile kaski nam wpłynie na konto.</p>
+    
+    <h3>Jak korzystać z kalkulatora rybaka?</h3>
+    <ol>
+      <li>Klikamy na łowisko na którym łowimy, by pojawiła się lista ryb, które możemy na danym łowisku złowić</li>
+      <li>Klikamy na rybę, którą udało nam się złowić. Każda ryba dodaje odpowiednią kwotę do twojego salda</li>
+      <li>Kalkulator posiada listę, która znajduje się po prawej stronie. Kliknij na ikonę <span class="red-x">X</span> by usunąć pojedynczą rybę z listy</li>
+      <li>Reset salda - przycisk "Resetuj saldo" czyści całą historię złapanych ryb (usuwa wszystkie ryby z listy)</li>
+    </ol>
+  `;
+  
+  document.body.appendChild(popup);
+  tutorialPopup = popup;
+  
+  setTimeout(() => {
+    overlay.style.display = 'block';
+    popup.style.display = 'block';
+  }, 100);
+}
+
+function closeTutorial() {
+  if (!tutorialPopup) return;
+  
+  const overlay = document.querySelector('.tutorial-overlay');
+  if (overlay) overlay.style.display = 'none';
+  
+  tutorialPopup.style.display = 'none';
+  removeHighlights();
+  
+  setTimeout(() => {
+    if (overlay) overlay.remove();
+    tutorialPopup.remove();
+    tutorialPopup = null;
+  }, 300);
+}
+
+// Funkcja podświetlająca elementy interfejsu
+function highlightElements() {
+  const elementsToHighlight = [
+    document.querySelector('.kategoria'),
+    document.querySelector('.ryba-container'),
+    document.getElementById('beczka'),
+    document.querySelector('#fishList button'),
+    document.getElementById('resetBtn')
+  ];
+  
+  elementsToHighlight.forEach(el => {
+    if (el) el.classList.add('tutorial-highlight');
+  });
+}
+
+// Funkcja usuwająca podświetlenia
+function removeHighlights() {
+  document.querySelectorAll('.tutorial-highlight').forEach(el => {
+    el.classList.remove('tutorial-highlight');
+  });
+}
+
+document.addEventListener('click', (e) => {
+  const popup = tutorialPopup;
+  const overlay = document.querySelector('.tutorial-overlay');
+  
+  if (overlay && popup && e.target === overlay) {
+    closeTutorial();
+  }
 });
