@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wskaźnik Postępu Finansowego</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Postęp w Zbieraniu Funduszy</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="data-summary">
+            <div class="data-item">
+                <span class="label">Posiadane:</span>
+                <span class="value" id="currentAmount"></span>
+            </div>
+            <div class="data-item">
+                <span class="label">Cel:</span>
+                <span class="value" id="neededAmount">$200,000.00</span>
+            </div>
+        </div>
+
+        <div class="percentage-display">
+            <span id="percentageText"></span>
+        </div>
+
+        <div id="lastUpdated" class="last-updated"></div> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
