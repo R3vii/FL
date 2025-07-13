@@ -1,5 +1,5 @@
 // Dane wejściowe (pozostają te same)
-const possessedAmount = 31175.40;
+const possessedAmount = 37677.40;
 const neededAmount = 200000.00;
 
 // Obliczanie procentu
