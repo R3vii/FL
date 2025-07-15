@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     percentageTextElement.textContent = percentage.toFixed(2) + '%';
 
     // 2. Dodanie informacji o ostatniej aktualizacji
-    const specificTime = '19:49'; // Czas podany przez użytkownika
+    const specificTime = '03:29'; // Czas podany przez użytkownika
     if (lastUpdatedElement) {
         lastUpdatedElement.textContent = `Ostatnia aktualizacja: ${specificTime}`;
     }
