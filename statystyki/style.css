@@ -23,10 +23,47 @@ body {
 
 h1 {
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* Zmniejszono margines, aby zrobić miejsce na nowy napis */
     font-size: 36px;
     text-shadow: 0 0 5px #ff5722; /* Pomarańczowy/Czerwony cień typowy dla neonu */
 }
+
+/* --- Nowa sekcja: Neonowy napis --- */
+.neon-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff; /* Biały tekst bazowy */
+    text-shadow: 
+        0 0 7px #fff,    /* Mały wewnętrzny blask */
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #00ffff, /* Niebiesko-turkusowy blask */
+        0 0 82px #00ffff,
+        0 0 92px #00ffff,
+        0 0 102px #00ffff,
+        0 0 151px #00ffff;
+    margin-bottom: 40px; /* Odstęp od paska postępu */
+    animation: flicker 1.5s infinite alternate; /* Dodanie animacji mrugania */
+}
+
+/* Animacja mrugania dla efektu neonu */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 7px #fff,    
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #00ffff, 
+            0 0 82px #00ffff,
+            0 0 92px #00ffff,
+            0 0 102px #00ffff,
+            0 0 151px #00ffff;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }
+}
+
 
 /* --- Sekcja Paska Postępu (Neonowy Bar) --- */
 .progress-container {
