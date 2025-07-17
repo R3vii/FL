@@ -1,5 +1,5 @@
 // Dane wejściowe (pozostają te same)
-const possessedAmount = 140659.95;
+const possessedAmount = 188056.47;
 const neededAmount = 200000.00;
 
 // Obliczanie procentu
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     percentageTextElement.textContent = percentage.toFixed(2) + '%';
 
     // 2. Dodanie informacji o ostatniej aktualizacji
-    const specificTime = '03:29'; // Czas podany przez użytkownika
+    const specificTime = '02:56'; // Czas podany przez użytkownika
     if (lastUpdatedElement) {
         lastUpdatedElement.textContent = `Ostatnia aktualizacja: ${specificTime}`;
     }
