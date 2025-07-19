@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wskaźnik Postępu Finansowego</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiadomość</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .message-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .message-box p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Postęp w Zbieraniu Funduszy</h1>
-        <div class="neon-text">JUŻ DZISIAJ BĘDZIESZ MIAŁ 200K</div> 
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div class="data-summary">
-            <div class="data-item">
-                <span class="label">Posiadane:</span>
-                <span class="value" id="currentAmount"></span>
-            </div>
-            <div class="data-item">
-                <span class="label">Cel:</span>
-                <span class="value" id="neededAmount">$200,000.00</span>
-            </div>
-        </div>
-
-        <div class="percentage-display">
-            <span id="percentageText"></span>
-        </div>
-
-        <div id="lastUpdated" class="last-updated"></div> 
-    </div>
-
-    <script src="script.js"></script>
+  <div class="message-box">
+    <p>
+      Hej, ogólnie to mało zrobiłem. Ale długo się męczyłem nad tym by dało radę razem być na tym serwerze.<br><br>
+      I teraz działa to jakoś przez wifi.<br><br>
+      Ale ogólnie dodałem "admina", spawnowanie pojazdów i licznik ile się jedzie km na godzinę.<br><br>
+      Zostało mi jeszcze dużo, dużo. Ale zrobię to z rana.
+    </p>
+  </div>
 </body>
 </html>
