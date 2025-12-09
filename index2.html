@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Macie jak to wygląda</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 30px;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Styl wspólny dla pudełek */
+.box {
+    margin: 20px 0;
+    padding: 20px;
+    border: 10px solid #333;
+    background: white;
+}
+
+/* Dwa tryby box modelu */
+.content-box {
+    box-sizing: content-box;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+/* Podpis */
+.label {
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Macie jak to wygląda</h1>
+
+<h2>1. box-sizing: content-box (tak jak w zadaniu)</h2>
+<div class="label">width: 300px → cała szerokość: 360px</div>
+<div class="box content-box" style="width: 300px;">
+    To pudełko ma szerokość *300px*, ale ponieważ padding i border się dodają do środka, 
+    całkowita szerokość wynosi **360px**
+</div>
+
+<h2>2. box-sizing: border-box</h2>
+<div class="label">width: 300px → cała szerokość: 300px</div>
+<div class="box border-box" style="width: 300px;">
+    Tutaj *300px zawiera padding + border*  
+    Dlatego rzeczywista szerokość nadal wynosi **300px** — nic się nie powiększa
+</div>
+
+</div>
+
+</body>
+</html>
