@@ -138,6 +138,50 @@ Well... zacznijmy liczyć: <br>
 
 
 
+<div class="hero-text">
+<h2>Zadanie 4</h2>
+<p>Treść: Tera, formatowanie zdjęć w css. Całkiem proste</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie4.png" alt="zadanie4"/>
+</div>
+<p>Zacznę od tego, że powiem wam, że piszę te zadanie na telefonie na tych metodach numerycznych, także wybaczcie jak coś będzie wyglądać słabo, nie moja wina<br>
+</p>
+<h4>Jak zrobić zadanie?</h4>
+<p>
+No to tak mamy jakąś galerię zdjęć, widzimy że mamy tam 3 zdjęcia. W sumie widzicie jak to wygląda<br>
+Widzimy również, że wszystkie znajdują się w galerii, która jest w klasie *gallery*<br>
+To właśnie, w odwołaniu do niej będziemy pisać css. Zaczynamy... Jak wiadomo css korzysta z takich bloczków, które są w nawiasach klamerkowych <strong> o w takich: {...} </strong> <br>
+
+By odwołać się do całej galerii, wpisujemy przed tymi klamerkami nazwę klasy z kropką. Może po prostu pokaże wam fotkę i wyjaśnię co się tam dzieje <br>
+</p>
+
+    <img id="coverImage" src="zadanie41.png" alt="zadanie41"/>
+
+<p>
+No to tak, jak już mówiłem <strong> .galery{...} </strong> bierze się z tego, że odwołujemy się do klasy i zmieniamy ją, w zadaniu mamy, że CSS ma ustawić zdjęcia w 3 kolumnach na desktopie <br>
+<strong> display: grid; </strong> - Dzięki temu, zdjęcia będą poukładane w siatce <br>
+<strong> grid-template-columns: repeat(3,1fr); </strong> - W skrócie, zrób 3 kolumny, każda o równej szerokości. Ta trójka sprawia, że powtarza 3 razy, a te 1fr to że 1 część dostępnej przestrzeni (fr = fraction) <br>
+<strong> gap: 12px; </strong> - W skrócie, zrób odstęp pomiędzy zdjęciami, który ma 12px.. <br>
+Skoro, to udało nam się zrobić, to teraz pasowałoby zachować proporcję tych zdjęć, dlatego musimy się odwołać do zdjęcia. Jak to zrobić??? W prosty sposób:<br>
+<strong> .gallery img {...} </strong> <br>
+Może lepiej będzie jak dam zdjęcie i wyjaśnię co i jak, jak wcześniej 
+</p>
+    <img id="coverImage" src="zadanie42.png" alt="zadanie42"/>
+<p>
+<strong> width: 100%; </strong> - Każde zdjęcie, będzie miało szerokość swojej kolumny <br>
+<strong> height: auto;</strong> - zachowuje proporcje obrazka, bez tego by się rozciągnęło <br>
+<strong> display: block; </strong> - domyślnie img ma taką przerwę, ja to w sumie przy prawie każdym zdjęciu daje, zajebiście usuwa te przerwy i wygląda profeszional <br>
+Ostatnia rzecz jaka nam została to zrobienie tego na telegon (w jednej kolumnie 500px). Pewnie większość z was ma teraz takie wtf... Jak to gówno wyrównać na telefonach. Powiem wam, że prosto. Używamy czegoś takiego jak <strong>@media (max-width: [...]px) {...}</strong> , ogólnie @media sprawia, że możemy zmieniać rozdzielczość oraz inne rzeczy na stronce, gdy urzadzenie korzysta z innej rozdzielczości 
+</p>
+    <img id="coverImage" src="zadanie43.png" alt="zadanie43"/>
+<p>
+<strong> @media (max-width: 500px) {...}; </strong> - to co już wyjaśniłem, kod działa tylko wtedy gdy ekran ma maksymalnie 500px, czyli np. telefon
+<strong> grid-template-columns: 1fr; </strong> - oznacza, zrób tylko jedną kolumnę na całą szerokość 
+<br>
+No to tak, mam nadzieję że wszystko jasne.. <strong>jasne czy nie?</strong>
+<br>
+</p>
 
 
 
