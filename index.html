@@ -219,9 +219,85 @@ Zrobię to w ten sam sposób jak poprzednio by zachować porządek: <br>
 Mam nadzieję, że to wszystko jest w miarę logiczne. Nie było tutaj za bardzo nic skomplikowanego, jedynie trzeba rozumieć jak działa rozstawienie rzeczy w tym CSS, a tak poza tym to not bad
 </p>
 
+
+
+<div class="hero-text">
+<h2>Zadanie 6</h2>
+<p>Treść: "Masz następujący fragment HTML"</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie6.png" alt="zadanie6"/>
+</div>
+<p>Dobra, po prostu w tym zadaniu tworzymy CSS. Zwróćmy uwagę na to jak wygląda html, widzimy tam że mamy header, h1, nav, ul, li itd. <br>
+to właśnie je, będziemy edytować w naszym css.</p>
+<h4>Jak zrobić zadanie?</h4>
+<p>
+    Zaczynajmy, mamy w pierwszym poleceniu, ustawić .header jako kontener Flexbox. W drugim poleceniu jednak każą nam ułożyć elementy <br>
+    (h1 i .nav) w jednej linii, po przeciwnych stronach (lewo–prawo). Jak mamy to zrobić?? Użyjemy kilku rzeczy <br>
+
+</p>
+<div>
+    <div class="hero-media">
+    <img id="coverImage" src="Zadanie61.png" alt="Zadanie61"/>
+</div>
+<p>
+    <strong> .header {...}</strong> - odwołujemy się do header <br>
+    <strong> display: flex;</strong> - ustawia kontener jako Flexbox <br>
+    <br>
+    pewnie cię ciekawi, co to jest ten flexbox. W skrócie jest to taka zmiana kierunku układania się rzeczy. Jak go damy, to elementy <br>
+    zaczynają układać się obok siebie, dodatkowo możemy je łatwiej kontrolować. W tamtym zadaniu mamy w headerze logo oraz menu, więc to wiadomo <br>
+    że chceby mieć np. logo po lewej stronie a pasek menu po prawej <br> <br>
+    <strong> justify-content: space-between;</strong> - ustawia przedmioty w flexboxie po przeciwległych stronach. Jeden po lewej, drugi po prawej <br>
+    <strong> align-items: center;</strong> - również ustawia przedmioty, jednak wyrównuje je do środka. By wyglądały lepiej <br>
+<br>
+Zarówno <strong> align-items: center;</strong> jak i <strong> justify-content: space-between;</strong> wymagają flexboxa, czyli nie jesteśmy w stanie ich dać bez <strong> display: flex;</strong>
+    
+</p>
+<p> Także noo, pierwsze dwa podpunkty mamy już zrobione</p>
+
+<div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie62.png" alt="zadanie62"/>
 </div>
 
+<p>Następnie mamy ustawić elementy listy w .nav ul poziomo i usunąć punktory listy. Jak to robimy?? Prosto, odwołujemy się do nav <br>
+    Na początku mamy ustawić poziomo te rzeczy... można w sumie tutaj zastosować tak samo display: flex; By to wszystko trzymało się kupy i się nie rozjeżdżało <br>
+    No i reszta... cóż, zrobię tak jak robiłem:
+    <strong> .nav ul</strong> - odwołujemy się do sekcji nav, do listy (ul) <br>
+    <strong> display: flex; </strong> - Linki z listy ustawiają się obok siebie w jednej linii <br>
+    <strong> list-style: none;</strong> - to robi tyle, że usuwa nam kropki z ul <br>
+    <strong> gap: 20px;</strong> - dzięki temu, odstępy między linkami będą miały 20px <br>
+    <strong> padding: 0; , margin: 0;</strong> - czyści domyślne marginesy, żeby ul się nie rozszerzało <br>
+    <br>
+    Nie mam pojęcia czy coś więcej pisać na ten temat.. chyba wszystko jasne, staram się jak mogę. Cóż.... Lecimy dalej, w razie problemów kontakt dc: .r_e_v_i.
 
+</p>
+
+<div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie63.png" alt="zadanie63"/>
+</div>
+
+<p>Tutaj raczej będzie krótko, w następnym podpunkcie każą nam zrobić by się linki zaświecały na ciemno-zielony jak się na nie nakieruje <br>
+Robimy to w dość prosty sposób i to serio jest proste. Bierzemy sobie nasze linki, czyli odwołujemy się do .nav a (ponieważ tam są nasze linki) <br>
+no i dodajemy :hover  ... gdy to zrobimy to dana rzecz w środku, będzie się zmieniała po najechaniu na guzik. W tym wypadku chcemy by kolor się zmieniał <br>
+dlatego możemy zrobić wprost, color: #006400;<br>
+Chyba nie muszę tłumaczyć, o co tutaj chodzi, nic nie ma w tym skomplikowanego, także lecimy daleejjjj</p>
+
+<div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie64.png" alt="zadanie64"/>
+</div>
+<p>Mamy tutaj ostatni podpunkt zadania, mianowicie, przerobienie zadania na wersję telefonową, możemy sobie przekopiować rzeczy z tych kategorii na górzy <br>
+i zwyczajnie je pozmieniać, jakby niczego innego nie będziemy zmieniać tylko ułożenia na telefonie. Także ten</p>
+<strong> @media (max-width: 500px) {...}; </strong> - to co już wyjaśniłem, kod działa tylko wtedy gdy ekran ma maksymalnie 500px, czyli np. telefon <br> 
+<strong> flex-direction: column;</strong> - zmieniamy na column, ponieważ w zadaniu oczekują by układ przechodził w kolumnę. <br>
+<strong>align-items: flex-start;</strong> - wyrównanie do lewej, dodatkowo układ kolumnowy sprawia że logo jest na górze :b <br>
+<strong>gap: 10px;</strong> - daje odstęp na 10px <br>
+No i jeszcze te ostatnie (.nav ul) możemy zamienić teżna column oraz dać gap na 10px. By lepiej to wyglądało... <br>
+<br>
+To wszystko jeśli chodzi o to zadanie, ciężkie jest, ale następne jest o wiele wiele wiele prostsze :b
+</div>
 
 
 
