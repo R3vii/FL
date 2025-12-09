@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 html, body {
     height: 100%;
     margin: 0;
@@ -220,4 +221,5 @@ strong {
         font-size: 1rem;
         padding: 20px;
     }
+
 }
