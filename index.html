@@ -297,6 +297,80 @@ i zwyczajnie je pozmieniać, jakby niczego innego nie będziemy zmieniać tylko 
 No i jeszcze te ostatnie (.nav ul) możemy zamienić teżna column oraz dać gap na 10px. By lepiej to wyglądało... <br>
 <br>
 To wszystko jeśli chodzi o to zadanie, ciężkie jest, ale następne jest o wiele wiele wiele prostsze :b
+
+<div class="hero-text">
+<h2>Zadanie 7</h2>
+<p>Treść: MASZ TAKI KOD HTML"</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie7.png" alt="zadanie7"/>
+</div>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie71.png" alt="zadanie71"/>
+</div>
+
+<p>Pierwszym zadaniem jest wyjaśnienie, czemu akapit .highlight staje się zielony, a nie niebieski <br>
+Odpowiedź, może jest trochę pogmątana, ale postaram się wam wyjaśnić. Mamy tam trzy nadpisana. Pierwsze nadpisanie to ustawienie koloru #333, drugie ustawienie <br>
+koloru niebieskiego, a trzecie nadpisanie to ustawienie koloru zielonego. Czemu jest zielony a nie, niebieski? W skrócie to dlatego, że jest to <br>
+ostatnie nadpisanie, i nadpisuje niebieski kolor, kolorem zielonym... Ale tutaj wchodzą jakieś grubsze rzeczy których nie za bardzo sam rozumiem. Bo każde nadpisanie <br>
+ma jakieś tam wartości, i to ostatnie przypisanie czyli te z gwiazdką * pobiera wartości od tego poprzedniego, czyli ma takie same.... ale jest zasada, że jeśli mają <br>
+przypisania takie same wartości to wygrywa ten który jest niżej w kodzie. W tym wypadku, niżej w kodzie jest zielony i dlatego on wygrywa.. <br>
+Ciężko to wytłumaczyć prostymi słowami.. ale miejmy nadzieję, że będzie jakiś prosty przykład. W razie czego możecie sobie wkleić ten kod z kolokwium <br>
+do html i zobaczyć jak wam działa i może sami dobrze ocenicie, skąd się to wzięło</p>
+
+<br><br>
+<p>Drugim zadaniem jest zmiana CSS tak, aby .highlight było niebieskie bez important. Można to zrobić w dość łatwy sposób, dodając literę p przed hightlight.. czyli:
+<strong>.post p.highlight {
+  color: blue;
+}</strong>, jak dodacie tą literę p to wartość będzie większa i będzie niebieski zamiast zielonego.
+
+<br><br>
+Trzecim zadaniem jest sprawienie by wszystkie akapity w .post były czerwone oprócz .highlight <br>
+można tu zastować pewną rzecz, którą już pokazuje:
+</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie72.png" alt="zadanie72"/>
+</div>
+
+<p><strong>.post p.highlight {color: blue;} </strong>- Zawsze tekst będzie niebieski<br>
+<strong>.post p:not(.highlight) { color: red;}</strong>- Wszystkie p oprócz .highlight są czerwone<br>
+<br>
+Jak rozumiecie angielski to powinniście i to zrozumieć, jest tu zaprzeczenie, że jednak kod red pojawia się na takich p ze specjalnym tagiem..
+</p>
+
+
+<div class="hero-text">
+<h2>Zadanie 8</h2>
+<p>Treść: Masz przycisk"</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie8.png" alt="zadanie8"/>
+</div>
+
+<p>Zapewne część osób czytających z was robiła ze mną stronkę z obracającym się gorylem po nakierowaniu na niego. Więc dla was nie będzie to zadanie <br>
+jakieś ciężkie. Mamy przycisk, zwyczajny niczym nie wyróżniający się przycisk i chcemy zrobić by on pulsował. Co w takim razie trzeba zrobić? Oczywiście <br>
+zastosować @keyframes</p>
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie81.png" alt="zadanie81"/>
+</div>
+<p>Dla tych co nie wiedzą o co w tym chodzi, to już wam mówie, @keyframes to inaczej animacja. Nazywamy ją tutaj pulse i ustawiamy wartości. Żeby animacja była <br>
+zapętlona, musimy zrobić by 0% jak i 100% miało tą samą wartość. Ta animacja wygląda następująco, jeśli ma 0% to ma skale 1, jak ma 50% to skale 1.1, no i jak ma 100% <br>
+to ma skale znów 1. Teraz jak mamy animację, to pora ją przypisać do tego guzika</p>
+
+</div>
+    <div class="hero-media">
+    <img id="coverImage" src="zadanie82.png" alt="zadanie82"/>
+</div>
+<p>Mamy tutaj kilka rzeczy, które wyjaśnie: <br>
+    <strong> .btn:hover {...} </strong> - odwołanie do przedmiotu który ma klasę .btn (:hover dodajemy bo chcemy by się odpalało jak się najedzie na to) <br>
+    <strong> display: inline-block; </strong> - inline-block sprawia, że element zachowuje się jak inline, czyli może stać w linii z tekstem. W skrócie nie rozwala się <br>
+    <strong> animation: pulse 1.2s infinite ease-in-out; </strong> - animation to oczywiście animacja, potem zawiera nazwę animacji którą ma wykonywać, potem przez ile czasu <br>
+    następnie jak ma wykonywać? My daliśmy infinite, by cały czas działała. No i ease-in-out dla lepszej płynności. <br> <br>
+    W skrócie to tyle jeśli chodzi o to zadanie, nie ma tragedii, jest całkiem znośne. Tylko trza się nauczyć tych animców
+</p>
 </div>
 
 
