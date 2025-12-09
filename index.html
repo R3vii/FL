@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="pl">
-<head>
-<meta charset="utf-8">
+"utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Materiał na kolokwium</title>
 <link rel="stylesheet" href="style.css">
@@ -174,7 +171,8 @@ Może lepiej będzie jak dam zdjęcie i wyjaśnię co i jak, jak wcześniej
 <strong> display: block; </strong> - domyślnie img ma taką przerwę, ja to w sumie przy prawie każdym zdjęciu daje, zajebiście usuwa te przerwy i wygląda profeszional <br>
 Ostatnia rzecz jaka nam została to zrobienie tego na telegon (w jednej kolumnie 500px). Pewnie większość z was ma teraz takie wtf... Jak to gówno wyrównać na telefonach. Powiem wam, że prosto. Używamy czegoś takiego jak <strong>@media (max-width: [...]px) {...}</strong> , ogólnie @media sprawia, że możemy zmieniać rozdzielczość oraz inne rzeczy na stronce, gdy urzadzenie korzysta z innej rozdzielczości 
 </p>
-    <img id="coverImage" src="zadanie43.png" alt="zadanie43"/>
+<div class="hero-media">
+    <img id="coverImage" src="zadanie43.png" alt="zadanie43"/> </div>
 <p>
 <strong> @media (max-width: 500px) {...}; </strong> - to co już wyjaśniłem, kod działa tylko wtedy gdy ekran ma maksymalnie 500px, czyli np. telefon
 <strong> grid-template-columns: 1fr; </strong> - oznacza, zrób tylko jedną kolumnę na całą szerokość 
@@ -182,9 +180,6 @@ Ostatnia rzecz jaka nam została to zrobienie tego na telegon (w jednej kolumnie
 No to tak, mam nadzieję że wszystko jasne.. <strong>jasne czy nie?</strong>
 <br>
 </p>
-
-
-
 
 </div>
 
@@ -214,6 +209,11 @@ No to tak, mam nadzieję że wszystko jasne.. <strong>jasne czy nie?</strong>
 <img id="modalImage" src="" alt="Powiększone zdjęcie" style="width:100%;border-radius:10px"/>
 </div>
 </div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
 
 
 <script src="script.js"></script>
