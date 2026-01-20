@@ -193,6 +193,132 @@
                     </div>
 
 
+                <!-- zadanie 3 -->
+                <article class="task-article">
+                    <div class="task-header">
+                        <h2>Zadanie 3 GRUPA B</h2>
+                        <p class="task-description">KaLkUlAtOr.........."</p>
+                    </div>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3js.png" alt="zadanie3"/>
+                    </div>
+                    <p>
+                        No to zadanie trzecie, tym razem musimy zrobić kalkulator czterech podstawowych działań<br>
+                        Zacznijmy od tego, że trzeba zrobić formularz do wpisywania liczb. Tak jak w poprzednim zadaniu<br>
+                        zrobimy to w html, bo tam jest miejsce na takie rzeczy. JS to tylko obsługa<br>
+                    </p>
+                    
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3-1js.png" alt="zadanie3-1"/>
+                    </div>
+
+                    <p>
+                        Już tłumaczę co tu się dzieje:<br>
+                        <strong>&ltform id="calcForm"&gt</strong> - nasz formularz kalkulatora, dajemy mu id="calcForm" żeby się później do niego odwołać<br>
+                        <strong>&ltinput type="number" step="any" id="liczba1" required&gt</strong> - type="number" sprawia że można wpisywać tylko liczby<br>
+                        step="any" pozwala na wpisywanie liczb zmiennoprzecinkowych (np. 3.14), a required oznacza że pole musi być wypełnione<br>
+                        <strong>&ltinput type="number" step="any" id="liczba2" required&gt</strong> - to samo dla drugiej liczby<br>
+                        <strong>&ltbutton type="submit"&gtOblicz&lt/button&gt</strong> - nasz przycisk do obliczania<br>
+                        <strong>&ltdiv id="wyniki"&gt&lt/div&gt</strong> - tutaj będą się wyświetlać wyniki naszych obliczeń<br><br>
+
+                        A tak to wygląda na żywo:
+                    </p>
+
+                    =====================================
+                    <form id="calcForm">
+                        <label for="liczba1">Pierwsza liczba:</label><br>
+                        <input type="number" step="any" id="liczba1" required placeholder="Wpisz pierwszą liczbę"><br><br>
+                        
+                        <label for="liczba2">Druga liczba:</label><br>
+                        <input type="number" step="any" id="liczba2" required placeholder="Wpisz drugą liczbę"><br><br>
+                        
+                        <button type="submit">Oblicz</button>
+                    </form>
+                    
+                    <div id="wyniki"></div>
+                    =====================================
+
+                    <h3>Teraz czas na JS :DDD</h3>
+                    <p>Musimy sprawić żeby ten formularz działał i obliczał wszystko jak należy<br>
+                    Zacznijmy od pobrania elementów z HTML... identycznie jak w poprzednim zadaniu:</p>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3-2js.png" alt="zadanie3-2"/>
+                    </div>
+
+                    <p>
+                        <strong>const calcForm = document.getElementById("calcForm");</strong> - łapiemy cały formularz<br>
+                        <strong>const liczba1Input = document.getElementById("liczba1");</strong> - pierwsze pole z liczbą<br>
+                        <strong>const liczba2Input = document.getElementById("liczba2");</strong> - drugie pole z liczbą<br>
+                        <strong>const wynikiDiv = document.getElementById("wyniki");</strong> - div gdzie będą wyniki<br>
+                    </p>
+
+                    <h3>To teraz nasłuchiwanie tego</h3>
+                    <p>Teraz musimy nasłuchiwać kiedy ktoś kliknie przycisk "Oblicz" tak samo jak w poprzednim zadaniu:</p>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3-3js.png" alt="zadanie3-3"/>
+                    </div>
+
+                    <p>... wiem jak to wygląda, ale spróbuję to wszystko jakoś wytłumaczyć</p>
+                    
+                    <strong>calcForm.addEventListener("submit", function(event) {</strong> - nasłuchujemy wysłania formularza<br>
+                    <strong>event.preventDefault();</strong> - blokujemy odświeżanie strony (tak jak w poprzednim, bez tego nie zadziała)<br><br>
+                    
+                    <strong>let liczba1 = parseFloat(liczba1Input.value);</strong> - pobieramy pierwszą liczbę i zamieniamy na float<br>
+                    <strong>let liczba2 = parseFloat(liczba2Input.value);</strong> - to samo robimy z drugą liczbą<br><br>
+                    
+                    <strong>if (isNaN(liczba1) || isNaN(liczba2)) {</strong> - sprawdzamy czy użytkownik wpisał liczby<br>
+                    <strong>wynikiDiv.innerHTML = "&ltp style='color: red;'&gtProszę wpisać obie LICZBYY&lt/p&gt";</strong> - jak nie wpisał to wyskoczy komunikat o tym<br>
+                    <strong>return;}</strong> - przerywamy funkcję<br><br>
+                    
+                    <strong>let suma = liczba1 + liczba2;</strong> - obliczamy sumę<br>
+                    <strong>let roznica = liczba1 - liczba2;</strong> - obliczamy różnicę<br>
+                    <strong>let iloczyn = liczba1 * liczba2;</strong> - obliczamy iloczyn (mnożenie jakby ktoś bardziej ułomny nie skumał)<br><br>
+                    
+                    <strong>let iloraz = (liczba2 !== 0) ? (liczba1 / liczba2) : "nigdy holero nie mnóż przez zero";</strong><br>
+                    To jest ciekawe! To tzw. operator warunkowy (ternary). Działa tak:<br>
+                    Jeżeli liczba2 jest różna od zera (liczba2 !== 0) to wykonaj dzielenie (liczba1 / liczba2)<br>
+                    W przeciwnym razie (:) zwróć tekst "Chyba se jaja robisz, że dzielisz przez zero"<br><br>
+                    
+                    <h3>Teraz pokażemy wyniki w tabeli!</h3>
+                    <p>Musimy stworzyć ładną tabelkę z wynikami:</p>
+                    
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3-4js.png" alt="zadanie3-4"/>
+                    </div>
+                    
+                    <p>To już ostatnia część - tworzymy tabelkę HTML z wynikami:</p>
+                    
+                    <strong>let tabelaHTML = "&lttable border='1' style='border-collapse: collapse; width: 100%;'&gt";</strong> -  tworzymy tą pieprzoną tabelę, border to ten tego obramowanie, width by nie ucieło, a margin-top by miało trochę wolnego miejsca<br>
+                    <strong>tabelaHTML += "&lttr&gt&ltth&gtDziałanie&lt/th&gt&ltth&gtWynik&lt/th&gt&lt/tr&gt";</strong> - nagłówki tabeli<br>
+                    <strong>tabelaHTML += "&lttr&gt&lttd&gtSuma&lt/td&gt&lttd&gt" + suma + "&lt/td&gt&lt/tr&gt";</strong> - wiersz z sumą<br>
+                    <strong>tabelaHTML += "&lttr&gt&lttd&gtRóżnica&lt/td&gt&lttd&gt" + roznica + "&lt/td&gt&lt/tr&gt";</strong> - wiersz z różnicą<br>
+                    <strong>tabelaHTML += "&lttr&gt&lttd&gtIloczyn&lt/td&gt&lttd&gt" + iloczyn + "&lt/td&gt&lt/tr&gt";</strong> - wiersz z iloczynem<br>
+                    <strong>tabelaHTML += "&lttr&gt&lttd&gtIloraz&lt/td&gt&lttd&gt" + iloraz + "&lt/td&gt&lt/tr&gt";</strong> - wiersz z ilorazem<br>
+                    <strong>tabelaHTML += "&lt/table&gt";</strong> - zamykamy tabelkę<br><br>
+                    
+                    <strong>wynikiDiv.innerHTML = tabelaHTML;</strong> - wstawiamy całą tabelkę do naszego diva<br>
+                    
+                    <h3>Gotowe</h3>
+                    <p>To już wszystko, nasz wspaniały kalkulator działa, a przynajmniej powinien<br>
+                    Najważniejsze do zapamiętania</p>
+                    
+                    <ul class="semantic-tags">
+                        <li><strong>parseFloat()</strong> - zamiana tekstu na liczbę (z ułamkami)</li>
+                        <li><strong>isNaN()</strong> - sprawdzenie czy to na pewno liczba</li>
+                        <li><strong>innerHTML</strong> - wstawianie HTML do strony</li>
+                        <li><strong>? :</strong> - krótki if/else w jednej linijce</li>
+                    </ul>
+                    
+                    <p>Końcowy kod będzie wyglądał tak:</p>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie3-5js.png" alt="zadanie3-5"/>
+                    </div>
+
+                </article>
 
 
             </div>
@@ -242,5 +368,45 @@
         output.textContent = wybranyKolor;
     });
 </script>
+
+
+
+
+<script>
+                const calcForm = document.getElementById("calcForm");
+                const liczba1Input = document.getElementById("liczba1");
+                const liczba2Input = document.getElementById("liczba2");
+                const wynikiDiv = document.getElementById("wyniki");
+
+                calcForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+
+                    let liczba1 = parseFloat(liczba1Input.value);
+                    let liczba2 = parseFloat(liczba2Input.value);
+
+                    if (isNaN(liczba1) || isNaN(liczba2)) {
+                        wynikiDiv.innerHTML = "<p style='color: red;'>Proszę wpisać obie liczby!</p>";
+                        return;
+                    }
+
+                    let suma = liczba1 + liczba2;
+                    let roznica = liczba1 - liczba2;
+                    let iloczyn = liczba1 * liczba2;
+                    let iloraz = (liczba2 !== 0) ? (liczba1 / liczba2) : "Nie dziel przez zero!";
+
+                    let tabelaHTML = "<table border='1' style='border-collapse: collapse; width: 100%; margin-top: 20px;'>";
+                    tabelaHTML += "<tr><th>Działanie</th><th>Wynik</th></tr>";
+                    tabelaHTML += "<tr><td>Suma</td><td>" + suma + "</td></tr>";
+                    tabelaHTML += "<tr><td>Różnica</td><td>" + roznica + "</td></tr>";
+                    tabelaHTML += "<tr><td>Iloczyn</td><td>" + iloczyn + "</td></tr>";
+                    tabelaHTML += "<tr><td>Iloraz</td><td>" + iloraz + "</td></tr>";
+                    tabelaHTML += "</table>";
+
+                    wynikiDiv.innerHTML = tabelaHTML;
+                });
+                </script>
 </body>
 </html>
+
+
+
