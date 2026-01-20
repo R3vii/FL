@@ -42,7 +42,7 @@
 
                 <article class="task-article">
                     <div class="task-header">
-                        <h2>Zadanie 1</h2>
+                        <h2>Zadanie 1 GRUPA B</h2>
                         <p class="task-description">Zaczynamy od samego początku, no to tak..."</p>
                     </div>
 
@@ -106,16 +106,91 @@
                     </div>
 
 
+                    
+                    <!-- zadanie 2 -->
+                     <article class="task-article">
+                    <div class="task-header">
+                        <h2>Zadanie 2 GRUPA B</h2>
+                        <p class="task-description">Dajemy z zadaniem drugim"</p>
+                    </div>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie2js.png" alt="zadanie2"/>
+                    </div>
+                    <p>
+                        No to zadanie drugie, jak widzimy musimy coś zrobić z kolorkami strony, zacznijmy od tego że musi tam być zrobiony<br>
+                        Formularz z wyborami. Jak pewnie pamiętasz formularz robiliśmy wtedy jak było kolokwium z html. Tutaj zrobimy podobnie <br>
+                        (pamiętaj by formularz zamieścić w html, a nie w js)<br>
+
+
+                    </p>
+                    
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie2-1js.png" alt="zadanie2-1"/>
+                    </div>
+
+                    <p>
+                        Już tłumaczę skąd się wzięły te formularze i co one robią <br>
+                        No to tak: <br>
+                        <strong>&ltform id="colorForm"&gt</strong> - form to formularz, a id="colorForm" możemy se dać inne id, byle by się nam nie pomieszało, bo w js będziemy używać<br>
+                        <strong>&ltinput type="color" id="colorPicker"&gt</strong> - type="color" daje nam specjalne pole do wyboru koloru, możemy sobie tam wybierać kolorek (przeglądarka sama daje tą palete barw), "name" w sumie nie musimy dawać<br> 
+                        <strong>&ltbutton type="submit">Zmień kolor&lt/button></strong> - dosłownie button sumbit, zwyczajny jak kolor gówna w kiblu, no chyba że masz biegunke<br>
+                        <strong>&ltoutput id="colorOutput">&lt/output></strong> - za pomocą tego będziemy wyświetlać nasz wynik "czyli kod koloru np: #00ff99"<br> <br>
+
+                        No i to co teraz mamy to jest formularz wybierania kolorku, ło taki oo
+
+                        =====================================
+                    </p>
+
+<form id="colorForm">
+    <label for="colorPicker">Wybierz kolor:</label><br><br>
+
+    <input type="color" id="colorPicker" name="color"><br><br>
+
+    <button type="submit">Zmień kolor</button>
+</form>
+
+<p>Wybrany kolor:</p>
+<output id="colorOutput"></output>
+<p>=====================================</p>
 
 
 
+                    <h3>Dobra to teraz trzeba zrobić by to coś działało i przełączało nam kolorek w stronce</h3>
+                    <p>na samym początku jak mamy połączony kod z html to musimy się łodwołać do tego co my tam mamy, odwoujemy się w sposób następujący. Dajemy sobie zmienną "const form", by ona</p>
+                    <p>potem sobie dajemy document.getElementById("idnaszewhtml") <br>
+                        Czyli tak patrząc na nasz kod html to w tym wypadku będziemy mieli: </p>
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie2-2js.png" alt="zadanie2-2"/>
+                    </div>
 
+                    <p>
+                    <strong>const form = document.getElementById("colorForm");</strong> - odwołujemy się do całego colorForm i zapisujemy w zmiennej const "form"<br>
+                    <strong>const colorPicker = document.getElementById("colorPicker");</strong> - odwołujemy się do colorPicker i zapisujemy w zmiennej const "colorPicker"<br>
+                    <strong>const output = document.getElementById("colorOutput");</strong> - odwołujemy się do colorOutput i zapisujemy w zmiennej const "output"<br>
+                    </p>
 
+                    <h3>Co następnie???</h3>
+                    <p>Następnie musimy sprawić by ten guzik działał, w javascripcie nasłuchujemy czy osoba wcisnęła guzik poprzez EventListener</p>
 
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie2-3js.png" alt="zadanie2-3"/>
+                    </div>
 
+                    <p>No to tak bez zbędnego pieprzenia głupot, tłumaczę o co w tym wszystkim biega:</p>
+                    <strong>form.addEventListener("submit", function(event) {}</strong> - nasłuchujemy wysłania formularza "czy osoba wcisnęła guzik" <br>
+                    <strong>event.preventDefault();</strong> - to jest tutaj bardzo ważne, bo bez tego kod nie zadziała, to sprawia że stronka się nie odświeża, bo po wciśnięciu buttona autoamtycznie by się odświeżyła, a to jest taka blokada u know <br>
+                    <strong>let wybranyKolor = colorPicker.value;</strong> - zmienna "wybranyKolor" która przyjmuje aktualną wartość pola, czyli ten kod tego koloru np. #440550 <br>
+                    <strong>document.body.style.backgroundColor = wybranyKolor;</strong> - to coś sprawia że kolor strony się zmienia i jest fajrant <br>
+                    <strong>output.textContent = wybranyKolor;</strong> - no i wypisanie kodu koloru pod formularzem<br>
+                    <h3>Czy to było ciężkie??</h3>
+                    <p>Nie wydaje mi się, jak poćwiczysz to dasz radę. Tylko trzeba pare rzeczy zapamiętać. Lecimy dalej... ehh, teraz tylko zadanie 3,4 i 5.. strzele sobie w łeb</p>
 
+                    <p>Końcowy kod będzie wyglądał tak:</p>
 
-
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie2-4.png" alt="zadanie2-4"/>
+                    </div>
 
 
 
@@ -123,13 +198,6 @@
             </div>
         </section>
     </main>
-
-
-
-
-
-
-
 
 
 
@@ -155,5 +223,24 @@
     </div>
 
     <script src="script.js"></script>
+
+
+
+
+    <script>
+    const form = document.getElementById("colorForm");
+    const colorPicker = document.getElementById("colorPicker");
+    const output = document.getElementById("colorOutput");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        let wybranyKolor = colorPicker.value;
+
+        document.body.style.backgroundColor = wybranyKolor;
+
+        output.textContent = wybranyKolor;
+    });
+</script>
 </body>
 </html>
