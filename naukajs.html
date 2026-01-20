@@ -20,17 +20,127 @@
                 <!-- Zadanie 1 -->
                 <article class="task-article">
                     <div class="task-header">
-                        <h2>TU BĘDĄ ZADANIA</h2>
-                        <p class="task-description">Proszę czekać, aż prezydent je zrobi</p>
+                        <h2>Przed Zadaniami</h2>
+                        <p class="task-description">Musisz zapamiętać pare rzeczy które przydadzą ci się na kolosie, są to podstawy javascripta</p>
                     </div>
+
+
+                    <div class="task-content">
+                        <h3>Na początku musisz zapamiętać:</h3>
+                        <p>W javascripcie nie ma intów, nie ma stringów, nie ma jakichś boolean... są po prostu dwie zmienne</p>
+                        <ul class="semantic-tags">
+                            <li><strong>let</strong> – wartość, może się zmieniać</li>
+                            <li><strong>const</strong> – wartość nie może się zmieniać</li>
+                        </ul>
+                        
+                        <p>Przykłady... const możesz użyć do zapisania peselu, przecież wiadomo że pesel ci się nie zmieni</p>
+                        <p>let możesz użyć natomiast gdy chcesz zapisać kwote na koncie. Raz masz 1000$ a potem masz 0$ bo przewalasz na kasynie, reszte wytłumaczę już podczas rozwiązywania zadań</p>
+                    </div>
+                </article>
+
+
+
+                <article class="task-article">
+                    <div class="task-header">
+                        <h2>Zadanie 1</h2>
+                        <p class="task-description">Zaczynamy od samego początku, no to tak..."</p>
+                    </div>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie1js.png" alt="zadanie1"/>
+                    </div>
+                    <p>
+                        mamy tutaj w pierwszym podpunkcie wczytać od użytkownika 10 liczb całkowitych i zapisać je w tabeli <br>
+                        zaczynamy od stworzenia naszej tabelki, wpisując: <br>
+                        <strong>let tablica = [];</strong> - jest to tworzenie naszej tablicy o nazwie: "tablica"<br>
+                        Czytamy dalej i widzimy też, że będziemy potrzebować średniej arytmetycznej. Dlatego stwórzmy sobie zmienną średnia <br>
+                        <strong>let suma = 0;</strong> - tworzymy zmienną "suma", do której będą dodawane liczby ((w następnym kroku))<br> <br>
+                        Następnym krokiem będzie stworzenie pętli for która będzie nam wczytywać te 10 liczb: <br>
+
+                    </p>
                     
                     <div class="task-image">
-                        <img id="coverImage" src="zjaranyspongebob.jpg" alt="Kolokwiumzad1"/>
+                        <img id="coverImage" src="zadanie1-1js.png" alt="zadanie1-1"/>
                     </div>
+
+                    <p>
+                        Już tłumaczę skąd to się wszystko wzięło <br>
+                        Zaczynamy od zbudowania naszej pętelki <br>
+                        <strong>for (let i = 0; i < 10; i++) {...}</strong> - To jest nasza pętla, wykona się ona 10 razy... chyba wiecie jak się robi podstawowe pętle w językach<br>
+                        Czytamy dalej i widzimy też, że będziemy potrzebować średniej arytmetycznej. Dlatego stwórzmy sobie zmienną średnia <br>
+                        <strong>let liczba = ...;</strong> - jak wiemy za pomocą let tworzymy zmienną.. tu tworzymy zmienną o nazwie "liczba" i będziemy ja do czegoś przypisywać<br> 
+                        <strong>parseInt(...);</strong> - konwertowanie tekstu na int (domyślnie jakby osoba podała liczbę 10 to by ją zapisało jako string)<br>
+                        <strong>prompt(...);</strong> - pobieramy za pomocą tego jakieś dane od użytkownika<br> <br>
+                        CZYLI PODSUMOWUJĄC TĄ LINIJKĘ KODU: <strong>let liczba = parseInt(prompt("Podaj liczbę całkowitą (" + (i + 1) + "/10):"));</strong> chcemy mieć zmienną "liczba", robimy by była liczbą i chcemy by użytkownik mógł ją wpisać + dajemy jakiś opis by widać to było w komunikacie <br> <br>
+                        <strong>tablica.push(liczba);</strong> - wrzucamy tą liczbę do naszej tablicy <br>
+                        <strong>suma += liczba;</strong> - dodajemy naszą liczbę do sumy <br>
+                    </p>
+
+                    <h3>Dobra słuchaj tego</h3>
+                    <p>Jak to masz to już połowa sukcesu.... może nie połowa, bo dopiero zrobiliśmy pierwszy punkt tego zadania, ale wiesz, mówią że na początku jest najgorzej</p>
+                    <p>Dlatego kopsnij se dzika i lecim do następnego. Następny podpunkt jest taki że musimy sprawdzić ile liczb w tablicy jest większych od średniej arytmetycznej wszystkich elementów <br>
+                    Brzmi okropnie?? Nie noo, aż takie złe nie jest. Zacznijmy w sumie od zrobienia naszej średniej. Bo jedyne co mamy to tylko jakieś liczby w tabeli i sume (bo nam się dodawało) <br>
+                    <strong>let srednia = suma / tablica.length;</strong> - obliczamy średnią, dzielimy sume przez długość naszej tabelki (czyli 10) <br>
+                    </p>
+                    <h3>To teraz jak mamy średnią to możemy obliczać to co nam każą, czyli sprawdzanie liczb większych od średniej</h3>
+                    <p>Mamy taki kod, który już zaraz objaśnie:</p>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie1-2js.png" alt="zadanie1-2"/>
+                    </div>
+
+                    <p>zacznijmy od stworzenia zmiennej jaką będzie np. "licznik" i spokojnie, możecie nazwać se jak chcecie. On będzie nam po prostu liczył ile liczb spełnia ten warunek (ile jest większych od średniej)</p>
+                    <strong>let licznik = 0;</strong> - tworzę zmienną "licznik", która będzie nam pokazywać ile liczb jest większych od średniej <br>
+                    <strong>for (let i = 0; i < tablica.length; i++) {...}</strong> - pętla która przejdzie przez nasze wszystkie liczby <br>
+                    <strong>if (tablica[i] > srednia) {...}</strong> - dokładnie to znaczy "jeżeli liczba z tablicy jest większa od średniej to zrób...", po prostu ten kod się wykona jeśli liczba będzie większa od średniej <br>
+                    <strong>document.write(tablica[i] + "&ltbr&gt");</strong> - Wypisuje nam tą liczba w html, byśmy ją widzieli a dodałem to br, by wszystko było w oddzielnej lini... żeby nie było czegoś takiego: 20905932953260843, tylko 20  90  59 itd.<br>
+                    <strong>licznik++</strong> - zwiększa się nasza zmienna "licznik", byśmy dokładnie wiedzieli ile liczb jest większych od średniej<br>
+                    <h3>OSTATNIA RZECZ</h3>
+                    <p>Musimy na koniec napisać ile liczb jest większych od średniej, dlatego jak już wiemy z poprzedniego musimy użyć document.write by wypisało nam to w html.. więc piszemy:</p>
+                    
+                    <strong>document.write("&ltbr&gtLiczby większe od średniej: " + licznik);</strong>
+                    <p>Końcowy kod będzie wyglądał tak:</p>
+
+                    <div class="task-image">
+                        <img id="coverImage" src="zadanie1-3js.png" alt="zadanie1-3"/>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     </main>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <footer class="site-footer">
         <div class="container footer-inner">
             <p>Spal książkę, uratuj drzewo🎄🎄🎄</p>
