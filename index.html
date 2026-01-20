@@ -1,499 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Materiał na kolokwium</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wybor</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background:
+                linear-gradient(#ffffffce, #ffffffce),
+                url('shore.webp') center/cover fixed;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .site-header {
+            padding: 25px 0;
+            text-align: center;
+            background: #000;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero {
+            margin: 60px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-choice {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .image-choice img {
+            width: 100%;
+            display: block;
+        }
+
+        .choice {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .choice-left {
+            left: 0;
+        }
+
+        .choice-right {
+            right: 0;
+        }
+
+        .choice:hover {
+            background: rgba(0,0,0,0.35);
+            transform: scale(1.02);
+        }
+
+        .choice span {
+            background: rgba(0, 0, 0, 0);
+            padding: 15px 25px;
+            border-radius: 10px;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 25px;
+            background: #000;
+            color: white;
+            margin-top: 80px;
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            .brand { font-size: 1.8rem; }
+            .choice { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .choice { font-size: 1.3rem; }
+            .choice span { padding: 10px 15px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <h1 class="brand">Materiał na kolokwium</h1>
+
+<header class="site-header">
+    <h1 class="brand">Wybierz mądrze</h1>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div class="image-choice">
+            <img src="resize.webp" alt="Wybór nauki HTML lub JavaScript">
+
+            <a href="naukahtml.html" class="choice choice-left">
+                <span>HTML</span>
+            </a>
+
+            <a href="naukajs.html" class="choice choice-right">
+                <span>Javascript</span>
+            </a>
         </div>
-    </header>
+    </section>
+</main>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-inner">
-                
-                <!-- Zadanie 1 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 1</h2>
-                        <p class="task-description">Treść: Popraw semantykę..... itd. nie chce mi się tego przepisywać, ale dobraa</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="Kolokwiumzad1.png" alt="Kolokwiumzad1"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <h3>Wstęp do zadanka</h3>
-                        <p>Ciekawi was pewnie jak zrobić to zadanie, więc już wam tłumaczę. Mamy tutaj html, prosty, czytelny (chyba), no i przede wszystkim bez css. Tak czy inaczej mamy poprawić semantykę, w skrócie by wyglądało to jeszcze lepiej. Jak widzimy w nawiasie, musimy zmienić tylko i wyłaczenie tagi... Co to są tagi spytacie?</p>
-                        <p>Tagi pomagają, łatwiej zrozumieć strukturę stronki, wiadomo co jest nagłówkiem, sidebarem itd itp. Od siebie też dodam, że google promuje stronki które mają zrobione te tagi (wiem z doświadczenia XD).</p>
-                        <p>PRZYKŁADOWE TAGI: <strong>header, nav, main, article, aside, footer</strong>.</p>
+<footer class="site-footer">
+    <p>Mam dość tego wszystkiego</p>
+</footer>
 
-                        <h3>Jak zrobić to zadanie?</h3>
-                        <p>Widzimy, że mamy kod stronki, mamy też pewną podpowiedź, w title nam pisze że mamy zamienić wszystkie div oraz span na te tagi. To też to robimy, pierwszy div który nas wita, to <strong>&lt;div class="box" id="task"&gt;...&lt;/div&gt;</strong> widzimy, że on zawiera w sobie jakieś tam rzeczy do wyboru, także możemy stwierdzić, że jest to <strong>sekcja</strong> do wyboru jakichś tam rzeczy. Także, możemy zastąpić tego diva tagiem, <strong>section</strong>, po zamianie będzie wyglądało to w ten sposób: <strong>&lt;section class="box" id="task"&gt; ... &lt;/section&gt;</strong>. Jakby ktoś nie zrozumiał tego mojego pieprzonego gadania, to zamieszczam zdjęcie z fragmentem przed oraz po.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="jaktowyglada.png" alt="jaktowyglada"/>
-                        </div>
-                        
-                        <p>W skrócie, zmieniamy tego diva zaczynającego i kończącego na section.. Spytacie czemu section? Bo mi to wygląda na section. Jak uważacie inaczej to nikt wam nie każe tego czytać :)</p>
-                        <p>Następnie mamy do zmiany <strong>&lt;div class="menu"&gt;...&lt;/div&gt;</strong> ehh, co by tu dłużej powiedzieć, o tym, by was nauczyć. Well.. well... well..... menu to w sumie powinno znajdować się na <strong>sekcja</strong> stronki, więc pasowałoby to dać jakoś na górze, więc mamy taki specjalny tag o nazwie <strong>header</strong>. Zastępujemy tamtego diva headerem i mamy: <strong>&lt;header class="box" id="task"&gt; ... &lt;/header&gt;</strong>. Jakby ktoś nie zrozumiał tego mojego pieprzonego gadania PO RAZ DRUGI.. to macie zdjęcie przed i po. Dodam, że jeszcze możecie tam dać tag nav.. w sumie o nim to zapomniałem, nav to takie menu nawigacyjne. Wtedy Gałka zrobi takie wow, ten głąb jednak coś potrafi.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="fotka.png" alt="fotka"/>
-                        </div>
-                        
-                        <p>Z racji iż, jesteśmy na studiach i raczej każdy z was ma więcej niż iq szympansa (nie mam zamiaru obrazić, żadnego szympansa) to reszte wam streszczę i nie będę się rozpisywał po każdym z pokolei.</p>
-                        <p>Macie tutaj tagi te semantyczne które zostały użyte w tym zadaniu, zapoznajcie się z nimi i sobie popatrzcie na rozwiązanie zadania.</p>
-                        
-                        <ul class="semantic-tags">
-                            <li><strong>header</strong> – nagłówek stronki</li>
-                            <li><strong>nav</strong> – menu nawigacyjne</li>
-                            <li><strong>main</strong> – główna treść strony</li>
-                            <li><strong>article</strong> – samodzielny wpis czy tam post, zwał jak zwał</li>
-                            <li><strong>aside</strong> – treść poboczna (tak zwany sidebar)</li>
-                            <li><strong>footer</strong> – stopka strony</li>
-                            <li><strong>section</strong> – sekcja tematyczna</li>
-                        </ul>
-                        
-                        <p>Dobra, nauczcie się tych tagów, popatrzcie na moje rozwiązania i chyba zadanie 1 mamy za sobą. Co nie??? CO NIE?????? Ehh.. fuck my life</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="jakmawygladac.png" alt="jakmawygladac"/>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Zadanie 2 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 2</h2>
-                        <p class="task-description">Treść: Widzicie na zdjęciu, jestem leniwy</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="Zadanienr2.png" alt="Zadanienr2"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <h3>Jak zrobić zadanie?</h3>
-                        <p>No to tak, mamy zrobić zajebisty formularz (całe szczęście bez css, więc będzie wam prościej wytłumaczyć). Jak widzimy, mamy w zadaniu formularz. To musimy zrobić formularz.. wiecie jak się robi formularz? Za pomocą <strong>&lt;form&gt;</strong>... form jak formularz. Proste? Chyba tak.. Skoro mamy już początek pustego formularza to teraz trzeba dodać te rzeczy, takie jak email, hasło i to wszystkie inne. W formularzu służy do tego coś takiego jak <strong>&lt;label&gt;</strong> Zamieszczam zdjęcie jak to ma wyglądać i wam dokładniej wytłumacze co tu się odwaliło.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="email.png" alt="email"/>
-                        </div>
-                        
-                        <p>No to tak.. form się wzięło z tego, że musimy mieć form, bo to formularz. label for = "email", wzięło się z tego, że jest sprawdzany po prostu email. Jeśli chodzi o html, to on automatycznie sprawdza czy to jest email, więc wystarczy wiedzieć tylko jak to się wpisuje, a on zrobi za nas wszystko inne, także zajebiście. Potem kończymy nasz label i robimy coś takiego jak input type="email" id="email" required to pierwsze czyli input email znaczy, że oczekujemy emaila, drugie to id które w sumie nie musi być, ale fajnie oznaczać inne rzeczy id, wygląda wtedy bardziej profesjonalnie. No i trzecia rzecz to required, znaczy to tyle, że pole nie może być puste i jest on wymagany (dbamy o dostępność). Nie wiem czy jest sens, tłumaczenia więcej. Bo jakby hasło i inne tego typu, polegają na prawie tym samym... więc po prostu zamieszcze wam kod. Nie zapominajcie, że jestem leniwym c-wordem.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="jakiestakie.png" alt="jakiestakie"/>
-                        </div>
-                        
-                        <p>Dodam jeszcze jedną, ostatnią rzecz.. Mamy tam, że hasło musi mieć minimum 8 znaków, także dajemy tam minlength="8", no i też pamiętamy że submit musi być buttonem, bo inaczej lipa będzie a nie submit. No to co, drugie zadanie zrobione?? Ez.</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 3 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 3</h2>
-                        <p class="task-description">Treść: Widzicie, powiem tyle że zadanie łatwe XD Nawet bardzo</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="fkjkf.png" alt="fkjkf"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>Zaczynamy od tego, że mamy tutaj fragment CSS, mówi on nam że mamy jakiś tam box i on ma wysokość (width) oraz padding, nwm jak to na polski. Mamy też border czyli ramkę dookoła. Musimy też zauważyć, że mamy tutaj typ boxa jako <strong>(box-sizing:content-box)</strong>. Mówi to nam o tym, że ramka będzie się zwiększać na zewnątrz, w miarę zwiększania innych parametrów.. Jeśli byśmy mieli <strong>(box-sizing:border-box)</strong> to byśmy liczyli całkowitą szerokość jako width (bo wszystko inne mieściłoby się w środku.</p>
-                        <p>Well... zacznijmy licczyć:<br>
-                        <strong>width = 300px</strong><br>
-                        <strong>padding = 20px</strong> (uwzględniamy, że jest to odległość od krawędzi do środka z lewej i z prawej strony czyli 20px+20px)<br>
-                        <strong>border = 10px</strong> (tak samo jak poprzedni, z lewej i z prawej uwzględniamy, także 10px + 10px)<br></p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="przyklad.png" alt="przyklad"/>
-                        </div>
-                        
-                        <p>Więc w skrócie pudełko ma 360px. Koniec zadania :bb</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 4 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 4</h2>
-                        <p class="task-description">Treść: Tera, formatowanie zdjęć w css. Całkiem proste</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie4.png" alt="zadanie4"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>Zaczynę od tego, że powiem wam, że piszę te zadanie na telefonie na tych metodach numerycznych, także wybaczcie jak coś będzie wyglądać słabo, nie moja wina.</p>
-                        
-                        <h3>Jak zrobić zadanie?</h3>
-                        <p>No to tak mamy jakąś galerię zdjęć, widzimy że mamy tam 3 zdjęcia. W sumie widzicie jak to wygląda. Widzimy również, że wszystkie znajdują się w galerii, która jest w klasie *gallery*. To właśnie, w odwołaniu do niej będziemy pisać css. Zaczynamy... Jak wiadomo css korzysta z takich bloczków, które są w nawiasach klamerkowych <strong> o w takich: {...}</strong>.</p>
-                        <p>By odwołać się do całej galerii, wpisujemy przed tymi klamerkami nazwę klasy z kropką. Może po prostu pokaże wam fotkę i wyjaśnię co się tam dzieje.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie41.png" alt="zadanie41"/>
-                        </div>
-                        
-                        <p>No to tak, jak już mówiłem <strong> .galery{...} </strong> bierze się z tego, że odwołujemy się do klasy i zmieniamy ją, w zadaniu mamy, że CSS ma ustawić zdjęcia w 3 kolumnach na desktopie. <strong> display: grid; </strong> - Dzięki temu, zdjęcia będą poukładane w siatce.<br>
-                        <strong> grid-template-columns: repeat(3,1fr); </strong> - W skrócie, zrób 3 kolumny, każda o równej szerokości. Ta trójka sprawia, że powtarza 3 razy, a te 1fr to że 1 część dostępnej przestrzeni (fr = fraction).<br>
-                        <strong> gap: 12px; </strong> - W skrócie, zrób odstęp pomiędzy zdjęciami, który ma 12px..<br>
-                        Skoro, to udało nam się zrobić, to teraz pasowałoby zachować proporcję tych zdjęć, dlatego musimy się odwołać do zdjęcia. Jak to zrobić??? W prosty sposób:<br>
-                        <strong> .gallery img {...} </strong>. Może lepiej będzie jak dam zdjęcie i wyjaśnię co i jak, jak wcześniej.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie42.png" alt="zadanie42"/>
-                        </div>
-                        
-                        <p><strong> width: 100%; </strong> - Każde zdjęcie, będzie miało szerokość swojej kolumny.<br>
-                        <strong> height: auto;</strong> - zachowuje proporcje obrazka, bez tego by się rozciągnęło.<br>
-                        <strong> display: block; </strong> - domyślnie img ma taką przerwę, ja to w sumie przy prawie każdym zdjęciu daje, zajebiście usuwa te przerwy i wygląda profeszional.<br>
-                        Ostatnia rzecz jaka nam została to zrobienie tego na telegon (w jednej kolumnie 500px). Pewnie większość z was ma teraz takie wtf... Jak to gówno wyrównać na telefonach. Powiem wam, że prosto. Używamy czegoś takiego jak <strong>@media (max-width: [...]px) {...}</strong>, ogólnie @media sprawia, że możemy zmieniać rozdzielczość oraz inne rzeczy na stronce, gdy urzadzenie korzysta z innej rozdzielczości.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie43.png" alt="zadanie43"/>
-                        </div>
-                        
-                        <p><strong> @media (max-width: 500px) {...}; </strong> - to co już wyjaśniłem, kod działa tylko wtedy gdy ekran ma maksymalnie 500px, czyli np. telefon.<br>
-                        <strong> grid-template-columns: 1fr; </strong> - oznacza, zrób tylko jedną kolumnę na całą szerokość.<br>
-                        No to tak, mam nadzieję że wszystko jasne.. <strong>jasne czy nie?</strong></p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 5 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 5</h2>
-                        <p class="task-description">Treść: Zadanie wymagające użycia css, w celu przesunięcia danego obiektu</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie5.png" alt="zadanie5"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <h3>Jak zrobić zadanie?</h3>
-                        <p>Powiem tyle, mam w dupie co mówi Szanowna Pani Oliwia i będę opisywał zadania, jak chce. Jak wam się coś nie podoba to nikt wam nie każe tego czytać ;DDD.</p>
-                        <p>No to tak, mamy w treści zadania podany html, w którym widzimy, że nasz przycisk (button) ma klasę <strong>"btn"</strong>, widzimy też tam, że ten znaczek ma klasę <strong>"badge"</strong> także do nich się będziemy odwoływać w naszym CSS.<br></p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie51.png" alt="zadanie51"/>
-                        </div>
-                        
-                        <p>No to tak, mamy naszą klasę .btn czyli ogólną klasę buttona, w niej nie będziemy zmieniać za wiele. Jedynie zmieńmy pozycję w naszym buttonie (wtedy nasz badge będzie liczył swoje top i right względem tego buttona.. ale wait, napisze to lepiej... Tak jak w tamtym zadaniu.<br>
-                        <strong> position: relative;</strong> - jak już napisałem, sprawia że będzie wszystko dobrze się utrzymywało przy scalowaniu (badge nie będzie się przesuwał).<br>
-                        <strong> padding-right: 25px;</strong> - dodaje nam trochę wolnego miejsca po prawej stronie przycisku, by nasz badge nie nachodził na ten tego.. na tekst.<br></p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie52.png" alt="zadanie52"/>
-                        </div>
-                        
-                        <p>Wiem, wiem, wiem.. wygląda to jak istna rzeź.. ale spokojnie, wytłumaczę wszystko prosto :D.<br>
-                        Zrobię to w ten sam sposób jak poprzednio by zachować porządek:<br>
-                        <strong> .btn .badge {...}</strong> - to akurat proste, odwołujemy się do buttona, a dokładniej do badge.<br>
-                        <strong> position: absolute;</strong> - badge jest pozycjonowany ręcznie, siedzi jak taka naklejka na rogu.<br>
-                        <strong> top: -6px; , right: -6px; </strong> - przesuwa badge na zewnątrz przycisku.. tak by wychodził i guess.<br>
-                        <strong> background: red;</strong> -  zmienia nam kolor backgroundu badge na czerwony.<br>
-                        <strong> color: white;</strong> - zmienia nam kolor czcionki w badge na biały.<br>
-                        <strong> padding: 2px 6px;</strong> - daje miejsce w środku by liczba nie była ściśnięta.<br>
-                        <strong> border-radius: 50%;</strong> - sprawia że rogi są zaokrąglone, tak troszku troszku by było kółeczko a nie kwadracik.<br>
-                        <strong> font-size: 12px;</strong> - czy muszę to tłumaczyć? Po prostu zmienia wielkość czcionki w badge.<br>
-                        <br>
-                        Mam nadzieję, że to wszystko jest w miarę logiczne. Nie było tutaj za bardzo nic skomplikowanego, jedynie trzeba rozumieć jak działa rozstawienie rzeczy w tym CSS, a tak poza tym to not bad.</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 6 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 6</h2>
-                        <p class="task-description">Treść: "Masz następujący fragment HTML"</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie6.png" alt="zadanie6"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <h3>Jak zrobić zadanie?</h3>
-                        <p>Dobra, po prostu w tym zadaniu tworzymy CSS. Zwróćmy uwagę na to jak wygląda html, widzimy tam że mamy header, h1, nav, ul, li itd. to właśnie je, będziemy edytować w naszym css.</p>
-                        <p>Zaczynajmy, mamy w pierwszym poleceniu, ustawić .header jako kontener Flexbox. W drugim poleceniu jednak każą nam ułożyć elementy (h1 i .nav) w jednej linii, po przeciwnych stronach (lewo–prawo). Jak mamy to zrobić?? Użyjemy kilku rzeczy.</p>
-                        
-                        <div class="task-subsection">
-                            <div class="task-image">
-                                <img id="coverImage" src="Zadanie61.png" alt="Zadanie61"/>
-                            </div>
-                            <p><strong> .header {...}</strong> - odwołujemy się do header.<br>
-                            <strong> display: flex;</strong> - ustawia kontener jako Flexbox.<br>
-                            <br>
-                            pewnie cię ciekawi, co to jest ten flexbox. W skrócie jest to taka zmiana kierunku układania się rzeczy. Jak go damy, to elementy zaczynają układać się obok siebie, dodatkowo możemy je łatwiej kontrolować. W tamtym zadaniu mamy w headerze logo oraz menu, więc to wiadomo że chceby mieć np. logo po lewej stronie a pasek menu po prawej.<br><br>
-                            <strong> justify-content: space-between;</strong> - ustawia przedmioty w flexboxie po przeciwległych stronach. Jeden po lewej, drugi po prawej.<br>
-                            <strong> align-items: center;</strong> - również ustawia przedmioty, jednak wyrównuje je do środka. By wyglądały lepiej.<br>
-                            <br>
-                            Zarówno <strong> align-items: center;</strong> jak i <strong> justify-content: space-between;</strong> wymagają flexboxa, czyli nie jesteśmy w stanie ich dać bez <strong> display: flex;</strong>.</p>
-                            <p>Także noo, pierwsze dwa podpunkty mamy już zrobione.</p>
-                        </div>
-                        
-                        <div class="task-subsection">
-                            <div class="task-image">
-                                <img id="coverImage" src="zadanie62.png" alt="zadanie62"/>
-                            </div>
-                            <p>Następnie mamy ustawić elementy listy w .nav ul poziomo i usunąć punktory listy. Jak to robimy?? Prosto, odwołujemy się do nav. Na początku mamy ustawić poziomo te rzeczy... można w sumie tutaj zastosować tak samo display: flex; By to wszystko trzymało się kupy i się nie rozjeżdżało. No i reszta... cóż, zrobię tak jak robiłem:<br>
-                            <strong> .nav ul</strong> - odwołujemy się do sekcji nav, do listy (ul).<br>
-                            <strong> display: flex; </strong> - Linki z listy ustawiają się obok siebie w jednej linii.<br>
-                            <strong> list-style: none;</strong> - to robi tyle, że usuwa nam kropki z ul.<br>
-                            <strong> gap: 20px;</strong> - dzięki temu, odstępy między linkami będą miały 20px.<br>
-                            <strong> padding: 0; , margin: 0;</strong> - czyści domyślne marginesy, żeby ul się nie rozszerzało.<br>
-                            <br>
-                            Nie mam pojęcia czy coś więcej pisać na ten temat.. chyba wszystko jasne, staram się jak mogę. Cóż.... Lecimy dalej, w razie problemów kontakt dc: .r_e_v_i.</p>
-                        </div>
-                        
-                        <div class="task-subsection">
-                            <div class="task-image">
-                                <img id="coverImage" src="zadanie63.png" alt="zadanie63"/>
-                            </div>
-                            <p>Tutaj raczej będzie krótko, w następnym podpunkcie każą nam zrobić by się linki zaświecały na ciemno-zielony jak się na nie nakieruje. Robimy to w dość prosty sposób i to serio jest proste. Bierzemy sobie nasze linki, czyli odwołujemy się do .nav a (ponieważ tam są nasze linki) no i dodajemy :hover  ... gdy to zrobimy to dana rzecz w środku, będzie się zmieniała po najechaniu na guzik. W tym wypadku chcemy by kolor się zmieniał dlatego możemy zrobić wprost, color: #006400;.<br>
-                            Chyba nie muszę tłumaczyć, o co tutaj chodzi, nic nie ma w tym skomplikowanego, także lecimy daleejjjj.</p>
-                        </div>
-                        
-                        <div class="task-subsection">
-                            <div class="task-image">
-                                <img id="coverImage" src="zadanie64.png" alt="zadanie64"/>
-                            </div>
-                            <p>Mamy tutaj ostatni podpunkt zadania, mianowicie, przerobienie zadania na wersję telefonową, możemy sobie przekopiować rzeczy z tych kategorii na górzy i zwyczajnie je pozmieniać, jakby niczego innego nie będziemy zmieniać tylko ułożenia na telefonie. Także ten.<br>
-                            <strong> @media (max-width: 500px) {...}; </strong> - to co już wyjaśniłem, kod działa tylko wtedy gdy ekran ma maksymalnie 500px, czyli np. telefon.<br> 
-                            <strong> flex-direction: column;</strong> - zmieniamy na column, ponieważ w zadaniu oczekują by układ przechodził w kolumnę.<br>
-                            <strong>align-items: flex-start;</strong> - wyrównanie do lewej, dodatkowo układ kolumnowy sprawia że logo jest na górze :b.<br>
-                            <strong>gap: 10px;</strong> - daje odstęp na 10px.<br>
-                            No i jeszcze te ostatnie (.nav ul) możemy zamienić teżna column oraz dać gap na 10px. By lepiej to wyglądało...<br>
-                            <br>
-                            To wszystko jeśli chodzi o to zadanie, ciężkie jest, ale następne jest o wiele wiele wiele prostsze :b.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Zadanie 7 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 7</h2>
-                        <p class="task-description">Treść: MASZ TAKI KOD HTML"</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie7.png" alt="zadanie7"/>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie71.png" alt="zadanie71"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>Pierwszym zadaniem jest wyjaśnienie, czemu akapit .highlight staje się zielony, a nie niebieski.<br>
-                        Odpowiedź, może być trochę pogmatwana, ale postaram się wam wyjaśnić. Mamy tam trzy nadpisania. Pierwsze nadpisanie to ustawienie koloru #333, drugie ustawienie koloru niebieskiego, a trzecie nadpisanie to ustawienie koloru zielonego. Czemu jest zielony a nie niebieski? W skrócie to dlatego, że jest to ostatnie nadpisanie, i nadpisuje niebieski kolor, kolorem zielonym... Ale tutaj wchodzą jakieś grubsze rzeczy których nie za bardzo sam rozumiem. Bo każde nadpisanie ma jakieś tam wartości, i to ostatnie przypisanie czyli te z gwiazdką * pobiera wartości od tego poprzedniego, czyli ma takie same.... ale jest zasada, że jeśli mają przypisania takie same wartości to wygrywa ten który jest niżej w kodzie. W tym wypadku, niżej w kodzie jest zielony i dlatego on wygrywa..<br>
-                        Ciężko to wytłumaczyć prostymi słowami.. ale miejmy nadzieję, że będzie jakiś prosty przykład. W razie czego możecie sobie wkleić ten kod z kolokwium do html i zobaczyć jak wam działa i może sami dobrze ocenicie, skąd się to wzięło.</p>
-                        
-                        <p>Drugim zadaniem jest zmiana CSS tak, aby .highlight było niebieskie bez important. Można to zrobić w dość łatwy sposób, dodając literę p przed hightlight.. czyli:<br>
-                        <strong>.post p.highlight { color: blue; }</strong>, jak dodacie tą literę p to wartość będzie większa i będzie niebieski zamiast zielonego.</p>
-                        
-                        <p>Trzecim zadaniem jest sprawienie by wszystkie akapity w .post były czerwone oprócz .highlight.<br> można tu zastosować pewną rzecz, którą już pokazuje:</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie72.png" alt="zadanie72"/>
-                        </div>
-                        
-                        <p><strong>.post p.highlight {color: blue;} </strong>- Zawsze tekst będzie niebieski.<br>
-                        <strong>.post p:not(.highlight) { color: red;}</strong>- Wszystkie p oprócz .highlight są czerwone.<br>
-                        <br>
-                        Jak rozumiecie angielski to powinniście i to zrozumieć, jest tu zaprzeczenie, że jednak kod red pojawia się na takich p ze specjalnym tagiem..</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 8 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 8</h2>
-                        <p class="task-description">Treść: Masz przycisk"</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie8.png" alt="zadanie8"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>Zapewne część osób czytających z was robiła ze mną stronkę z obracającym się gorylem po nakierowaniu na niego. Więc dla was nie będzie to zadanie jakieś ciężkie. Mamy przycisk, zwyczajny niczym nie wyróżniający się przycisk i chcemy zrobić by on pulsował. Co w takim razie trzeba zrobić? Oczywiście zastosować @keyframes.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie81.png" alt="zadanie81"/>
-                        </div>
-                        
-                        <p>Dla tych co nie wiedzą o co w tym chodzi, to już wam mówię, @keyframes to inaczej animacja. Nazywamy ją tutaj pulse i ustawiamy wartości. Żeby animacja była zapętlona, musimy zrobić by 0% jak i 100% miało tą samą wartość. Ta animacja wygląda następująco, jeśli ma 0% to ma skale 1, jak ma 50% to skale 1.1, no i jak ma 100% to ma skale znów 1. Teraz jak mamy animację, to pora ją przypisać do tego guzika.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie82.png" alt="zadanie82"/>
-                        </div>
-                        
-                        <p>Mamy tutaj kilka rzeczy, które wyjaśnię:<br>
-                        <strong> .btn:hover {...} </strong> - odwołanie do przedmiotu który ma klasę .btn (:hover dodajemy bo chcemy by się odpalało jak się najedzie na to).<br>
-                        <strong> display: inline-block; </strong> - inline-block sprawia, że element zachowuje się jak inline, czyli może stać w linii z tekstem. W skrócie nie rozwala się.<br>
-                        <strong> animation: pulse 1.2s infinite ease-in-out; </strong> - animation to oczywiście animacja, potem zawiera nazwę animacji którą ma wykonywać, potem przez ile czasu następuje jak ma wykonywać? My daliśmy infinite, by cały czas działała. No i ease-in-out dla lepszej płynności.<br><br>
-                        W skrócie to tyle jeśli chodzi o to zadanie, nie ma tragedii, jest całkiem znośne. Tylko trza się nauczyć tych animacji.</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 9 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 9</h2>
-                        <p class="task-description">Treść: Stwórz tabelę w HTML o następującej strukturze"</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="zadanie9.png" alt="zadanie9"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>W tym zadaniu, musimy stworzyć tabelkę, posiadającą produkt, cenę, dostępność... no i w sumie widzicie. jak ona wygląda na zdjęciu. Zrobimy ją w podobny sposób. Zaczynamy od napisania html, dopiero potem będziemy się bawili w css. Najpierw trzeba postawić fundamenty. Jak tak patrzę to nasza tabelka powinna się składać z: 3 kolumn na górze, oddzielonych od siebie oraz 3 na dole, po 3 pionowe kolumny. Także zaczynamy :b.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie91.png" alt="Zadanie91"/>
-                        </div>
-                        
-                        <p><strong>&lt;table&gt;</strong> - kontener tablicy, w tym się wszystko znajduje.<br>
-                        <strong>&lt;thead&gt;</strong> - nagłówek tablicy, określa nam górną oddzieloną tabelę.<br>
-                        <strong>&lt;tr&gt;</strong> - wiersz.<br>
-                        <strong>&lt;th&gt;</strong> - komórka nagłówka (pogrubiona i w centrum).<br>
-                        <strong>&lt;tbody&gt;</strong> - część z danymi tablicy, określa nam dolną tabelę.<br>
-                        <strong>&lt;td&gt;</strong> - zwykła komórka.<br>
-                        <br>
-                        To teraz pora na to, co misiaczki lubią najbardziej. Czyli css.. zaczynamy od całości, domyślnie table nie zawiera linii i wygląda tak:</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zdjecie9A.png" alt="zdjecie9A"/>
-                        </div>
-                        
-                        <p>To teraz pora coś zadziałać z css, by wyglądała jak tamta na zdjęciu lub spełniała oczekiwania klienta.</p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie93.png" alt="zadanie93"/>
-                        </div>
-                        
-                        <p>Już mówię, co tutaj zaszło... no to tak:<br>
-                        <strong>.table {...}</strong> - odwołanie do tablicy.<br>
-                        <strong>width: 100%;</strong> - szerokość tabelki 100% (w ten sposób fajnie się rozciąga).<br>
-                        <strong>border-collapse: collapse</strong> - usuwa podwójne granice między komórkami, granice stają się jedną linią.<br>
-                        <strong>th, td {...}</strong> - odwołujemy się do tych takich komórek, u know..<br>
-                        <strong>border: 1px solid #000;</strong> - każda komórka dostaje, cienką na 1 pixel, czarną ramkę.<br>
-                        <strong>padding: 8px;</strong> - odstęp między tekstem, a krawędzią komórki, żeby było czytelnie.<br>
-                        <strong>th {...}</strong> - odwołujemy się do tych komórek na górze (oznaczonych jako th).<br>
-                        <strong>background: #eee </strong> - zmiana koloru backgroundu.<br>
-                        <br>
-                        Także nooo, w skrócie wystarczy się odwołać do wszystkiego i powinno banglać. Sory, że tak krótko, ale mam dość robienia tych zadań XDDD I rozpisywania się o nich.. załamie się psychicznie i fizycznie, ale cóż jakoś damy radę. Życzę powodzenia każdemu, kto to czyta. Good luck everyone.</p>
-                    </div>
-                </article>
-
-                <!-- Zadanie 10 -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>Zadanie 10</h2>
-                        <p class="task-description">Treść: W sumie widzicie jaka treść</p>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="Zadanie10.png" alt="zadanie10"/>
-                    </div>
-                    
-                    <div class="task-image">
-                        <img id="coverImage" src="Zadanie10v2.png" alt="zadanie10v2"/>
-                    </div>
-                    
-                    <div class="task-content">
-                        <p>Yooo, witam was w ostatnim zadaniu. Jeśli chodzi o ostatnie zadanie, to będziemy musieli stworzyć taki fajny dymek powiadomień.. który będzie widoczny na naszej stronce. Całe szczęście to 10 zadanie.. jakby było ich więcej to bym załamał się psychicznie <br>
-                        Tak czy inaczej, zaczniemy od tworzenia notification w CSS <br></p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie101.png" alt="zadanie101"/>
-                        </div>
-                        
-                        <p><strong>.notification {...}</strong> - odwołanie do notification<br>
-                        <strong>background-color: #cce5ff;</strong> - Zmieniamy kolor tła na jasno-niebieski<br>
-                        <strong>color: #004085;</strong> - Zmieniamy kolor tekstu na ciemny-niebieski<br>
-                        <strong>padding: 12px;</strong> - Tworzymy odstęp zawartości od obramowania 12px<br>
-                        <strong>border-radius: 8px;</strong> - Szczypta zaokrąglonych rogów<br>
-                        <strong>display: inline-block;</strong> - Dajemy to by pasek z naszym powiadomieniem nie rozjeżdżał się po całej stronie (dopasuje się rozmiarem do tekstu)<br>
-                        <strong>position: relative;</strong> - Pozwala poprawnie ustawić pseudoelement (trójkąt przy powiadomieniu), który musimy dodać<br>
-                        <br><br>
-                        No to mamy z główki pierwszą część, jeśli wykonujecie to w visual studio code (to w czym będziemy wykonywać na kolokwium), to zapewne <br>
-                        widzicie tekst na niebieskim tle. Taki w miarę wyglądający jak powiadomienie. Lecz w poleceniu wymagają od nas czegoś więcej, oprócz <br>
-                        tego by to powiadomienie wyglądało ładnie i schludnie to wymagają pseudoelementu (czyli trójkąta) <br>
-                        To do dzieła, pokażę wam jak zrobić taki trójkąt <br></p>
-                        
-                        <div class="task-image">
-                            <img id="coverImage" src="zadanie102.png" alt="zadanie102"/>
-                        </div>
-                        
-                        <p>Druga część jest trochę trudniejsza, mamy tutaj zrobić trójkąt.. Tylko pewnie spytacie jak zrobić taki trójkąt w html... Już wam mówię <br>
-                        <strong>.notification::before {...}</strong> - odwołanie do tego pseudoelementu <br>
-                        <strong>content: "";</strong> - wymagane jest by ten pseudoelement się pojawił (puste jest, bo element ma być tylko graficzny) <br>
-                        <strong>position: absolute;</strong> - Pozwala dokładnie ustawić trójkąt względem powiadomienia <br>
-                        <strong>left: -8px;</strong> - Przesuwa nasz trójkąt w lewą stronę poza kontener (dzięki czemu wychodzi poza naszą ramkę) <br>
-                        <strong>top: 50%</strong> - ustawia trójkąt w połowie wysokości naszego powiadomienia <br>
-                        <strong>transform: translateY(-50%);</strong> - Dokładnie sprawia że trójkąt jest w połowie, korygowanie pozycji ustawionej przez top <br>
-                        <strong>width: 0;</strong> - Trójkąt będzie zbudowany wyłącznie z obramowań, także wysokość mamy w dupie <br>
-                        <strong>height: 0;</strong> - Trójkąt będzie zbudowany wyłącznie z obramowań, także szerokość mamy w dupie <br>
-                        <strong>border-top: 8px solid transparent;</strong> – Tworzymy górną krawędź trójkąta, niewidoczną czy tam przezroczystą <br>
-                        <strong>border-bottom: 8px solid transparent;</strong> – Tworzymy dolną krawędź trójkąta, również przezroczystą <br>
-                        <strong>border-right: 8px solid #cce5ff;</strong> – Tworzymy widoczną część trójkąta skierowaną w prawo, w tym samym kolorze co tło powiadomienia <br>
-                        <br>
-                        Nie wiem, to zadanie ogólnie jest ciężkie, zrobiłem najbardziej taką dobrą wersję. Bo również można by było zrobić ten trójkąt z kwadratu obróconego <br>
-                        Ale wiadomo, że może on się do tego przywalić, że to nie jest trójkąt tylko kwadrat i może mieć ból dupy o to <br>
-                        Tak czy inaczej ta wersja jest według mnie najlepsza i nie powinien się przywalić do niej :b <br></p>
-                    </div>
-                </article>
-
-                <!-- Linki przydatne -->
-                <article class="task-article">
-                    <div class="task-header">
-                        <h2>PRZYDATNE LINKI</h2>
-                        <p class="task-description">Jakbyście chcieli się trochę pobawić lub sobie poprzypominać to zostawiam wam tutaj kilka przydatnych linków które pomogą wam utrwalić niektóre rzeczy</p>
-                    </div>
-                    
-                    <div class="task-content">
-                        <ul class="useful-links">
-                            <li><a href="https://flexboxfroggy.com/#pl">Stronka do nauki flex (Zadanie 6)</a></li>
-                            <li><a href="https://cssgridgarden.com/#pl">Stronka do nauki grid (Zadanie 4)</a></li>
-                            <li><a href="https://anchoreum.com/#pl">Stronka do nauki pozycji (Mało praktyczne, ale możecie sobie obczaić)</a></li>
-                        </ul>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>Szopy som zajebiste</p>
-        </div>
-    </footer>
-
-    <div id="modal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-            <button id="modalClose" class="modal-close">✕</button>
-            <img id="modalImage" src="" alt="Powiększone zdjęcie" style="width:100%;border-radius:10px"/>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
