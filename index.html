@@ -3,145 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wybor</title>
+    <title>Szopy som najlepsze</title>
     <style>
-        * { box-sizing: border-box; }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background:
-                linear-gradient(#ffffffce, #ffffffce),
-                url('shore.webp') center/cover fixed;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .site-header {
-            padding: 25px 0;
-            text-align: center;
-            background: #000;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .brand {
-            font-size: 2.2rem;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .hero {
-            margin: 60px 0;
+        body {
             display: flex;
-            justify-content: center;
-        }
-
-        .image-choice {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        }
-
-        .image-choice img {
-            width: 100%;
-            display: block;
-        }
-
-        .choice {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 50%;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
-            transition: background 0.3s ease, transform 0.3s ease;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1e1e2e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
 
-        .choice-left {
-            left: 0;
+        img {
+            max-width: 90%;
+            width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
         }
 
-        .choice-right {
-            right: 0;
+        .ruchomy-napis {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            animation: bujanie 1.5s infinite ease-in-out alternate;
         }
 
-        .choice:hover {
-            background: rgba(0,0,0,0.35);
-            transform: scale(1.02);
-        }
-
-        .choice span {
-            background: rgba(0, 0, 0, 0);
-            padding: 15px 25px;
-            border-radius: 10px;
-        }
-
-        .site-footer {
-            text-align: center;
-            padding: 25px;
-            background: #000;
-            color: white;
-            margin-top: 80px;
-            font-size: 1.6rem;
-        }
-
-        @media (max-width: 768px) {
-            .brand { font-size: 1.8rem; }
-            .choice { font-size: 1.6rem; }
-        }
-
-        @media (max-width: 480px) {
-            .choice { font-size: 1.3rem; }
-            .choice span { padding: 10px 15px; }
+        @keyframes bujanie {
+            0% {
+                transform: translateX(-30px) rotate(-5deg) scale(1);
+                color: #ff9f43;
+            }
+            100% {
+                transform: translateX(30px) rotate(5deg) scale(1.1);
+                color: #0abde3;
+            }
         }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <h1 class="brand">Wybierz mądrze</h1>
-</header>
-
-<main class="container">
-    <section class="hero">
-        <div class="image-choice">
-            <img src="resize.webp" alt="Wybór nauki HTML lub JavaScript">
-
-            <a href="naukahtml.html" class="choice choice-left">
-                <span>HTML</span>
-            </a>
-
-            <a href="naukajs.html" class="choice choice-right">
-                <span>Javascript</span>
-            </a>
-        </div>
-    </section>
-</main>
-
-<footer class="site-footer">
-    <p>Mam dość tego wszystkiego</p>
-</footer>
+    <img src="https://thumbs.dreamstime.com/b/very-obese-racoon-urban-backyard-quebec-heart-residential-neighborhood-197832465.jpg?w=450" alt="Słodki szop pracz">
+    
+    <div class="ruchomy-napis">Szopy som najlepsze</div>
 
 </body>
 </html>
